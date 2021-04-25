@@ -352,13 +352,16 @@ namespace SplashUp.Core.Services
                 xmldoc.Load(pathxml);
                 XmlNode xmlNode = xmldoc.DocumentElement;
                 var childNode = xmlNode.ChildNodes[0];
+                string ns2 = childNode.LocalName;
                 string nodeName = childNode.LocalName;
                 //ToDo RemoveSig
                 RemoveSignatureNodes(childNode);
                 var xDoc = xmldoc.ToXDocument();
+
                 RemoveDefNamespace(xDoc.Root);
                 var root = xDoc.Root;
                 var rElement = root.Element(nodeName);
+                rElement.Add(new XElement("_ns2", ns2));
                 json = JsonConvert.SerializeXNode(rElement, Newtonsoft.Json.Formatting.Indented, true);
 
                 return json;

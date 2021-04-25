@@ -56,22 +56,22 @@ namespace SplashUp.Core.Jobs.Fl44
                                     {
                                             var djson = _dataServices.XmlToJson(xmlin);
 
-                                            string jsonpath = (_commonSettings.DebugPath + "/Json" + nFile.Full_path);
+                                            string jsonpath = (_commonSettings.DebugPath + "/Json");
 
-                                            if (!Directory.Exists(jsonpath))
-                                            {
-                                                Directory.CreateDirectory(jsonpath);
-                                            }
-                                            //и создаём её заново
+                                            //if (!Directory.Exists(jsonpath))
+                                            //{
+                                            //    Directory.CreateDirectory(jsonpath);
+                                            //}
+                                            ////и создаём её заново
                                             
 
-                                            var savepath= Path.Combine(jsonpath, entry.FullName);
-                                            using (StreamWriter sw1 = new StreamWriter(savepath, true, System.Text.Encoding.Default))
-                                            {
+                                            //var savepath= Path.Combine(jsonpath, entry.FullName);
+                                            //using (StreamWriter sw1 = new StreamWriter(savepath, true, System.Text.Encoding.Default))
+                                            //{
 
-                                                sw1.WriteLine(djson);
+                                            //    sw1.WriteLine(djson);
 
-                                            };
+                                            //};
 
 
                                             string read_xml_text;
@@ -121,8 +121,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         fcontract.Contract_num = contract.regNum;
                                                         //fcontract.Purchase_num = contract.foundation.Item
                                                         //zfcs_contract2015TypeFoundationOosOrderOrder tt = contract.foundation.Item as zfcs_contract2015TypeFoundationOosOrderOrder;
-                                                        fcontract.R_body = unf_json;
-                                                        fcontract.Xml_body = read_xml_text;
+                                                        fcontract.R_body = djson;// fcontract.R_body = unf_json;
+                                                        //fcontract.Xml_body = read_xml_text;
                                                         fcontract.Hash = hashstr;
                                                         fcontract.Zip_file = nFile.Full_path;
                                                         fcontract.File_name = entry.FullName;
@@ -142,8 +142,8 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                         //fscn.Wname = "";
                                                         fcontract.Contract_num = contractCancel.regNum;
-                                                        fcontract.R_body = unf_json;
-                                                        fcontract.Xml_body = read_xml_text;
+                                                        fcontract.R_body = djson;// fcontract.R_body = unf_json;
+                                                        //fcontract.Xml_body = read_xml_text;
                                                         fcontract.Hash = hashstr;
                                                         fcontract.Zip_file = nFile.Full_path;
                                                         fcontract.File_name = entry.FullName;
@@ -163,8 +163,8 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                         //fscn.Wname = "";
                                                         fcontract.Contract_num = contractProcedure.regNum;
-                                                        fcontract.R_body = unf_json;
-                                                        fcontract.Xml_body = read_xml_text;
+                                                        fcontract.R_body = djson;// fcontract.R_body = unf_json;
+                                                        //fcontract.Xml_body = read_xml_text;
                                                         fcontract.Hash = hashstr;
                                                         fcontract.Zip_file = nFile.Full_path;
                                                         fcontract.File_name = entry.FullName;
@@ -184,8 +184,8 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                         //fscn.Wname = "";
                                                         fcontract.Contract_num = contractProcedureCancel.regNum;
-                                                        fcontract.R_body = unf_json;
-                                                        fcontract.Xml_body = read_xml_text;
+                                                        fcontract.R_body = djson;// fcontract.R_body = unf_json;
+                                                        //fcontract.Xml_body = read_xml_text;
                                                         fcontract.Hash = hashstr;
                                                         fcontract.Zip_file = nFile.Full_path;
                                                         fcontract.File_name = entry.FullName;
@@ -222,11 +222,34 @@ namespace SplashUp.Core.Jobs.Fl44
                                             }
 
 
-                                            //#if true && DEBUG
-                                            //                                            var json = JsonConvert.SerializeObject(exportd.item);
-                                            //#endif
+                                                if (!Directory.Exists(jsonpath))
+                                                {
+                                                    Directory.CreateDirectory(jsonpath);
+
+                                                }
+#if true && DEBUG
+                                                var jsonpath_1 = Path.Combine(jsonpath, exportd.ItemsElementName[0].ToString());
+                                                if (!Directory.Exists(jsonpath_1))
+                                                {
+                                                    Directory.CreateDirectory(jsonpath_1);
+                                                }
+                                                //и создаём её заново
+
+
+                                                var savepath = Path.Combine(jsonpath_1, entry.Name);
+                                                using (StreamWriter sw1 = new StreamWriter(savepath, true, System.Text.Encoding.Default))
+                                                {
+
+                                                    sw1.WriteLine(djson);
+
+                                                };
+
+#endif
+                                                //#if true && DEBUG
+                                                //                                            var json = JsonConvert.SerializeObject(exportd.item);
+                                                //#endif
+                                            }
                                         }
-                                    }
                                     catch (Exception ex)
                                     {
                                         _logger.LogError(ex, "Error parse");
