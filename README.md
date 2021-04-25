@@ -18,10 +18,10 @@ dotnet publish --framework netcoreapp3.1 --runtime linux-x64 -o publishLinux
 or 
 dotnet publish -c release -r linux-x64 --self-contained -o publishLinux 
 or
-dotnet publish .\DownLoaderZakupki.sln -c release -o publish -r linux-x64
+dotnet publish .\SplashUp.sln -c release -o publish -r linux-x64
 
 Для запуска приложения на Linux: 
-1) chmod +x DownLoaderZakupki
+1) chmod +x SplashUp
 2) отредактировать appsettings.json и указать правильно секции: "BasePath" and "WorkPath" и подключение к серверу Postgres
 - Пример конфигурации для Linux: appsettings.linux.json
 
@@ -29,7 +29,7 @@ dotnet publish .\DownLoaderZakupki.sln -c release -o publish -r linux-x64
 1) отредактировать appsettings.json и указать правильно секции: "BasePath" and "WorkPath" и подключение к серверу Postgres
 2) Пример конфигурации для  Windows: appsettings.json 
 3) Для запуска приложения на Windows: 
-dotnet DownLoaderZakupki.dll или запуск исполняемого файла DownLoaderZakupki.exe
+dotnet SplashUp.dll или запуск исполняемого файла SplashUp.exe
 
 
 Файлы миграции отсутствуют в репозитории, для создания миграции отредактировать соответствующий кусок кода и выполнить: 
