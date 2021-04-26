@@ -54,8 +54,8 @@ namespace SplashUp.Data.DB
         /// Признак заключения контракта R - Отказ;C - Контракт;N - Не указано
         /// </summary>
 
-        [Column(TypeName = "varchar(4)")]
-        public string ContractConclusion { get; set; }
+        [Column(TypeName = "boolean")]
+        public bool ContractConclusion { get; set; }
         /// <summary>
         /// Номер заявки в журнале регистрации
         /// </summary>
