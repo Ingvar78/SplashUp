@@ -4,12 +4,13 @@ using System.Text;
 
 namespace SplashUp.Configurations
 {
-    public class ConnectionDB
+    public class ConnectionStrings
     {
         /// <summary>
         /// Настройки подключения к БД
         /// </summary>
+        /// 
+        public string DefaultConnection { get; set; }
         public string ConnectionGDB { get; set; }
-        public string ConnectionDB2 { get; set; }
     }
 }

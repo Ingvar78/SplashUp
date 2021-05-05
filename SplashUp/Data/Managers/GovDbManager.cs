@@ -14,7 +14,7 @@ namespace SplashUp.Data.Managers
     {
         private readonly string _govDbConnectionString;
         private readonly ILoggerFactory _loggerFactory;
-        public GovDbManager(IOptions<ConnectionDB> settings, ILoggerFactory loggerFactory)
+        public GovDbManager(IOptions<ConnectionStrings> settings, ILoggerFactory loggerFactory)
         {
             _govDbConnectionString = settings.Value.ConnectionGDB;
             _loggerFactory = loggerFactory;

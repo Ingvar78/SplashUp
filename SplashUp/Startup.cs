@@ -9,8 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
-
-
+using SplashUp.Data.Access;
+using Microsoft.EntityFrameworkCore;
 
 namespace SplashUp
 {
@@ -29,7 +29,7 @@ namespace SplashUp
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<CommonSettings>(Configuration.GetSection("CommonSettings"));
-            services.Configure<ConnectionDB>(Configuration.GetSection("ConnectionDB"));
+            services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
             
             services.Configure<FZSettings44>(Configuration.GetSection("FzSettings44"));
             services.Configure<FZSettings223>(Configuration.GetSection("FzSettings223"));
@@ -40,7 +40,13 @@ namespace SplashUp
             services.AddSingleton<ILoggerFactory, LoggerFactory>();
             services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
             services.AddLogging((conf) => conf.SetMinimumLevel(LogLevel.Trace));
-            services.AddEntityFrameworkNpgsql();
+
+            var connStr = Configuration.GetConnectionString("ConnectionGDB");
+            var connStrD = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<AimDbContext>();
+            //services.AddDbContext<AimDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddEntityFrameworkNpgsql();
+
 
 
             InjectorBootStrapper.RegisterServices(services);

@@ -9,7 +9,7 @@ namespace SplashUp.Data.Access
     {
         public static IGovDbContext CreateGovContext(string connectionString, ILoggerFactory loggerFactory)
         {
-            return new GovDbContext(connectionString, loggerFactory);
+            return new AimDbContext(connectionString, loggerFactory);
         }
 
 	
@@ -21,7 +21,9 @@ namespace SplashUp.Data.Access
             catch (Exception ex)
             {
                 loggerFactory.CreateLogger<DbContextManager>().LogCritical(ex, ex.Message);
+#pragma warning disable CA2200 // Rethrow to preserve stack details
                 throw ex;
+#pragma warning restore CA2200 // Rethrow to preserve stack details
             }
         }
     }

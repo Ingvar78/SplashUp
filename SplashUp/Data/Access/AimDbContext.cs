@@ -8,20 +8,27 @@ using System.Text;
 
 namespace SplashUp.Data.Access
 {
-    internal class GovDbContext : DbContext, IGovDbContext
+    internal class AimDbContext : DbContext, IGovDbContext
     {
         private readonly string _connectionString;
         private readonly ILoggerFactory _loggerFactory;
-        public GovDbContext(string connectionString, ILoggerFactory loggerFactory)
+        public AimDbContext(string connectionString, ILoggerFactory loggerFactory)
         {
             _connectionString = connectionString;
             _loggerFactory = loggerFactory;
         }
 
-        public GovDbContext()
+
+        public AimDbContext(DbContextOptions<AimDbContext> options)
+        : base(options)
         {
-            //Для миграции   
+            //For the different patterns supported at design time, see https://go.microsoft.com/fwlink/?linkid=851728
         }
+
+        //public GovDbContext()
+        //{
+        //    //Для миграции   
+        //}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,7 +36,7 @@ namespace SplashUp.Data.Access
             optionsBuilder.UseLoggerFactory(_loggerFactory);
 #endif
             optionsBuilder.UseNpgsql(_connectionString);
-            //optionsBuilder.UseNpgsql("Host=192.168.1.120;Port=5432;Database=AimGov2;Username=postgres;Password=Qs73Uq87zaq;Pooling=True");
+            //optionsBuilder.UseNpgsql("Host=192.168.1.120;Port=5432;Database=AimDb2;Username=postgres;Password=Qs73Uq87zaq;Pooling=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

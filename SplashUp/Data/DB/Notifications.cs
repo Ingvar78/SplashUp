@@ -25,11 +25,11 @@ namespace SplashUp.Data.DB
         /// </summary>
         [Column(TypeName = "jsonb")]
         public string R_body { get; set; }
-        /// <summary>
-        /// Тело извещения XML
-        /// </summary>
-        [Column(TypeName = "xml")]
-        public string Xml_body { get; set; }
+        ///// <summary>
+        ///// Тело извещения XML
+        ///// </summary>
+        //[Column(TypeName = "xml")]
+        //public string Xml_body { get; set; }
 
         /// <summary>
         /// ИНН участника
@@ -51,11 +51,13 @@ namespace SplashUp.Data.DB
         /// </summary>
         public short AppRating { get; set; }
         /// <summary>
-        /// Признак заключения контракта R - Отказ;C - Контракт;N - Не указано
+        /// Заключение контракта по статье 83 ч. 2. Игнорируется при приёме, заполняется при выгрузке.
+        /// Для закупок со способом определения поставщика "Электронный аукцион" если признак не заполнен или заполнен false, то по данной закупке от электронной площадки в ЕИС передается документ CоntractSign(как и раньше), 
+        /// протоколы ПОК и ППУ формируются на площадке и передаются в ЕИС.
+        /// Если признак заполнен в true, то по данной закупке будет формироваться проект контракта, документ CоntractSign от площадки в ЕИС не передается, протоколы ПОК и ППУ формируются в ЕИС
         /// </summary>
-
-        [Column(TypeName = "boolean")]
-        public bool ContractConclusion { get; set; }
+       
+        public bool contractConclusionOnSt83Ch2 { get; set; }
         /// <summary>
         /// Номер заявки в журнале регистрации
         /// </summary>

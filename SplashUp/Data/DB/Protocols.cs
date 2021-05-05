@@ -29,11 +29,12 @@ namespace SplashUp.Data.DB
         [Column(TypeName = "jsonb")]
         public string R_body { get; set; }
 
-        /// <summary>
-        /// Тело извещения XML
-        /// </summary>
-        [Column(TypeName = "xml")]
-        public string Xml_body { get; set; }
+        ///// <summary>
+        ///// Тело извещения XML
+        ///// </summary>
+        //[Column(TypeName = "xml")]
+        //public string Xml_body { get; set; }
+
         /// <summary>
         /// Хэш XML данных
         /// </summary>
