@@ -89,34 +89,56 @@ namespace SplashUp.Core.Jobs.Fl44
                                                 Formatting = Newtonsoft.Json.Formatting.Indented,
                                                 TypeNameHandling = TypeNameHandling.Auto
                                             };
+                                                
+                                                switch (exportd.ItemsElementName[0].ToString())
+                                                {
+                                                    case "fcsContractSign": //fcsContractSign;zfcs_contractSignType- Информация о подписании государственного/муниципального контракта на ЭП;
+                                                        {
+                                                            zfcs_contractSignType fcsContractSign = exportd.Items[0] as zfcs_contractSignType;
+                                                            //string unf_json = JsonConvert.SerializeObject(clarificationDoc);
 
-                                            switch (exportd.ItemsElementName[0].ToString())
-                                            {
-                                                case "epClarificationDoc": //epClarificationDoc; clarificationDocType - Разъяснение положений документации;
-                                                    {
-                                                        clarificationDocType clarificationDoc = exportd.Items[0] as clarificationDocType;
+                                                            var fscn = new Notifications();
+                                                            //fscn.Wname = "";
+                                                            fscn.R_body = djson;// fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Hash = hashstr;
+                                                            //fscn.ContractConclusion = "";
+                                                            fscn.Inn = fcsContractSign.suppliers[0].inn;
+                                                            fscn.AppRating = 0;
+                                                            fscn.Zip_file = nFile.Full_path;
+                                                            fscn.File_name = entry.FullName;
+                                                            fscn.Fz_type = 44;
+                                                            //fscn.JournalNumber = ;
+                                                            fscn.Purchase_num = fcsContractSign.foundation.order.purchaseNumber;
+                                                            fscn.PublishDate = fcsContractSign.signDate;
+                                                            fscn.Type_notif = exportd.Items[0].GetType().Name;
+                                                            //SaveNotification(pnum, exp_json, etype, zipPath, xml_f_name, 44, pdate);
+                                                            notifications.Add(fscn);
+                                                            break;
+                                                        }
+                                                    case "epClarificationDoc": //epClarificationDoc; clarificationDocType - Разъяснение положений документации;
+                                                      {
+                                                            clarificationDocType clarificationDoc = exportd.Items[0] as clarificationDocType;
                                                         //string unf_json = JsonConvert.SerializeObject(clarificationDoc);
-
-                                                        var fscn = new Notifications();
-
-                                                        //fscn.Wname = "";
-                                                        fscn.R_body = djson;// fscn.R_body = djson;// fscn.R_body = unf_json;
-                                                        //fscn.Xml_body = read_xml_text;
-                                                        fscn.Hash = hashstr;
+                                                        
+                                                            var fscn = new Notifications();
+                                                            //fscn.Wname = "";
+                                                            fscn.R_body = djson;// fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                        //fscn.Xml_body = read_xml_text;                                                       
+                                                            fscn.Hash = hashstr;
                                                         //fscn.ContractConclusion = "";
-                                                        fscn.Inn = "";
-                                                        fscn.AppRating = 0;
-                                                        fscn.Zip_file = nFile.Full_path;
-                                                        fscn.File_name = entry.FullName;
-                                                        fscn.Fz_type = 44;
+                                                            fscn.Inn = "";
+                                                            fscn.AppRating = 0;
+                                                            fscn.Zip_file = nFile.Full_path;
+                                                            fscn.File_name = entry.FullName;
+                                                            fscn.Fz_type = 44;
                                                         //fscn.JournalNumber = ;
-                                                        fscn.Purchase_num = clarificationDoc.commonInfo.purchaseNumber;
-                                                        fscn.PublishDate = clarificationDoc.commonInfo.docPublishDTInEIS;
-                                                        fscn.Type_notif = exportd.Items[0].GetType().Name;
-                                                        //SaveNotification(pnum, exp_json, etype, zipPath, xml_f_name, 44, pdate);
-                                                        notifications.Add(fscn);
-                                                        break;
-                                                    }
+                                                            fscn.Purchase_num = clarificationDoc.commonInfo.purchaseNumber;
+                                                            fscn.PublishDate = clarificationDoc.commonInfo.docPublishDTInEIS;
+                                                            fscn.Type_notif = exportd.Items[0].GetType().Name;
+                                                            //SaveNotification(pnum, exp_json, etype, zipPath, xml_f_name, 44, pdate);
+                                                            notifications.Add(fscn);
+                                                            break;
+                                                        }
 
                                                 case "epClarificationResult": //epClarificationResult; clarificationResultType - Запрос о даче разъяснений результатов;
                                                     {
@@ -217,7 +239,6 @@ namespace SplashUp.Core.Jobs.Fl44
                                                 case "epNotificationEOKOU": //epNotificationEOKOU;notificationEOKOUType - Извещение о проведении ЭOK-ОУ
                                                     {
                                                         notificationEOKOUType notificationEOKOU = exportd.Items[0] as notificationEOKOUType;
-                                                        //string unf_json = JsonConvert.SerializeObject(notificationEOKOU);
 
                                                         var fscn = new Notifications();
 
@@ -237,8 +258,31 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
+                                                    
+                                                    case "epNotificationEOKD": //epNotificationEOKD;notificationEOKDType - Извещение о проведении ЭOKД;
+                                                        {
+                                                            notificationEOKDType epNotificationEOKD = exportd.Items[0] as notificationEOKDType;
 
-                                                case "epNotificationEZK": //epNotificationEZK;notificationEZKType - Извещение о проведении ЭЗК;
+                                                            var fscn = new Notifications();
+
+                                                            //fscn.Wname = "";
+                                                            fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Hash = hashstr;
+                                                            fscn.contractConclusionOnSt83Ch2 = epNotificationEOKD.commonInfo.contractConclusionOnSt83Ch2;
+                                                            fscn.Inn = "";
+                                                            fscn.AppRating = 0;
+                                                            fscn.Zip_file = nFile.Full_path;
+                                                            fscn.File_name = entry.FullName;
+                                                            fscn.Fz_type = 44;
+                                                            //fscn.JournalNumber = ;
+                                                            fscn.Purchase_num = epNotificationEOKD.commonInfo.purchaseNumber;
+                                                            fscn.PublishDate = epNotificationEOKD.commonInfo.publishDTInEIS;
+                                                            fscn.Type_notif = exportd.Items[0].GetType().Name;
+                                                            notifications.Add(fscn);
+                                                            break;
+                                                        }
+
+                                                    case "epNotificationEZK": //epNotificationEZK;notificationEZKType - Извещение о проведении ЭЗК;
                                                     {
                                                         notificationEZKType notificationEZK = exportd.Items[0] as notificationEZKType;
                                                         //string unf_json = JsonConvert.SerializeObject(notificationEZK);
@@ -262,7 +306,53 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         break;
                                                     }
 
-                                                case "epNotificationEZP": //epNotificationEZP;notificationEZPType - Извещение о проведении ЭЗП;
+                                                    case "epNotificationEZK2020": //epNotificationEZK2020;notificationEZK2020Type; - Извещение о проведении ЭЗК20 (запрос котировок в электронной форме с 01.10.2020 года);
+                                                        {
+                                                            notificationEZK2020Type epNotificationEZK2020 = exportd.Items[0] as notificationEZK2020Type;
+                                                            //string unf_json = JsonConvert.SerializeObject(notificationEZK);
+
+                                                            var fscn = new Notifications();
+
+                                                            //fscn.Wname = "";
+                                                            fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Hash = hashstr;
+                                                            fscn.contractConclusionOnSt83Ch2 = epNotificationEZK2020.commonInfo.contractConclusionOnSt83Ch2;
+                                                            fscn.Inn = "";
+                                                            fscn.AppRating = 0;
+                                                            fscn.Zip_file = nFile.Full_path;
+                                                            fscn.File_name = entry.FullName;
+                                                            fscn.Fz_type = 44;
+                                                            //fscn.JournalNumber = ;
+                                                            fscn.Purchase_num = epNotificationEZK2020.commonInfo.purchaseNumber;
+                                                            fscn.PublishDate = epNotificationEZK2020.commonInfo.publishDTInEIS;
+                                                            fscn.Type_notif = exportd.Items[0].GetType().Name;
+                                                            notifications.Add(fscn);
+                                                            break;
+                                                        }
+                                                    case "epNotificationEZT2020": //epNotificationEZT2020;notificationEZT2020Type - Извещение о проведении ЭЗТ (Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ);; 
+                                                        {
+                                                            notificationEZT2020Type epNotificationEZT2020 = exportd.Items[0] as notificationEZT2020Type;
+                                                            //string unf_json = JsonConvert.SerializeObject(notificationEZK);
+
+                                                            var fscn = new Notifications();
+
+                                                            //fscn.Wname = "";
+                                                            fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Hash = hashstr;
+                                                            fscn.contractConclusionOnSt83Ch2 = epNotificationEZT2020.commonInfo.contractConclusionOnSt83Ch2;
+                                                            fscn.Inn = "";
+                                                            fscn.AppRating = 0;
+                                                            fscn.Zip_file = nFile.Full_path;
+                                                            fscn.File_name = entry.FullName;
+                                                            fscn.Fz_type = 44;
+                                                            //fscn.JournalNumber = ;
+                                                            fscn.Purchase_num = epNotificationEZT2020.commonInfo.purchaseNumber;
+                                                            fscn.PublishDate = epNotificationEZT2020.commonInfo.publishDTInEIS;
+                                                            fscn.Type_notif = exportd.Items[0].GetType().Name;
+                                                            notifications.Add(fscn);
+                                                            break;
+                                                        }
+                                                    case "epNotificationEZP": //epNotificationEZP;notificationEZPType - Извещение о проведении ЭЗП;
                                                     {
                                                         notificationEZPType notificationEZP = exportd.Items[0] as notificationEZPType;
                                                         //string unf_json = JsonConvert.SerializeObject(notificationEZP);
@@ -501,7 +591,54 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-                                                case "fcsNotificationZakA": //fcsNotificationZakA; zfcs_notificationZakAType - Извещение о проведении ЗакА(закрытый аукцион); внесение изменений;
+                                                    case "fcsNotificationEP": //fcsNotificationEP;zfcs_notificationEPType - Извещение о проведении закупки у ЕП (единственного поставщика); внесение изменений;;
+                                                        {
+                                                            zfcs_notificationEPType zfcs_notificationEP = exportd.Items[0] as zfcs_notificationEPType;
+                                                            //string unf_json = JsonConvert.SerializeObject(zfcs_notificationEF);
+
+                                                            var fscn = new Notifications();
+
+                                                            //fscn.Wname = "";
+                                                            fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Hash = hashstr;
+                                                            fscn.contractConclusionOnSt83Ch2 = zfcs_notificationEP.contractConclusionOnSt83Ch2;
+                                                            fscn.Inn = "";
+                                                            fscn.AppRating = 0;
+                                                            fscn.Zip_file = nFile.Full_path;
+                                                            fscn.File_name = entry.FullName;
+                                                            fscn.Fz_type = 44;
+                                                            //fscn.JournalNumber = ;
+                                                            fscn.Purchase_num = zfcs_notificationEP.purchaseNumber;
+                                                            fscn.PublishDate = zfcs_notificationEP.docPublishDate;
+                                                            fscn.Type_notif = exportd.Items[0].GetType().Name;
+                                                            notifications.Add(fscn);
+                                                            break;
+                                                        }
+
+                                                    case "fcsNotificationPO": //fcsNotificationPO;zfcs_notificationPOType - Извещение о проведении ПО (предварительный отбор);;
+                                                        {
+                                                            zfcs_notificationPOType zfcs_notificationPO = exportd.Items[0] as zfcs_notificationPOType;
+                                                            //string unf_json = JsonConvert.SerializeObject(zfcs_notificationEF);
+
+                                                            var fscn = new Notifications();
+
+                                                            //fscn.Wname = "";
+                                                            fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Hash = hashstr;
+                                                            fscn.contractConclusionOnSt83Ch2 = zfcs_notificationPO.contractConclusionOnSt83Ch2;
+                                                            fscn.Inn = "";
+                                                            fscn.AppRating = 0;
+                                                            fscn.Zip_file = nFile.Full_path;
+                                                            fscn.File_name = entry.FullName;
+                                                            fscn.Fz_type = 44;
+                                                            //fscn.JournalNumber = ;
+                                                            fscn.Purchase_num = zfcs_notificationPO.purchaseNumber;
+                                                            fscn.PublishDate = zfcs_notificationPO.docPublishDate;
+                                                            fscn.Type_notif = exportd.Items[0].GetType().Name;
+                                                            notifications.Add(fscn);
+                                                            break;
+                                                        }
+                                                    case "fcsNotificationZakA": //fcsNotificationZakA; zfcs_notificationZakAType - Извещение о проведении ЗакА(закрытый аукцион); внесение изменений;
                                                     {
                                                         zfcs_notificationZakAType zfcs_notificationZakA = exportd.Items[0] as zfcs_notificationZakAType;
                                                         //string unf_json = JsonConvert.SerializeObject(zfcs_notificationZakA);
@@ -551,7 +688,31 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         break;
                                                     }
 
-                                                case "pprf615NotificationCancel": //pprf615NotificationCancel; notificationCancelType - Извещение об отмене закупки по ПП РФ № 615;
+                                                    case "pprf615Clarification": //pprf615Clarification;clarificationType - ;
+                                                        {
+                                                            clarificationType pprf615Clarification = exportd.Items[0] as clarificationType;
+                                                            //string unf_json = JsonConvert.SerializeObject(pprf615NotificationCancel);
+
+                                                            var fscn = new Notifications();
+
+                                                            //fscn.Wname = "";
+                                                            fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Hash = hashstr;
+                                                            //fscn.ContractConclusion = "";
+                                                            fscn.Inn = "";
+                                                            fscn.AppRating = 0;
+                                                            fscn.Zip_file = nFile.Full_path;
+                                                            fscn.File_name = entry.FullName;
+                                                            fscn.Fz_type = 44;
+                                                            //fscn.JournalNumber = ;
+                                                            fscn.Purchase_num = pprf615Clarification.commonInfo.purchaseNumber;
+                                                            //fscn.ProtocolNum = pprf615NotificationCancel.cancelReasonInfo;
+                                                            fscn.PublishDate = pprf615Clarification.commonInfo.docPublishDate;
+                                                            fscn.Type_notif = exportd.Items[0].GetType().Name;
+                                                            notifications.Add(fscn);
+                                                            break;
+                                                        }
+                                                    case "pprf615NotificationCancel": //pprf615NotificationCancel; notificationCancelType - Извещение об отмене закупки по ПП РФ № 615;
                                                     {
                                                         notificationCancelType pprf615NotificationCancel = exportd.Items[0] as notificationCancelType;
                                                         //string unf_json = JsonConvert.SerializeObject(pprf615NotificationCancel);
@@ -802,24 +963,26 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                 default:
                                                     {
+                                                            if (exportd.Items.Length > 1)
+                                                            {
+                                                                Console.WriteLine("More one");
+                                                                _logger.LogWarning($"More then one Items in file: {infoCheck.FullName} ");
+                                                            }
+                                                            string exp_json = JsonConvert.SerializeObject(exportd);
+                                                            var EData = JsonConvert.DeserializeObject<export>(exp_json);
+                                                            string eltype = $"{exportd.ItemsElementName[0].ToString()};{exportd.Items[0].GetType().Name}";
+                                                            string fnel = $"{exportd.ItemsElementName[0].ToString()}";
 
-                                                        if (exportd.Items.Length > 1)
-                                                        {
-                                                            Console.WriteLine("More one");
-                                                            _logger.LogWarning($"More then one Items in file: {infoCheck.FullName} ");
-                                                        }
-                                                        string exp_json = JsonConvert.SerializeObject(exportd);
-                                                        var EData = JsonConvert.DeserializeObject<export>(exp_json);
-                                                        string eltype = $"{exportd.ItemsElementName[0].ToString()};{exportd.Items[0].GetType().Name}";
-                                                        string fnel = $"{exportd.ItemsElementName[0].ToString()}";
+                                                            var npath = Path.Combine(_commonSettings.DebugPath, "Notifications");
 
-                                                        using (StreamWriter sw1 = new StreamWriter(@$"D:\\FZ\\Types44\\Notifications\\{fnel}", true, System.Text.Encoding.Default))
-                                                        {
-
-                                                            sw1.WriteLine(eltype);
-
-                                                        };
-
+                                                            if (!Directory.Exists(npath))
+                                                            {
+                                                                Directory.CreateDirectory(npath);
+                                                            }
+                                                            using (StreamWriter sw1 = new StreamWriter(@$"{npath}\\{fnel}", true, System.Text.Encoding.Default))
+                                                            {
+                                                                sw1.WriteLine(eltype);
+                                                            };
 
                                                         break;
                                                     }
@@ -828,29 +991,29 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                 }
 
-                                                if (!Directory.Exists(jsonpath))
-                                                {
-                                                    Directory.CreateDirectory(jsonpath);
+//#if true && DEBUG
+//                                                if (!Directory.Exists(jsonpath))
+//                                                {
+//                                                    Directory.CreateDirectory(jsonpath);
 
-                                                }
-#if true && DEBUG
-                                                var jsonpath_1 = Path.Combine(jsonpath, exportd.ItemsElementName[0].ToString());
-                                                if (!Directory.Exists(jsonpath_1))
-                                                {
-                                                    Directory.CreateDirectory(jsonpath_1);
-                                                }
-                                                //и создаём её заново
+//                                                }
+//                                                var jsonpath_1 = Path.Combine(jsonpath, exportd.ItemsElementName[0].ToString());
+//                                                if (!Directory.Exists(jsonpath_1))
+//                                                {
+//                                                    Directory.CreateDirectory(jsonpath_1);
+//                                                }
+//                                                //и создаём её заново
 
 
-                                                var savepath = Path.Combine(jsonpath_1, entry.Name);
-                                                using (StreamWriter sw1 = new StreamWriter(savepath, true, System.Text.Encoding.Default))
-                                                {
+//                                                var savepath = Path.Combine(jsonpath_1, entry.Name);
+//                                                using (StreamWriter sw1 = new StreamWriter(savepath, true, System.Text.Encoding.Default))
+//                                                {
 
-                                                    sw1.WriteLine(djson);
+//                                                    sw1.WriteLine(djson);
 
-                                                };
+//                                                };
 
-#endif
+//#endif
                                                 //#if true && DEBUG
                                                 //                                            var json = JsonConvert.SerializeObject(exportd.item);
                                                 //#endif
@@ -871,13 +1034,13 @@ namespace SplashUp.Core.Jobs.Fl44
                         }
                 }
 
-
-                Console.WriteLine($"Всего добавляется записей в БД: {notifications.Count}");
-                _dataServices.SaveNotification(notifications);
-                nFile.Status = Status.Processed;
-                _dataServices.UpdateCasheFiles(nFile);
-
-                Directory.Delete(extractPath, true);
+                
+                    Console.WriteLine($"Всего добавляется записей в БД: {notifications.Count}");
+                    _dataServices.SaveNotification(notifications);
+                    nFile.Status = Status.Processed;
+                    nFile.Modifid_date = DateTime.Now;
+                    _dataServices.UpdateCasheFiles(nFile);                    
+                    Directory.Delete(extractPath, true);
             });
 
         }

@@ -52,7 +52,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                 if (infoCheck.Length != 0)
                                 {
                                     try
-                                    {
+                                        {
                                             string read_xml_text;
                                             using (var streamReader = new StreamReader(xmlin, Encoding.UTF8, false))
                                             {
@@ -67,14 +67,11 @@ namespace SplashUp.Core.Jobs.Fl44
                                                 foreach (var b in result)
                                                 strBuilder.Append(b.ToString("x2")); //Byte as hexadecimal format
                                             }
-
-                                        var hashstr = strBuilder.ToString();
-
-                                            //Console.WriteLine($"{hashstr}");
+                                            
+                                            var hashstr = strBuilder.ToString();
 
                                             var djson =_dataServices.XmlToJson(xmlin);
 
-                                            //string jsonpath = (_commonSettings.DebugPath + "/Json" + nFile.Full_path);
                                             string jsonpath = (_commonSettings.DebugPath + "/Json");
 
                                             //if (!Directory.Exists(jsonpath))
@@ -744,54 +741,156 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         break;
                                                     }
 
-                                                default:
-                                                    {
-
-                                                        if (exportd.Items.Length > 1)
+                                                    case "epNoticeApplicationsAbsence": //epNoticeApplicationsAbsence;noticeApplicationsAbsenceType - Уведомление об отсутствии заявок;
                                                         {
-                                                            Console.WriteLine("More one");
-                                                            _logger.LogWarning($"More then one Items in file: {infoCheck.FullName} ");
+                                                            noticeApplicationsAbsenceType epNoticeApplicationsAbsence = exportd.Items[0] as noticeApplicationsAbsenceType;
+                                                            //string unf_json = JsonConvert.SerializeObject(pprf615ProtocolPO);
+
+                                                            var frpotocols = new Protocols();
+                                                            frpotocols.Purchase_num = epNoticeApplicationsAbsence.commonInfo.purchaseNumber;
+                                                            frpotocols.Protocol_num = epNoticeApplicationsAbsence.commonInfo.docNumber;
+                                                            frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Hash = hashstr;
+                                                            frpotocols.Zip_file = nFile.Full_path;
+                                                            frpotocols.File_name = entry.FullName;
+                                                            frpotocols.Fz_type = 44;
+                                                            frpotocols.Type_protocol = exportd.Items[0].GetType().Name;
+                                                            frpotocols.PublishDate = epNoticeApplicationsAbsence.commonInfo.publishDTInEIS;
+                                                            protocols.Add(frpotocols);
+                                                            break;
                                                         }
-                                                        string exp_json = JsonConvert.SerializeObject(exportd);
-                                                        var EData = JsonConvert.DeserializeObject<export>(exp_json);
-                                                        string eltype = $"{exportd.ItemsElementName[0].ToString()};{exportd.Items[0].GetType().Name}";
-                                                        string fnel = $"{exportd.ItemsElementName[0].ToString()}";
-
-                                                        using (StreamWriter sw1 = new StreamWriter(@$"D:\\FZ\\Types44\\Protocols\\{fnel}", true, System.Text.Encoding.Default))
+                                                    case "epProtocolDeviation": //epProtocolDeviation;protocolDeviationType - Протокол признания участника уклонившимся от заключения контракта с 01.10.2020.
                                                         {
+                                                            protocolDeviationType protocolDeviation = exportd.Items[0] as protocolDeviationType;
+                                                            var frpotocols = new Protocols();
+                                                            frpotocols.Purchase_num = protocolDeviation.commonInfo.purchaseNumber;
+                                                            frpotocols.Protocol_num = protocolDeviation.commonInfo.docNumber;
+                                                            frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Hash = hashstr;
+                                                            frpotocols.Zip_file = nFile.Full_path;
+                                                            frpotocols.File_name = entry.FullName;
+                                                            frpotocols.Fz_type = 44;
+                                                            frpotocols.Type_protocol = exportd.Items[0].GetType().Name;
+                                                            frpotocols.PublishDate = protocolDeviation.commonInfo.publishDTInEIS;
+                                                            protocols.Add(frpotocols);
+                                                            break;
+                                                        }
+                                                    case "epProtocolEZK2020Final": //epProtocolEZK2020Final;protocolEZK2020FinalType - Протокол подведения итогов определения поставщика (подрядчика, исполнителя) ЭЗК20 (запрос котировок в электронной форме c 01.10.2020 года) с информацией об участниках;
+                                                        {
+                                                            protocolEZK2020FinalType protocolEZK2020Final = exportd.Items[0] as protocolEZK2020FinalType;
+                                                            var frpotocols = new Protocols();
+                                                            frpotocols.Purchase_num = protocolEZK2020Final.commonInfo.purchaseNumber;
+                                                            frpotocols.Protocol_num = protocolEZK2020Final.commonInfo.docNumber;
+                                                            frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Hash = hashstr;
+                                                            frpotocols.Zip_file = nFile.Full_path;
+                                                            frpotocols.File_name = entry.FullName;
+                                                            frpotocols.Fz_type = 44;
+                                                            frpotocols.Type_protocol = exportd.Items[0].GetType().Name;
+                                                            frpotocols.PublishDate = protocolEZK2020Final.commonInfo.publishDTInEIS;
+                                                            protocols.Add(frpotocols);
+                                                            break;
+                                                        }
+                                                    case "epProtocolEZK2020FinalPart": //epProtocolEZK2020FinalPart;protocolEZK2020FinalPartType - Протокол подведения итогов определения поставщика (подрядчика, исполнителя) ЭЗК20 (запрос котировок в электронной форме c 01.10.2020 года) с информацией об участниках;
+                                                        {
+                                                            protocolEZK2020FinalPartType protocolEZK2020FinalPart = exportd.Items[0] as protocolEZK2020FinalPartType;
+                                                            var frpotocols = new Protocols();
+                                                            frpotocols.Purchase_num = protocolEZK2020FinalPart.commonInfo.purchaseNumber;
+                                                            frpotocols.Protocol_num = protocolEZK2020FinalPart.commonInfo.docNumber;
+                                                            frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Hash = hashstr;
+                                                            frpotocols.Zip_file = nFile.Full_path;
+                                                            frpotocols.File_name = entry.FullName;
+                                                            frpotocols.Fz_type = 44;
+                                                            frpotocols.Type_protocol = exportd.Items[0].GetType().Name;
+                                                            frpotocols.PublishDate = protocolEZK2020FinalPart.commonInfo.publishDTInEIS;
+                                                            protocols.Add(frpotocols);
+                                                            break;
+                                                        }
+                                                    case "epProtocolEZT2020FinalPart": //epProtocolEZT2020FinalPart;protocolEZT2020FinalPartType - Протокол подведения итогов определения поставщика ЭЗТ (Закупка товаров согласно ч.12 ст. 93 № 44-ФЗ) с информацией об участниках;
+                                                        {
+                                                            protocolEZT2020FinalPartType protocolEZT2020FinalPart = exportd.Items[0] as protocolEZT2020FinalPartType;
+                                                            var frpotocols = new Protocols();
+                                                            frpotocols.Purchase_num = protocolEZT2020FinalPart.commonInfo.purchaseNumber;
+                                                            frpotocols.Protocol_num = protocolEZT2020FinalPart.commonInfo.docNumber;
+                                                            frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Hash = hashstr;
+                                                            frpotocols.Zip_file = nFile.Full_path;
+                                                            frpotocols.File_name = entry.FullName;
+                                                            frpotocols.Fz_type = 44;
+                                                            frpotocols.Type_protocol = exportd.Items[0].GetType().Name;
+                                                            frpotocols.PublishDate = protocolEZT2020FinalPart.commonInfo.publishDTInEIS;
+                                                            protocols.Add(frpotocols);
+                                                            break;
+                                                        }
+                                                    case "fcsPlacementResult": //fcsPlacementResult;zfcs_placementResultType - Результат проведения процедуры определения поставщика;
+                                                        {
+                                                            zfcs_placementResultType zfcs_placementResult = exportd.Items[0] as zfcs_placementResultType;
+                                                            var frpotocols = new Protocols();
+                                                            frpotocols.Purchase_num = zfcs_placementResult.purchaseNumber;
+                                                            frpotocols.Protocol_num = zfcs_placementResult.protocolNumber;
+                                                            frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Hash = hashstr;
+                                                            frpotocols.Zip_file = nFile.Full_path;
+                                                            frpotocols.File_name = entry.FullName;
+                                                            frpotocols.Fz_type = 44;
+                                                            frpotocols.Type_protocol = exportd.Items[0].GetType().Name;
+                                                            frpotocols.PublishDate = zfcs_placementResult.createDate;
+                                                            protocols.Add(frpotocols);
+                                                            break;
+                                                        }
+                                                    default:
+                                                        {
+                                                            
+                                                            if (exportd.Items.Length > 1)
+                                                            {
+                                                                Console.WriteLine("More one");
+                                                                _logger.LogWarning($"More then one Items in file: {infoCheck.FullName} ");
+                                                            }
+                                                            string exp_json = JsonConvert.SerializeObject(exportd);
+                                                            var EData = JsonConvert.DeserializeObject<export>(exp_json);
+                                                            string eltype = $"{exportd.ItemsElementName[0].ToString()};{exportd.Items[0].GetType().Name}";
+                                                            string fnel = $"{exportd.ItemsElementName[0].ToString()}";
 
-                                                            sw1.WriteLine(eltype);
+                                                            var ppath = Path.Combine(_commonSettings.DebugPath, "Protocols");
 
-                                                        };
-
+                                                            if (!Directory.Exists(ppath))
+                                                            {
+                                                                Directory.CreateDirectory(ppath);
+                                                            }
+                                                            using (StreamWriter sw1 = new StreamWriter(@$"{ppath}\\{fnel}", true, System.Text.Encoding.Default))
+                                                            {
+                                                                sw1.WriteLine(eltype);
+                                                            };
 
                                                         break;
                                                     }
                                             }
 
-                                                if (!Directory.Exists(jsonpath))
-                                                {
-                                                    Directory.CreateDirectory(jsonpath);
+//#if true && DEBUG
+//                                                if (!Directory.Exists(jsonpath))
+//                                                {
+//                                                    Directory.CreateDirectory(jsonpath);
 
-                                                }
-#if true && DEBUG
-                                                var jsonpath_1 = Path.Combine(jsonpath, exportd.ItemsElementName[0].ToString());
-                                                if (!Directory.Exists(jsonpath_1))
-                                                {
-                                                    Directory.CreateDirectory(jsonpath_1);
-                                                }
-                                                //и создаём её заново
+//                                                }
+
+//                                                var jsonpath_1 = Path.Combine(jsonpath, exportd.ItemsElementName[0].ToString());
+//                                                if (!Directory.Exists(jsonpath_1))
+//                                                {
+//                                                    Directory.CreateDirectory(jsonpath_1);
+//                                                }
+//                                                //и создаём её заново
 
 
-                                                var savepath = Path.Combine(jsonpath_1, entry.Name);
-                                                using (StreamWriter sw1 = new StreamWriter(savepath, true, System.Text.Encoding.Default))
-                                                {
+//                                                var savepath = Path.Combine(jsonpath_1, entry.Name);
+//                                                using (StreamWriter sw1 = new StreamWriter(savepath, true, System.Text.Encoding.Default))
+//                                                {
 
-                                                    sw1.WriteLine(djson);
+//                                                    sw1.WriteLine(djson);
 
-                                                };
+//                                                };
 
-#endif
+//#endif
 
                                                 //#if true && DEBUG
                                                 //                                            var json = JsonConvert.SerializeObject(exportd.item);
@@ -813,13 +912,13 @@ namespace SplashUp.Core.Jobs.Fl44
                         }
                 }
 
-
-                Console.WriteLine($"Всего добавляется Protocols записей в БД: {protocols.Count}");
-                _dataServices.SaveProtocols(protocols);
-                nFile.Status = Status.Processed;
-                _dataServices.UpdateCasheFiles(nFile);
-
-                Directory.Delete(extractPath, true);
+                
+                    Console.WriteLine($"Всего добавляется Protocols записей в БД: {protocols.Count}");
+                    _dataServices.SaveProtocols(protocols);
+                    nFile.Status = Status.Processed;
+                    nFile.Modifid_date = DateTime.Now;
+                    _dataServices.UpdateCasheFiles(nFile);                   
+                    Directory.Delete(extractPath, true);
             });
 
 

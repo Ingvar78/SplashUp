@@ -185,7 +185,6 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         //fscn.Wname = "";
                                                         fcontract.Contract_num = contractProcedureCancel.regNum;
                                                         fcontract.R_body = djson;// fcontract.R_body = unf_json;
-                                                        //fcontract.Xml_body = read_xml_text;
                                                         fcontract.Hash = hashstr;
                                                         fcontract.Zip_file = nFile.Full_path;
                                                         fcontract.File_name = entry.FullName;
@@ -196,55 +195,78 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         //_dataServices.SaveNotification(notifications);
                                                         break;
                                                     }
-                                                default:
-                                                    {
 
-                                                        if (exportd.Items.Length > 1)
+                                                    case "contractAvailableForElAct": //contractAvailableForElAct;zfcs_contractAvailableForElAct - Квитанция о доступности формирования документов электронного актирования по контракту;
                                                         {
-                                                            Console.WriteLine("More one");
-                                                            _logger.LogWarning($"More then one Items in file: {infoCheck.FullName} ");
+                                                            zfcs_contractAvailableForElAct zfcs_contractAvailableForElAct = exportd.Items[0] as zfcs_contractAvailableForElAct;
+                                                            string unf_json = JsonConvert.SerializeObject(zfcs_contractAvailableForElAct);
+
+                                                            var fcontract = new Contracts();
+
+                                                            //fscn.Wname = "";
+                                                            fcontract.Contract_num = zfcs_contractAvailableForElAct.regNum;
+                                                            fcontract.R_body = djson;// fcontract.R_body = unf_json;
+                                                            fcontract.Hash = hashstr;
+                                                            fcontract.Zip_file = nFile.Full_path;
+                                                            fcontract.File_name = entry.FullName;
+                                                            fcontract.Fz_type = 44;
+                                                            fcontract.PublishDate = zfcs_contractAvailableForElAct.availableDT;
+                                                            fcontract.Type_contract = exportd.Items[0].GetType().Name;
+                                                            contracts.Add(fcontract);
+                                                            //_dataServices.SaveNotification(notifications);
+                                                            break;
                                                         }
-                                                        string exp_json = JsonConvert.SerializeObject(exportd);
-                                                        var EData = JsonConvert.DeserializeObject<export>(exp_json);
-                                                        string eltype = $"{exportd.ItemsElementName[0].ToString()};{exportd.Items[0].GetType().Name}";
-                                                        string fnel = $"{exportd.ItemsElementName[0].ToString()}";
+                                                    default:
+                                                    {
+                                                            if (exportd.Items.Length > 1)
+                                                            {
+                                                                Console.WriteLine("More one");
+                                                                _logger.LogWarning($"More then one Items in file: {infoCheck.FullName} ");
+                                                            }
+                                                            string exp_json = JsonConvert.SerializeObject(exportd);
+                                                            var EData = JsonConvert.DeserializeObject<export>(exp_json);
+                                                            string eltype = $"{exportd.ItemsElementName[0].ToString()};{exportd.Items[0].GetType().Name}";
+                                                            string fnel = $"{exportd.ItemsElementName[0].ToString()}";
 
-                                                        using (StreamWriter sw1 = new StreamWriter(@$"D:\\FZ\\Types44\\Contracts\\{fnel}", true, System.Text.Encoding.Default))
-                                                        {
+                                                            var npath = Path.Combine(_commonSettings.DebugPath, "Contracts");
 
-                                                            sw1.WriteLine(eltype);
-
-                                                        };
-
+                                                            if (!Directory.Exists(npath))
+                                                            {
+                                                                Directory.CreateDirectory(npath);
+                                                            }
+                                                            using (StreamWriter sw1 = new StreamWriter(@$"{npath}\\{fnel}", true, System.Text.Encoding.Default))
+                                                            {
+                                                                sw1.WriteLine(eltype);
+                                                            };
 
                                                         break;
                                                     }
                                             }
 
 
-                                                if (!Directory.Exists(jsonpath))
-                                                {
-                                                    Directory.CreateDirectory(jsonpath);
+//#if true && DEBUG
+//                                                if (!Directory.Exists(jsonpath))
+//                                                {
+//                                                    Directory.CreateDirectory(jsonpath);
 
-                                                }
-#if true && DEBUG
-                                                var jsonpath_1 = Path.Combine(jsonpath, exportd.ItemsElementName[0].ToString());
-                                                if (!Directory.Exists(jsonpath_1))
-                                                {
-                                                    Directory.CreateDirectory(jsonpath_1);
-                                                }
-                                                //и создаём её заново
+//                                                }
+//                                                var jsonpath_1 = Path.Combine(jsonpath, exportd.ItemsElementName[0].ToString());
+//                                                if (!Directory.Exists(jsonpath_1))
+//                                                {
+//                                                    Directory.CreateDirectory(jsonpath_1);
+//                                                }
+//                                                //и создаём её заново
 
 
-                                                var savepath = Path.Combine(jsonpath_1, entry.Name);
-                                                using (StreamWriter sw1 = new StreamWriter(savepath, true, System.Text.Encoding.Default))
-                                                {
+//                                                var savepath = Path.Combine(jsonpath_1, entry.Name);
+//                                                using (StreamWriter sw1 = new StreamWriter(savepath, true, System.Text.Encoding.Default))
+//                                                {
 
-                                                    sw1.WriteLine(djson);
+//                                                    sw1.WriteLine(djson);
 
-                                                };
+//                                                };
 
-#endif
+//#endif
                                                 //#if true && DEBUG
                                                 //                                            var json = JsonConvert.SerializeObject(exportd.item);
                                                 //#endif
@@ -265,11 +287,12 @@ namespace SplashUp.Core.Jobs.Fl44
                         }
                 }
 
-
-                Console.WriteLine($"Всего добавляется записей Contracts в БД: {contracts.Count}");
-                _dataServices.SaveContracts(contracts);
-                nFile.Status = Status.Processed;
-                _dataServices.UpdateCasheFiles(nFile);
+                
+                    Console.WriteLine($"Всего добавляется записей Contracts в БД: {contracts.Count}");
+                    _dataServices.SaveContracts(contracts);
+                    nFile.Status = Status.Processed;
+                    nFile.Modifid_date = DateTime.Now;
+                    _dataServices.UpdateCasheFiles(nFile);
 
                 Directory.Delete(extractPath, true);
             });

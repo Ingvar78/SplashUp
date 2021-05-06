@@ -49,7 +49,12 @@ namespace SplashUp
                     Directory.CreateDirectory(fzSettings223.Value.WorkPath);
                 }
             }
-            
+
+            if (!Directory.Exists(commonSettings.Value.DebugPath))
+            {
+                Directory.CreateDirectory(commonSettings.Value.DebugPath);
+            }
+
             //Загрузка архивов ФЗ 44 и 223 - данные аукционов, контрактов...справочников - всё что может понадобиться.
             if (partUsed.UseUpload)
             {
