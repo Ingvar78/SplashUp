@@ -960,9 +960,56 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
+                                                    case "epProlongationCancelEOKOU": //epProlongationCancelEOKOU; prolongationCancelEOKOUType - Отмена извещения о продлении срока подачи заявок на участие в ЭОK-ОУ
+                                                        {
+                                                            prolongationCancelEOKOUType prolongationCancelEOKOU = exportd.Items[0] as prolongationCancelEOKOUType;
+                                                            //string unf_json = JsonConvert.SerializeObject(fcsNotificationZK);
 
-                                                default:
-                                                    {
+                                                            var fscn = new Notifications();
+
+                                                            //fscn.Wname = "";
+                                                            fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Hash = hashstr;
+                                                            //fscn.ContractConclusion = "";
+                                                            fscn.Inn = "";
+                                                            fscn.AppRating = 0;
+                                                            fscn.Zip_file = nFile.Full_path;
+                                                            fscn.File_name = entry.FullName;
+                                                            fscn.Fz_type = 44;
+                                                            //fscn.JournalNumber = ;
+                                                            fscn.Purchase_num = prolongationCancelEOKOU.commonInfo.purchaseNumber;
+                                                            //fscn.ProtocolNum = notificationPO.commonInfo.
+                                                            fscn.PublishDate = prolongationCancelEOKOU.commonInfo.docPublishDTInEIS;
+                                                            fscn.Type_notif = exportd.Items[0].GetType().Name;
+                                                            notifications.Add(fscn);
+                                                            break;
+                                                        }
+                                                    default:
+                                                    case "fcsNotificationLotChange": //fcsNotificationLotChange;zfcs_notificationLotChangeType - Внесение изменений в извещение в части лота;
+                                                        {
+                                                            zfcs_notificationLotChangeType zfcs_notificationLotChange = exportd.Items[0] as zfcs_notificationLotChangeType;
+                                                            //string unf_json = JsonConvert.SerializeObject(fcsNotificationZK);
+
+                                                            var fscn = new Notifications();
+
+                                                            //fscn.Wname = "";
+                                                            fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Hash = hashstr;
+                                                            //fscn.ContractConclusion = "";
+                                                            fscn.Inn = "";
+                                                            fscn.AppRating = 0;
+                                                            fscn.Zip_file = nFile.Full_path;
+                                                            fscn.File_name = entry.FullName;
+                                                            fscn.Fz_type = 44;
+                                                            //fscn.JournalNumber = ;
+                                                            fscn.Purchase_num = zfcs_notificationLotChange.purchaseNumber;
+                                                            //fscn.ProtocolNum = notificationPO.commonInfo.
+                                                            fscn.PublishDate = zfcs_notificationLotChange.docPublishDate;
+                                                            fscn.Type_notif = exportd.Items[0].GetType().Name;
+                                                            notifications.Add(fscn);
+                                                            break;
+                                                        }
+                                                        {
                                                             if (exportd.Items.Length > 1)
                                                             {
                                                                 Console.WriteLine("More one");

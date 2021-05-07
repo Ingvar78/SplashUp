@@ -839,6 +839,54 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             protocols.Add(frpotocols);
                                                             break;
                                                         }
+                                                    case "epProtocolEOKD2": //epProtocolEOKD2; protocolEOKD2Type - Протокол рассмотрения и оценки первых частей заявок на участие в ЭOKД;
+                                                        {
+                                                            protocolEOKD2Type protocolEOKD2 = exportd.Items[0] as protocolEOKD2Type;
+                                                            var frpotocols = new Protocols();
+                                                            frpotocols.Purchase_num = protocolEOKD2.commonInfo.purchaseNumber;
+                                                            frpotocols.Protocol_num = protocolEOKD2.foundationDocInfo.foundationDocNumber;
+                                                            frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Hash = hashstr;
+                                                            frpotocols.Zip_file = nFile.Full_path;
+                                                            frpotocols.File_name = entry.FullName;
+                                                            frpotocols.Fz_type = 44;
+                                                            frpotocols.Type_protocol = exportd.Items[0].GetType().Name;
+                                                            frpotocols.PublishDate = protocolEOKD2.commonInfo.publishDTInEIS;
+                                                            protocols.Add(frpotocols);
+                                                            break;
+                                                        }
+                                                    case "epProtocolEOKD3": //epProtocolEOKD3;protocolEOKD3Type - Протокол рассмотрения и оценки вторых частей заявок на участие в ЭOKД;
+                                                        {
+                                                            protocolEOKD3Type protocolEOKD3 = exportd.Items[0] as protocolEOKD3Type;
+                                                            var frpotocols = new Protocols();
+                                                            frpotocols.Purchase_num = protocolEOKD3.commonInfo.purchaseNumber;
+                                                            frpotocols.Protocol_num = protocolEOKD3.foundationDocInfo.foundationDocNumber;
+                                                            frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Hash = hashstr;
+                                                            frpotocols.Zip_file = nFile.Full_path;
+                                                            frpotocols.File_name = entry.FullName;
+                                                            frpotocols.Fz_type = 44;
+                                                            frpotocols.Type_protocol = exportd.Items[0].GetType().Name;
+                                                            frpotocols.PublishDate = protocolEOKD3.commonInfo.publishDTInEIS;
+                                                            protocols.Add(frpotocols);
+                                                            break;
+                                                        }
+                                                    case "epProtocolEOKD4": //epProtocolEOKD4;protocolEOKD4Type - Протокол подведения итогов ЭOKД;
+                                                        {
+                                                            protocolEOKD4Type protocolEOKD4 = exportd.Items[0] as protocolEOKD4Type;
+                                                            var frpotocols = new Protocols();
+                                                            frpotocols.Purchase_num = protocolEOKD4.commonInfo.purchaseNumber;
+                                                            frpotocols.Protocol_num = protocolEOKD4.foundationDocInfo.foundationDocNumber;
+                                                            frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Hash = hashstr;
+                                                            frpotocols.Zip_file = nFile.Full_path;
+                                                            frpotocols.File_name = entry.FullName;
+                                                            frpotocols.Fz_type = 44;
+                                                            frpotocols.Type_protocol = exportd.Items[0].GetType().Name;
+                                                            frpotocols.PublishDate = protocolEOKD4.commonInfo.publishDTInEIS;
+                                                            protocols.Add(frpotocols);
+                                                            break;
+                                                        }
                                                     default:
                                                         {
                                                             
