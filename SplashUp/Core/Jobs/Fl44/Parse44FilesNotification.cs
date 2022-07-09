@@ -1017,8 +1017,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             }
                                                             string exp_json = JsonConvert.SerializeObject(exportd);
                                                             var EData = JsonConvert.DeserializeObject<export>(exp_json);
-                                                            string eltype = $"{exportd.ItemsElementName[0].ToString()};{exportd.Items[0].GetType().Name}";
-                                                            string fnel = $"{exportd.ItemsElementName[0].ToString()}";
+                                                            string eltype = $"{exportd.ItemsElementName[0]};{exportd.Items[0].GetType().Name}";
+                                                            string fnel = $"{exportd.ItemsElementName[0]}";
 
                                                             var npath = Path.Combine(_commonSettings.DebugPath, "Notifications");
 

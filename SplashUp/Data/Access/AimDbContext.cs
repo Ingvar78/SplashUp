@@ -23,6 +23,8 @@ namespace SplashUp.Data.Access
         : base(options)
         {
             //For the different patterns supported at design time, see https://go.microsoft.com/fwlink/?linkid=851728
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
         }
 
         //public GovDbContext()
@@ -35,13 +37,13 @@ namespace SplashUp.Data.Access
 #if true && DEBUG
             optionsBuilder.UseLoggerFactory(_loggerFactory);
 #endif
-            optionsBuilder.UseNpgsql(_connectionString);
-            //optionsBuilder.UseNpgsql("Host=192.168.1.120;Port=5432;Database=AimDb2;Username=postgres;Password=Qs73Uq87zaq;Pooling=True");
+            //optionsBuilder.UseNpgsql(_connectionString).UseSnakeCaseNamingConvention();
+            optionsBuilder.UseNpgsql("Host=192.168.1.60;Port=5432;Database=AimDbtest;Username=zak;Password=Zaq1Xsw2;Pooling=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.UsePostgresConventions();
+            //modelBuilder.UsePostgresConventions();
             base.OnModelCreating(modelBuilder);
         }
 
