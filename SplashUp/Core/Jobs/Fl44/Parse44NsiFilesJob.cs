@@ -457,7 +457,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                     string zipPath = (_nsiSettings44.WorkPath + nsiFile.Full_path);
                     string extractPath = (_nsiSettings44.WorkPath + "/extract" + nsiFile.Full_path);
-                    //zipPath= @"C:\Work2\Fz44\fcs_nsi\nsiOrganization\nsiOrganizationList_all_20201227000000_174.xml.zip";
+                    //zipPath= @"F:\Work2\test\nsiOrganizationList_all_20220710000002_087.xml.zip";
                     if (Directory.Exists(extractPath))
                     {
                         Directory.Delete(extractPath, true);
@@ -554,6 +554,7 @@ namespace SplashUp.Core.Jobs.Fl44
                         nsiOrganization.IsActual = org.actual;                      
                         nsiOrganization.NsiData = JsonConvert.SerializeObject(org);
                         nsiOrganization.RegistrationDate = org.registrationDate;
+                        nsiOrganization.changeESIADateTime = DateTime.Now;
                         nsiOrganization.RegNumber = org.regNumber;
                         nsiOrganization.Fz_type = FLType.Fl44;
 

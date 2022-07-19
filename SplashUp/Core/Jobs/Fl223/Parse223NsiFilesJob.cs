@@ -185,6 +185,7 @@ namespace SplashUp.Core.Jobs.Fl223
                             nsiOrganization.Ogrn = org.nsiOrganizationData.mainInfo.ogrn ?? string.Empty;
                             nsiOrganization.NsiData = JsonConvert.SerializeObject(org);
                             nsiOrganization.RegistrationDate = org.nsiOrganizationData.codeAssignDateTime;
+                            nsiOrganization.changeESIADateTime = org.nsiOrganizationData.changeESIADateTime;
                             nsiOrganization.RegNumber = org.nsiOrganizationData.code;
                             nsiOrganization.Accounts = "{}";
                             //Нет данных - поискать

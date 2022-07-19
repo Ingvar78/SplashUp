@@ -295,7 +295,8 @@ namespace SplashUp.Core.Jobs.Fl44
                     _dataServices.UpdateCasheFiles(nFile);
 
                 Directory.Delete(extractPath, true);
-            });
+                File.Delete(zipPath);
+                });
 
 
         }

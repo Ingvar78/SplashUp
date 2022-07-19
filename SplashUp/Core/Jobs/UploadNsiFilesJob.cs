@@ -7,6 +7,7 @@ using FluentScheduler;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -44,6 +45,9 @@ namespace SplashUp.Core.Jobs
         {
             try
             {
+                var FreeDS = GetTotalFreeSpace(_commonSettings.BasePartition);
+                _logger.LogWarning($"NSI - Доступно для загрузки: {FreeDS:F2}%  на диске: {_commonSettings.BasePartition}");
+
                 Parallel.Invoke(
                     () => { GetNSIListFTP44(); },
                     () => { DownloadFtpFiles44(GetDBList(1000, Status.Exist, FLType.Fl44)); },                    
@@ -54,8 +58,8 @@ namespace SplashUp.Core.Jobs
                 var cnt44 = GetDBList(1000, Status.Exist, FLType.Fl44).Count;
                 var cnt223 = GetDBList(1000, Status.Exist, FLType.Fl223).Count;
 
-                //Грузить пока не устанет
-                while (cnt44 > 0 || cnt223 > 0)
+                    //Грузить пока не устанет
+                    while ((cnt44 > 0 || cnt223 > 0)& (FreeDS > _commonSettings.FreeDS))
                 {
                     //2. Загрузка справочников 
                     //44ФЗ/223ФЗ
@@ -66,6 +70,9 @@ namespace SplashUp.Core.Jobs
 
                     cnt44 = GetDBList(1000, Status.Exist, FLType.Fl44).Count;
                     cnt223 = GetDBList(1000, Status.Exist, FLType.Fl223).Count;
+
+                    FreeDS = GetTotalFreeSpace(_commonSettings.BasePartition);
+                    _logger.LogWarning($"NSI - Доступно для загрузки: {FreeDS:F2}%  на диске: {_commonSettings.BasePartition}");
                 }
 
 
@@ -76,7 +83,20 @@ namespace SplashUp.Core.Jobs
             }
         }
 
+        private double GetTotalFreeSpace(string driveName)
+        {
+            foreach (DriveInfo drive in DriveInfo.GetDrives())
+            {
+                if (drive.IsReady && drive.Name == driveName)
+                {
+                    var FreeDS = (drive.TotalFreeSpace / drive.TotalSize) * 100;
+                    double percentFree = 100 * (double)drive.TotalFreeSpace / drive.TotalSize;
+                    return percentFree;
 
+                }
+            }
+            return -1;
+        }
         private void GetNSIListFTP44()
         {
             DateTime StartDate = DateTime.Now;

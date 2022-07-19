@@ -45,8 +45,8 @@ namespace SplashUp
                 })
             .ConfigureLogging(logging =>
             {
-                logging.ClearProviders();
-                logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                logging.ClearProviders()
+                .SetMinimumLevel(LogLevel.Trace);
             })
             .UseNLog();
 

@@ -44,10 +44,6 @@ namespace SplashUp
             var connStr = Configuration.GetConnectionString("ConnectionGDB");
             var connStrD = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AimDbContext>();
-            //services.AddDbContext<AimDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddEntityFrameworkNpgsql();
-
-
 
             InjectorBootStrapper.RegisterServices(services);
 
@@ -55,7 +51,8 @@ namespace SplashUp
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory, IServiceProvider services)
         {
-
+            //For EF6
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             if (loggerFactory != null)
             {
                 var logger = services.GetService<ILogger<Startup>>();
@@ -70,8 +67,6 @@ namespace SplashUp
             {
                 app.UseDeveloperExceptionPage();
             }
-
-
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

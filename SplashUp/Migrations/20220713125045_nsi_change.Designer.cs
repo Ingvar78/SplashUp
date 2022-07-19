@@ -2,34 +2,32 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SplashUp.Data.Access;
 
-#nullable disable
-
 namespace SplashUp.Migrations
 {
     [DbContext(typeof(AimDbContext))]
-    partial class AimDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220713125045_nsi_change")]
+    partial class nsi_change
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
-
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63)
+                .HasAnnotation("ProductVersion", "5.0.5")
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             modelBuilder.Entity("SplashUp.Data.DB.Contracts", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Contract_num")
                         .HasColumnType("varchar(20)")
@@ -70,7 +68,7 @@ namespace SplashUp.Migrations
                     b.HasKey("Id")
                         .HasName("pk_contracts");
 
-                    b.ToTable("contracts", (string)null);
+                    b.ToTable("contracts");
                 });
 
             modelBuilder.Entity("SplashUp.Data.DB.FileCashes", b =>
@@ -78,16 +76,15 @@ namespace SplashUp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("BaseDir")
                         .HasColumnType("varchar(64)")
                         .HasColumnName("base_dir");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("date");
 
                     b.Property<string>("Dirtype")
@@ -103,7 +100,7 @@ namespace SplashUp.Migrations
                         .HasColumnName("fz_type");
 
                     b.Property<DateTime>("Modifid_date")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("modifid_date");
 
                     b.Property<long>("Size")
@@ -121,7 +118,7 @@ namespace SplashUp.Migrations
                     b.HasKey("Id")
                         .HasName("pk_file_cashes");
 
-                    b.ToTable("file_cashes", (string)null);
+                    b.ToTable("file_cashes");
                 });
 
             modelBuilder.Entity("SplashUp.Data.DB.Notifications", b =>
@@ -129,9 +126,8 @@ namespace SplashUp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<short>("AppRating")
                         .HasColumnType("smallint")
@@ -199,12 +195,12 @@ namespace SplashUp.Migrations
 
                     b.Property<bool>("contractConclusionOnSt83Ch2")
                         .HasColumnType("boolean")
-                        .HasColumnName("contract_conclusion_on_st83ch2");
+                        .HasColumnName("contract_conclusion_on_st83_ch2");
 
                     b.HasKey("Id")
                         .HasName("pk_notifications");
 
-                    b.ToTable("notifications", (string)null);
+                    b.ToTable("notifications");
                 });
 
             modelBuilder.Entity("SplashUp.Data.DB.NsiAbandonedReason", b =>
@@ -212,9 +208,8 @@ namespace SplashUp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<bool>("Actual")
                         .HasColumnType("boolean")
@@ -253,9 +248,9 @@ namespace SplashUp.Migrations
                         .HasColumnName("object_name");
 
                     b.HasKey("Id")
-                        .HasName("pk_nsi_a_reasons");
+                        .HasName("pk_nsi_areasons");
 
-                    b.ToTable("nsi_a_reasons", (string)null);
+                    b.ToTable("nsi_areasons");
                 });
 
             modelBuilder.Entity("SplashUp.Data.DB.NsiEtps", b =>
@@ -263,9 +258,8 @@ namespace SplashUp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<bool>("Actual")
                         .HasColumnType("boolean")
@@ -310,7 +304,7 @@ namespace SplashUp.Migrations
                     b.HasKey("Id")
                         .HasName("pk_nsi_etps");
 
-                    b.ToTable("nsi_etps", (string)null);
+                    b.ToTable("nsi_etps");
                 });
 
             modelBuilder.Entity("SplashUp.Data.DB.NsiFileCashes", b =>
@@ -318,16 +312,15 @@ namespace SplashUp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("BaseDir")
                         .HasColumnType("varchar(64)")
                         .HasColumnName("base_dir");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("date");
 
                     b.Property<string>("Dirtype")
@@ -343,7 +336,7 @@ namespace SplashUp.Migrations
                         .HasColumnName("fz_type");
 
                     b.Property<DateTime>("Modifid_date")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("modifid_date");
 
                     b.Property<long>("Size")
@@ -361,7 +354,7 @@ namespace SplashUp.Migrations
                     b.HasKey("Id")
                         .HasName("pk_nsi_file_cashes");
 
-                    b.ToTable("nsi_file_cashes", (string)null);
+                    b.ToTable("nsi_file_cashes");
                 });
 
             modelBuilder.Entity("SplashUp.Data.DB.NsiOrganizations", b =>
@@ -369,9 +362,8 @@ namespace SplashUp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Accounts")
                         .HasColumnType("jsonb")
@@ -410,17 +402,17 @@ namespace SplashUp.Migrations
                         .HasColumnName("reg_number");
 
                     b.Property<DateTime>("RegistrationDate")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("registration_date");
 
                     b.Property<DateTime>("changeESIADateTime")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("change_esia_date_time");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("change_esiadate_time");
 
                     b.HasKey("Id")
                         .HasName("pk_nsi_organizations");
 
-                    b.ToTable("nsi_organizations", (string)null);
+                    b.ToTable("nsi_organizations");
                 });
 
             modelBuilder.Entity("SplashUp.Data.DB.NsiPlacingWays", b =>
@@ -428,9 +420,8 @@ namespace SplashUp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<bool>("Actual")
                         .HasColumnType("boolean")
@@ -470,7 +461,7 @@ namespace SplashUp.Migrations
 
                     b.Property<int>("SSType")
                         .HasColumnType("integer")
-                        .HasColumnName("ss_type");
+                        .HasColumnName("sstype");
 
                     b.Property<string>("Type")
                         .HasColumnType("varchar(20)")
@@ -479,7 +470,7 @@ namespace SplashUp.Migrations
                     b.HasKey("Id")
                         .HasName("pk_nsi_placing_ways");
 
-                    b.ToTable("nsi_placing_ways", (string)null);
+                    b.ToTable("nsi_placing_ways");
                 });
 
             modelBuilder.Entity("SplashUp.Data.DB.Protocols", b =>
@@ -487,9 +478,8 @@ namespace SplashUp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("File_name")
                         .HasColumnType("varchar(128)")
@@ -530,7 +520,7 @@ namespace SplashUp.Migrations
                     b.HasKey("Id")
                         .HasName("pk_protocols");
 
-                    b.ToTable("protocols", (string)null);
+                    b.ToTable("protocols");
                 });
 #pragma warning restore 612, 618
         }

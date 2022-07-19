@@ -21,8 +21,17 @@ namespace SplashUp.Configurations
         public int KeepDay { get; set; }
         /// <summary>
         /// Дата начала загрузки (2017-01-01)
-        /// </summary>
+        /// </summary>        
         public string StartDate { get; set; }
+        /// <summary>
+        /// Свободное место на диске необходимое для работы - %, рекомендуемое 50%
+        /// </summary>
+        public double FreeDS { get; set; }
+        /// <summary>
+        /// Основной раздел для сохранения файлов и определения доступного места
+        /// </summary>
+        public string BasePartition { get; set; }
+
         /// <summary>
         /// Управление задачами загрузки
         /// </summary>

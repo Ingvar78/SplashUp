@@ -8,33 +8,40 @@ namespace SplashUp.Data.Extention
 {
     internal static class ModelBuilderExtensions
     {
-        //public static void UsePostgresConventions(this ModelBuilder modelBuilder)
-        //{
+        public static void UsePostgresConventions(this ModelBuilder modelBuilder)
+        {
 
-        //    foreach (var entity in modelBuilder.Model.GetEntityTypes())
-        //    {
-        //        // Replace table names
-        //        entity.SetTableName(entity.GetTableName().ToSnakeCase());
+            foreach (var entity in modelBuilder.Model.GetEntityTypes())
+            {
+                // Replace table names
+                entity.SetTableName(entity.GetTableName().ToSnakeCase());
 
-        //        // Replace column names            
-        //        foreach (var property in entity.GetProperties())
-        //        {
-        //            property.SetColumnName(property.GetColumnName().ToSnakeCase());
-        //        }
+                //// Replace column names            
+                //foreach (var property in entity.GetProperties())
+                //{
+                //    property.SetColumnName(name: property.GetColumnName().ToSnakeCase());
+                //}
 
-        //        foreach (var key in entity.GetKeys())
-        //        {
-        //            key.SetName(key.GetName().ToSnakeCase());
-        //        }
+                foreach (var key in entity.GetKeys())
+                {
+                    key.SetName(key.GetName().ToSnakeCase());
+                }
 
 
-        //        foreach (var index in entity.GetIndexes())
-        //        {
-        //            index.SetName(index.GetName().ToSnakeCase());
-        //        }
-        //    }
+                //foreach (var index in entity.GetIndexes())
+                //{
+                //    index.SetName(index.GetName().ToSnakeCase());
+                //}
+                foreach (var index in entity.GetIndexes())
+                {
+                    if (index.Name != null && index.Name.EndsWith("Index"))
+                    {
+                        index.SetDatabaseName(index.Name.ToSnakeCase());
+                    }
+                }
+            }
 
-        //}
+        }
 
         private static string ToSnakeCase(this string input)
         {
