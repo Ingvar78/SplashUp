@@ -967,7 +967,8 @@ namespace SplashUp.Core.Jobs.Fl44
                     nFile.Modifid_date = DateTime.Now;
                     _dataServices.UpdateCasheFiles(nFile);                   
                     Directory.Delete(extractPath, true);
-            });
+                    File.Delete(zipPath);
+                });
 
 
         }

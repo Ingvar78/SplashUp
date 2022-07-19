@@ -47,28 +47,11 @@ namespace SplashUp.Core.Jobs
             _logger.LogDebug($"Начало загрузки архивов");
             DateTime StartDateTime = DateTime.Now;
             _logger.LogInformation($"Начало загрузки архивов: {StartDateTime.ToString()}: {_path}");
+            var FreeDS = GetTotalFreeSpace(_commonSettings.BasePartition);
 
-            //DownloadFtpFiles44(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44));
+            _logger.LogWarning($"44/223 - Доступно для загрузки: {FreeDS:F2}%  на диске: {_commonSettings.BasePartition}");
 
-            
-            var cnt44 = _dataServices.GetDwList(100, Status.Exist, FLType.Fl44).Count;
-            var cnt223 = _dataServices.GetDwList(100, Status.Exist, FLType.Fl223).Count;
-            
-            //Грузить пока не устанет
-            while (cnt44 > 0 || cnt223 > 0)
-            {
-                //2. Загрузка файлов
-                //44ФЗ/223ФЗ
-                Parallel.Invoke(
-                    () => { DownloadFtpFiles44(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44)); },
-                    () => { DownloadFtpFiles223(_dataServices.GetDwList(500, Status.Exist, FLType.Fl223)); }
-                    );
-
-                cnt44 = _dataServices.GetDwList(1000, Status.Exist, FLType.Fl44).Count;
-                cnt223 = _dataServices.GetDwList(1000, Status.Exist, FLType.Fl223).Count;
-            }
-
-            //Создание списка и загрузка первой 1000 файлов, при первом вызове.
+            //Создание списка и загрузка 1000 файлов, при первом вызове.
             Parallel.Invoke(
 
                 // 1. получение списка файлов + сохранение списка для последующей загрузки
@@ -82,8 +65,57 @@ namespace SplashUp.Core.Jobs
                 () => { DownloadFtpFiles223(_dataServices.GetDwList(1000, Status.Exist, FLType.Fl223)); }
                 );
 
+            //DownloadFtpFiles44(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44));
+
+
+            var cnt44 = _dataServices.GetDwList(100, Status.Exist, FLType.Fl44).Count;
+            var cnt223 = _dataServices.GetDwList(100, Status.Exist, FLType.Fl223).Count;
+
+            //Грузить пока не устанет или пока не закончится место!
+
+            while ((cnt44 > 0 || cnt223 > 0)&(FreeDS > _commonSettings.FreeDS))
+            {
+                Parallel.Invoke(
+                    () => { DownloadFtpFiles44(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44)); },
+                    () => { DownloadFtpFiles223(_dataServices.GetDwList(500, Status.Exist, FLType.Fl223)); }
+                    );
+
+                cnt44 = _dataServices.GetDwList(1000, Status.Exist, FLType.Fl44).Count;
+                cnt223 = _dataServices.GetDwList(1000, Status.Exist, FLType.Fl223).Count;
+                FreeDS = GetTotalFreeSpace(_commonSettings.BasePartition);
+                _logger.LogWarning($"44/223 - Доступно для загрузки: {FreeDS:F2}%  на диске: {_commonSettings.BasePartition}");
+            }
+
+            //while (cnt44 > 0 || cnt223 > 0)
+            //{
+            //    //2. Загрузка файлов
+            //    //44ФЗ/223ФЗ
+            //    Parallel.Invoke(
+            //        () => { DownloadFtpFiles44(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44)); },
+            //        () => { DownloadFtpFiles223(_dataServices.GetDwList(500, Status.Exist, FLType.Fl223)); }
+            //        );
+
+            //    cnt44 = _dataServices.GetDwList(1000, Status.Exist, FLType.Fl44).Count;
+            //    cnt223 = _dataServices.GetDwList(1000, Status.Exist, FLType.Fl223).Count;
+            //}
+
+
         }
 
+        private double GetTotalFreeSpace(string driveName)
+        {
+            foreach (DriveInfo drive in DriveInfo.GetDrives())
+            {
+                if (drive.IsReady && drive.Name == driveName)
+                {
+                    var FreeDS = (drive.TotalFreeSpace / drive.TotalSize) * 100;
+                    double percentFree = 100 * (double)drive.TotalFreeSpace / drive.TotalSize;
+                    return percentFree;
+
+                }
+            }
+            return -1;
+        }
         private void GetListFTP44()
         {
             DateTime StartDate = DateTime.Now;
@@ -107,7 +139,7 @@ namespace SplashUp.Core.Jobs
                 var region44List = client.GetListing(ftpBasePath).Where(item => item.Type == FtpFileSystemObjectType.Directory).Select(x => x.Name).ToList();
                 client.Disconnect();
                 // Сохранение списка регионов
-                var dayyear = DateTime.Now.ToShortDateString();
+                var dayyear = DateTime.Now.ToShortDateString().Replace("/", "_");
                 var saveregions = Path.Combine(_fzSettings44.WorkPath, $"RegionsList_{dayyear}.txt");
                 var saveregionscsv = Path.Combine(_fzSettings44.WorkPath, $"RegionsList_{dayyear}.csv");
                 using (StreamWriter file = File.CreateText(saveregions))
@@ -187,7 +219,7 @@ namespace SplashUp.Core.Jobs
                 var ftpBasePath = $"{basedir223}";
                 var region223List = client.GetListing(ftpBasePath).Where(item => item.Type == FtpFileSystemObjectType.Directory).Select(x => x.Name).ToList();
                 client.Disconnect();
-                var dayyear = DateTime.Now.ToShortDateString();
+                var dayyear = DateTime.Now.ToShortDateString().Replace("/", "_");
                 var saveregions = Path.Combine(_fzSettings223.WorkPath, $"RegionsList_{dayyear}.txt");
                 var saveregionscsv = Path.Combine(_fzSettings223.WorkPath, $"RegionsList_{dayyear}.csv");
                 using (StreamWriter file = File.CreateText(saveregions))

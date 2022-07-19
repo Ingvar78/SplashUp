@@ -53,6 +53,7 @@ namespace SplashUp.Core.Services
                     && x.Fz_type == fz_type
                     && x.BaseDir == basepath
                     && x.Dirtype == dirtype)
+                    //Выбираем более старые файлы, т.к. важна последовательность загрузки.
                     .OrderBy(x => x.Date)
                     //.OrderByDescending(x => x.Date)
                     .Take(lim)
@@ -91,7 +92,9 @@ namespace SplashUp.Core.Services
                         .AsNoTracking()
                         .Where(x => x.RegNumber == organization.RegNumber
                         && x.Fz_type == organization.Fz_type)
-                        .SingleOrDefault();
+                        .OrderByDescending(x=>x.changeESIADateTime)
+                        .FirstOrDefault();
+                        //.SingleOrDefault();
 
                         if (find == null)
                         {
@@ -99,14 +102,17 @@ namespace SplashUp.Core.Services
                             db.SaveChanges();
                         }
                         else
+                        if (find.changeESIADateTime <= organization.changeESIADateTime)
                         {
                             find.NsiData = organization.NsiData;
                             find.FullName = organization.FullName;
                             find.IsActual = organization.IsActual;
+                            find.NsiData = organization.NsiData;
                             find.Inn = organization.Inn ?? string.Empty;
                             find.Kpp = organization.Kpp ?? string.Empty;
                             find.Ogrn = organization.Ogrn ?? string.Empty;
                             find.RegistrationDate = organization.RegistrationDate;
+                            find.changeESIADateTime = organization.changeESIADateTime;
                             find.Accounts = organization.Accounts;
                             db.NsiOrganizations.Update(find);
                             db.SaveChanges();
@@ -144,6 +150,7 @@ namespace SplashUp.Core.Services
                     .Take(lim)
                     .ToList();
             }
+            
             return data;
         }
 

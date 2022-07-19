@@ -35,13 +35,13 @@ namespace SplashUp.Data.Access
 #if true && DEBUG
             optionsBuilder.UseLoggerFactory(_loggerFactory);
 #endif
-            optionsBuilder.UseNpgsql(_connectionString);
-            //optionsBuilder.UseNpgsql("Host=192.168.1.120;Port=5432;Database=AimDb2;Username=postgres;Password=Qs73Uq87zaq;Pooling=True");
+            //optionsBuilder.UseNpgsql("Host=192.168.1.60;Port=5432;Database=AimDbEF6;Username=zak;Password=Zaq1Xsw2;Pooling=True").UseSnakeCaseNamingConvention();
+            optionsBuilder.UseNpgsql(_connectionString).UseSnakeCaseNamingConvention(); 
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.UsePostgresConventions();
+            //modelBuilder.UsePostgresConventions();
             base.OnModelCreating(modelBuilder);
         }
 

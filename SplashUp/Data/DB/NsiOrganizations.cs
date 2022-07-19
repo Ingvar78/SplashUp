@@ -45,6 +45,11 @@ namespace SplashUp.Data.DB
         public DateTime RegistrationDate { get; set; }
 
         /// <summary>
+        /// Дата регистрации в ЕИС
+        /// </summary>
+        public DateTime changeESIADateTime { get; set; }
+
+        /// <summary>
         /// ИНН заказчика
         /// </summary>
         [Column(TypeName = "varchar(10)")]

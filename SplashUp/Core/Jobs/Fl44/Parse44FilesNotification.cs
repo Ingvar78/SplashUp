@@ -984,7 +984,6 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             notifications.Add(fscn);
                                                             break;
                                                         }
-                                                    default:
                                                     case "fcsNotificationLotChange": //fcsNotificationLotChange;zfcs_notificationLotChangeType - Внесение изменений в извещение в части лота;
                                                         {
                                                             zfcs_notificationLotChangeType zfcs_notificationLotChange = exportd.Items[0] as zfcs_notificationLotChangeType;
@@ -1009,6 +1008,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             notifications.Add(fscn);
                                                             break;
                                                         }
+                                                    default:
                                                         {
                                                             if (exportd.Items.Length > 1)
                                                             {
@@ -1088,6 +1088,7 @@ namespace SplashUp.Core.Jobs.Fl44
                     nFile.Modifid_date = DateTime.Now;
                     _dataServices.UpdateCasheFiles(nFile);                    
                     Directory.Delete(extractPath, true);
+                    File.Delete(zipPath);
             });
 
         }

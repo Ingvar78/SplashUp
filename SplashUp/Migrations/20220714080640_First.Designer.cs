@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SplashUp.Data.Access;
@@ -11,9 +12,10 @@ using SplashUp.Data.Access;
 namespace SplashUp.Migrations
 {
     [DbContext(typeof(AimDbContext))]
-    partial class AimDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220714080640_First")]
+    partial class First
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

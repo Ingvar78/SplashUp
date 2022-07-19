@@ -16,11 +16,11 @@ namespace SplashUp.Data.Extention
                 // Replace table names
                 entity.SetTableName(entity.GetTableName().ToSnakeCase());
 
-                // Replace column names            
-                foreach (var property in entity.GetProperties())
-                {
-                    property.SetColumnName(property.GetColumnName().ToSnakeCase());
-                }
+                //// Replace column names            
+                //foreach (var property in entity.GetProperties())
+                //{
+                //    property.SetColumnName(name: property.GetColumnName().ToSnakeCase());
+                //}
 
                 foreach (var key in entity.GetKeys())
                 {
@@ -28,9 +28,16 @@ namespace SplashUp.Data.Extention
                 }
 
 
+                //foreach (var index in entity.GetIndexes())
+                //{
+                //    index.SetName(index.GetName().ToSnakeCase());
+                //}
                 foreach (var index in entity.GetIndexes())
                 {
-                    index.SetName(index.GetName().ToSnakeCase());
+                    if (index.Name != null && index.Name.EndsWith("Index"))
+                    {
+                        index.SetDatabaseName(index.Name.ToSnakeCase());
+                    }
                 }
             }
 
