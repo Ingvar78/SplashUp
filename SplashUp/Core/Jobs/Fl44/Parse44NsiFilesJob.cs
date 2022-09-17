@@ -54,8 +54,6 @@ namespace SplashUp.Core.Jobs.Fl44
                     {
                         case "nsiAbandonedReason":
                             {
-                                //ParsensiAbandonedReason(GetDBList(100, Status.Uploaded, FLType.Fl44, basepath, dir));
-                                //var tt = _dataServices.GetNsiDBList(100, Status.Uploaded, FLType.Fl44, basepath, dir);
                                 ParsensiAbandonedReason(_dataServices.GetNsiDBList(100, Status.Uploaded, FLType.Fl44, basepath, dir));
                             }
                             break;

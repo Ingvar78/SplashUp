@@ -60,6 +60,9 @@ namespace SplashUp.Configurations
         public bool UseNsiSettings44 { get; set; }
         public bool UseNsiSettings223 { get; set; }
 
+        //Для отладки на бою 
+        public bool TestMode { get; set; }
+
     }
 
     public class Credentional

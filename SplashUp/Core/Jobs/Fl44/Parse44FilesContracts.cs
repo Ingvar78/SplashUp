@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Xml.Serialization;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace SplashUp.Core.Jobs.Fl44
 {
@@ -37,17 +38,17 @@ namespace SplashUp.Core.Jobs.Fl44
                 Directory.CreateDirectory(extractPath);
 
                 if (File.Exists(zipPath))
-                {
-                    using (ZipArchive archive = ZipFile.OpenRead(zipPath))
-
-                        foreach (ZipArchiveEntry entry in archive.Entries)
+                    {
+                        using (ZipArchive archive = ZipFile.OpenRead(zipPath))
+                            
+                            foreach (ZipArchiveEntry entry in archive.Entries)
                         {
                             if (entry.FullName.EndsWith(".xml", StringComparison.OrdinalIgnoreCase))
                             {
                                 entry.ExtractToFile(Path.Combine(extractPath, entry.FullName));
                                 string xml_f_name = entry.FullName;
                                 string xmlin = (extractPath + "/" + entry.FullName);
-                                _logger.LogInformation("xmlin parse: " + xmlin);
+                                _logger.LogInformation("xmlin parse Contracts: " + xmlin);
 
                                 FileInfo infoCheck = new FileInfo(xmlin);
                                 if (infoCheck.Length != 0)
@@ -57,60 +58,35 @@ namespace SplashUp.Core.Jobs.Fl44
                                             var djson = _dataServices.XmlToJson(xmlin);
 
                                             string jsonpath = (_commonSettings.DebugPath + "/Json");
-
-                                            //if (!Directory.Exists(jsonpath))
-                                            //{
-                                            //    Directory.CreateDirectory(jsonpath);
-                                            //}
-                                            ////и создаём её заново
-                                            
-
-                                            //var savepath= Path.Combine(jsonpath, entry.FullName);
-                                            //using (StreamWriter sw1 = new StreamWriter(savepath, true, System.Text.Encoding.Default))
-                                            //{
-
-                                            //    sw1.WriteLine(djson);
-
-                                            //};
-
-
                                             string read_xml_text;
-                                        using (var streamReader = new StreamReader(xmlin, Encoding.UTF8, false))
-                                        {
-                                            read_xml_text = streamReader.ReadToEnd();
-                                        }
-
-                                        var strBuilder = new StringBuilder();
-                                        using (var hash = SHA256.Create())
-                                        {
-                                            //Getting hashed byte array
-                                            var result = hash.ComputeHash(Encoding.UTF8.GetBytes(read_xml_text));
-                                            foreach (var b in result)
-                                                strBuilder.Append(b.ToString("x2")); //Byte as hexadecimal format
-                                        }
-
-                                        var hashstr = strBuilder.ToString();
-
-                                        //Console.WriteLine($"{hashstr}");
-
-                                        using (StreamReader reader = new StreamReader(xmlin, Encoding.UTF8, false))
-                                        {
-                                            XmlSerializer serializer = new XmlSerializer(typeof(export));
-
-                                            XmlSerializer xmlser = new XmlSerializer(typeof(export));
-                                            export exportd = xmlser.Deserialize(reader) as export;
-                                            //Console.WriteLine($"{exportd.ItemsElementName[0].ToString()}");
-
-
-                                            var settings = new JsonSerializerSettings()
+                                            using (var streamReader = new StreamReader(xmlin, Encoding.UTF8, false))
                                             {
-                                                Formatting = Newtonsoft.Json.Formatting.Indented,
-                                                TypeNameHandling = TypeNameHandling.Auto
-                                            };
-
-                                            switch (exportd.ItemsElementName[0].ToString())
+                                                read_xml_text = streamReader.ReadToEnd();
+                                            }
+                                            
+                                            var strBuilder = new StringBuilder();
+                                            using (var hash = SHA256.Create())
                                             {
-                                                case "contract": //contract;zfcs_contract2015Type - Информация (проект информации) о заключенном контракте;
+                                                //Getting hashed byte array                                         
+                                                var result = hash.ComputeHash(Encoding.UTF8.GetBytes(read_xml_text));
+                                                foreach (var b in result)
+                                                    strBuilder.Append(b.ToString("x2")); //Byte as hexadecimal format
+                                            }
+                                            
+                                            var hashstr = strBuilder.ToString();
+                                            using (StreamReader reader = new StreamReader(xmlin, Encoding.UTF8, false))
+                                            {
+                                                XmlSerializer serializer = new XmlSerializer(typeof(export));
+                                                XmlSerializer xmlser = new XmlSerializer(typeof(export));
+                                                export exportd = xmlser.Deserialize(reader) as export;
+                                                var settings = new JsonSerializerSettings()
+                                                {
+                                                    Formatting = Newtonsoft.Json.Formatting.Indented,
+                                                    TypeNameHandling = TypeNameHandling.Auto
+                                                };
+                                                switch (exportd.ItemsElementName[0].ToString())
+                                            {
+                                                    case "contract": //contract;zfcs_contract2015Type - Информация (проект информации) о заключенном контракте;
                                                     {
                                                         zfcs_contract2015Type contract = exportd.Items[0] as zfcs_contract2015Type;
                                                         string unf_json = JsonConvert.SerializeObject(contract);
@@ -133,7 +109,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         //_dataServices.SaveNotification(notifications);
                                                         break;
                                                     }
-                                                case "contractCancel": //contractCancel;zfcs_contractCancel2015Type - Информация об анулировании контракта;
+                                                    case "contractCancel": //contractCancel;zfcs_contractCancel2015Type - Информация об анулировании контракта;
                                                     {
                                                         zfcs_contractCancel2015Type contractCancel = exportd.Items[0] as zfcs_contractCancel2015Type;
                                                         string unf_json = JsonConvert.SerializeObject(contractCancel);
@@ -154,7 +130,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         //_dataServices.SaveNotification(notifications);
                                                         break;
                                                     }
-                                                case "contractProcedure": //contractProcedure;zfcs_contractProcedure2015Type - Информация об исполнении (расторжении) контракта;
+                                                    case "contractProcedure": //contractProcedure;zfcs_contractProcedure2015Type - Информация об исполнении (расторжении) контракта;
                                                     {
                                                         zfcs_contractProcedure2015Type contractProcedure = exportd.Items[0] as zfcs_contractProcedure2015Type;
                                                         string unf_json = JsonConvert.SerializeObject(contractProcedure);
@@ -175,27 +151,28 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         //_dataServices.SaveNotification(notifications);
                                                         break;
                                                     }
-                                                case "contractProcedureCancel": //contractProcedureCancel;zfcs_contractProcedureCancel2015Type - Сведения об отмене информации об исполнении (расторжении) контракта;
-                                                    {
-                                                        zfcs_contractProcedureCancel2015Type contractProcedureCancel = exportd.Items[0] as zfcs_contractProcedureCancel2015Type;
-                                                        string unf_json = JsonConvert.SerializeObject(contractProcedureCancel);
-
-                                                        var fcontract = new Contracts();
-
-                                                        //fscn.Wname = "";
-                                                        fcontract.Contract_num = contractProcedureCancel.regNum;
-                                                        fcontract.R_body = djson;// fcontract.R_body = unf_json;
-                                                        fcontract.Hash = hashstr;
-                                                        fcontract.Zip_file = nFile.Full_path;
-                                                        fcontract.File_name = entry.FullName;
-                                                        fcontract.Fz_type = 44;
-                                                        //fcontract.PublishDate = contractProcedureCancel.;
-                                                        fcontract.Type_contract = exportd.Items[0].GetType().Name;
-                                                        contracts.Add(fcontract);
-                                                        //_dataServices.SaveNotification(notifications);
+                                                    case "contractProcedureCancel": //contractProcedureCancel;zfcs_contractProcedureCancel2015Type - Сведения об отмене информации об исполнении (расторжении) контракта;
+                                                        {
+                                                            zfcs_contractProcedureCancel2015Type contractProcedureCancel = exportd.Items[0] as zfcs_contractProcedureCancel2015Type;
+                                                            string unf_json = JsonConvert.SerializeObject(contractProcedureCancel);
+                                                            
+                                                            var fcontract = new Contracts();
+                                                            
+                                                            //fscn.Wname = "";
+                                                            fcontract.Contract_num = contractProcedureCancel.regNum;
+                                                            fcontract.R_body = djson;// fcontract.R_body = unf_json;
+                                                            fcontract.Hash = hashstr;
+                                                            fcontract.Zip_file = nFile.Full_path;
+                                                            fcontract.File_name = entry.FullName;
+                                                            fcontract.Fz_type = 44;
+                                                            //fcontract.PublishDate = contractProcedureCancel.;
+                                                            //var date = DateTime.ParseExact(contractProcedureCancel.Items[0].ToString(), "dd:MM:yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                                                            //fcontract.PublishDate = date;
+                                                            fcontract.Type_contract = exportd.Items[0].GetType().Name;
+                                                            contracts.Add(fcontract);
+                                                            //_dataServices.SaveNotification(notifications);
                                                         break;
                                                     }
-
                                                     case "contractAvailableForElAct": //contractAvailableForElAct;zfcs_contractAvailableForElAct - Квитанция о доступности формирования документов электронного актирования по контракту;
                                                         {
                                                             zfcs_contractAvailableForElAct zfcs_contractAvailableForElAct = exportd.Items[0] as zfcs_contractAvailableForElAct;
@@ -285,17 +262,32 @@ namespace SplashUp.Core.Jobs.Fl44
                                 }
                             }
                         }
-                }
 
-                
-                    Console.WriteLine($"Всего добавляется записей Contracts в БД: {contracts.Count}");
-                    _dataServices.SaveContracts(contracts);
-                    nFile.Status = Status.Processed;
-                    nFile.Modifid_date = DateTime.Now;
-                    _dataServices.UpdateCasheFiles(nFile);
+                        _logger.LogInformation($"Всего добавляется записей Contracts в БД: {contracts.Count} из {nFile.Zip_file}");
+                        _dataServices.SaveContracts(contracts);
+                        nFile.Status = Status.Processed;
+                        nFile.Modifid_date = DateTime.Now;
+                        _dataServices.UpdateCasheFiles(nFile);
+                        //Чистим после себя
+                        try
+                        { 
+                            if (File.Exists(zipPath) && nFile.Date < DateTime.Now.AddDays(-_commonSettings.KeepDay)) File.Delete(zipPath);
+                            Directory.Delete(extractPath, true);
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError($"Файл заблокирован {zipPath}");
+                            _logger.LogError(ex, ex.Message);
+                        }
 
-                Directory.Delete(extractPath, true);
-                File.Delete(zipPath);
+                    }
+                    else
+                    {
+                        _logger.LogError($"Файл не найден {zipPath}");
+                        //Меняем и пробуем загрузить заново
+                        nFile.Status = Status.Exist;
+                        _dataServices.UpdateCasheFiles(nFile);
+                    }
                 });
 
 

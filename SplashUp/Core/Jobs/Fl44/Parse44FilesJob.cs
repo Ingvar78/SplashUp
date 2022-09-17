@@ -58,51 +58,69 @@ namespace SplashUp.Core.Jobs.Fl44
                     {
                         case "notifications":
                             {
+                                var cicle = 1;
+                                _logger.LogInformation("Начата обработка notifications ФЗ-44");
                                 var check = _dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir);
-                                while (check.Count > 0)
+                                _logger.LogInformation($"Начата обработка notifications ФЗ-44, цикл {cicle}");
+                                while (check.Count > 0 && cicle<=10)
                                 {
                                     ParseNnotifications(_dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir));
                                     check = _dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir);
+                                    _logger.LogInformation($"Обработано 1000 notifications ФЗ-44, цикл {cicle}");
+                                    cicle++;
                                 }
                             }
                             break;
                         case "contracts":
                             {
+                                var cicle = 1;
                                 var check = _dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir);
-                                while (check.Count > 0)
+                                _logger.LogInformation($"Начата обработка Contracts ФЗ-44, цикл { cicle}");
+                                while (check.Count > 0 && cicle <= 10)
                                 {
                                     ParseContracts(_dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir));
                                     check = _dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir);
+                                    _logger.LogInformation($"Обработано 1000 Contracts ФЗ-44, закончено {cicle}");
+                                    cicle++;
                                 }
                             }
                             break;
                         case "protocols":
                             {
+                                var cicle = 1;
+                                _logger.LogInformation($"Начата обработка protocols ФЗ-44, цикл {cicle}");
                                 var check = _dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir);
-                                while (check.Count > 0)
+                                while (check.Count > 0 && cicle <= 10)
                                 {
-
                                     ParseProtocols(_dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir));
                                     check = _dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir);
+                                    _logger.LogInformation($"Обработана 1000 protocols ФЗ-44, цикл { cicle}");
+                                    cicle++;
                                 }
                             }
                             break;
                         case "contractprojects":
                             {
+                                var cicle = 1;
                                 var tt4 = _dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir);
+                                _logger.LogInformation("Начата обработка contractprojects ФЗ-44");
                                 //ParseContractProjects(_dataServices.GetFileCashesList(100, Status.Uploaded, FLType.Fl44, basepath, dir));
+                                _logger.LogInformation("Обработана 1000 contractprojects ФЗ-44");
                             }
                             break;
                         case "notificationExceptions":
                             {
+                                _logger.LogInformation("Начата обработка notificationExceptions ФЗ-44");
                                 var tt5 = _dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir);
                                 //ParseNotificationExceptions(_dataServices.GetFileCashesList(100, Status.Uploaded, FLType.Fl44, basepath, dir));
+                                _logger.LogInformation("Обработана notificationExceptions ФЗ-44");
                             }
                             break;
 
                         default:
                             var tt = _dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir);
                             _logger.LogWarning($"Ошибка обработки файла из списка DirsDocs: {dir}, проверьте параметры ФЗ-44, не обработано {tt.Count} файлов");
+                            _logger.LogInformation($"Ошибка обработки файла из списка DirsDocs: {dir}, проверьте параметры ФЗ-44, не обработано {tt.Count} файлов");
                             break;
                     }
                 });

@@ -48,7 +48,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                 entry.ExtractToFile(Path.Combine(extractPath, entry.FullName));
                                 string xml_f_name = entry.FullName;
                                 string xmlin = (extractPath + "/" + entry.FullName);
-                                _logger.LogInformation("xmlin parse: " + xmlin);
+                                _logger.LogInformation("xmlin parse Nnotifications: " + xmlin);
 
                                 FileInfo infoCheck = new FileInfo(xmlin);
                                 if (infoCheck.Length != 0)
@@ -116,7 +116,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             break;
                                                         }
                                                     case "epClarificationDoc": //epClarificationDoc; clarificationDocType - Разъяснение положений документации;
-                                                      {
+                                                        {
                                                             clarificationDocType clarificationDoc = exportd.Items[0] as clarificationDocType;
                                                         //string unf_json = JsonConvert.SerializeObject(clarificationDoc);
                                                         
@@ -139,9 +139,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             notifications.Add(fscn);
                                                             break;
                                                         }
-
-                                                case "epClarificationResult": //epClarificationResult; clarificationResultType - Запрос о даче разъяснений результатов;
-                                                    {
+                                                    case "epClarificationResult": //epClarificationResult; clarificationResultType - Запрос о даче разъяснений результатов;
+                                                        {
                                                         clarificationResultType clarificationResult = exportd.Items[0] as clarificationResultType;
                                                         //string unf_json = JsonConvert.SerializeObject(clarificationResult);
 
@@ -163,9 +162,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "epNotificationCancel": //epNotificationCancel;notificationCancelType1 - Извещение об отмене определения поставщика (подрядчика, исполнителя) в электронной форме;
-                                                    {
+                                                    case "epNotificationCancel": //epNotificationCancel;notificationCancelType1 - Извещение об отмене определения поставщика (подрядчика, исполнителя) в электронной форме;
+                                                        {
                                                         notificationCancelType1 notificationCancel = exportd.Items[0] as notificationCancelType1;
                                                         //string unf_json = JsonConvert.SerializeObject(notificationCancel);
 
@@ -187,9 +185,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "epNotificationCancelFailure": //epNotificationCancelFailure;notificationCancelFailureType - Отмена извещения об отмене определения поставщика (подрядчика, исполнителя) в электронной форме;
-                                                    {
+                                                    case "epNotificationCancelFailure": //epNotificationCancelFailure;notificationCancelFailureType - Отмена извещения об отмене определения поставщика (подрядчика, исполнителя) в электронной форме;
+                                                        {
                                                         notificationCancelFailureType notificationCancelF = exportd.Items[0] as notificationCancelFailureType;
                                                         //string unf_json = JsonConvert.SerializeObject(notificationCancelF);
 
@@ -211,9 +208,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "epNotificationEOK": //epNotificationEOK;notificationEOKType - Извещение о проведении ЭOK;
-                                                    {
+                                                    case "epNotificationEOK": //epNotificationEOK;notificationEOKType - Извещение о проведении ЭOK;
+                                                        {
                                                         notificationEOKType notificationEOK = exportd.Items[0] as notificationEOKType;
                                                         //string unf_json = JsonConvert.SerializeObject(notificationEOK);
 
@@ -235,9 +231,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "epNotificationEOKOU": //epNotificationEOKOU;notificationEOKOUType - Извещение о проведении ЭOK-ОУ
-                                                    {
+                                                    case "epNotificationEOKOU": //epNotificationEOKOU;notificationEOKOUType - Извещение о проведении ЭOK-ОУ
+                                                        {
                                                         notificationEOKOUType notificationEOKOU = exportd.Items[0] as notificationEOKOUType;
 
                                                         var fscn = new Notifications();
@@ -258,7 +253,6 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-                                                    
                                                     case "epNotificationEOKD": //epNotificationEOKD;notificationEOKDType - Извещение о проведении ЭOKД;
                                                         {
                                                             notificationEOKDType epNotificationEOKD = exportd.Items[0] as notificationEOKDType;
@@ -281,9 +275,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             notifications.Add(fscn);
                                                             break;
                                                         }
-
                                                     case "epNotificationEZK": //epNotificationEZK;notificationEZKType - Извещение о проведении ЭЗК;
-                                                    {
+                                                        {
                                                         notificationEZKType notificationEZK = exportd.Items[0] as notificationEZKType;
                                                         //string unf_json = JsonConvert.SerializeObject(notificationEZK);
 
@@ -305,7 +298,6 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
                                                     case "epNotificationEZK2020": //epNotificationEZK2020;notificationEZK2020Type; - Извещение о проведении ЭЗК20 (запрос котировок в электронной форме с 01.10.2020 года);
                                                         {
                                                             notificationEZK2020Type epNotificationEZK2020 = exportd.Items[0] as notificationEZK2020Type;
@@ -353,7 +345,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             break;
                                                         }
                                                     case "epNotificationEZP": //epNotificationEZP;notificationEZPType - Извещение о проведении ЭЗП;
-                                                    {
+                                                        {
                                                         notificationEZPType notificationEZP = exportd.Items[0] as notificationEZPType;
                                                         //string unf_json = JsonConvert.SerializeObject(notificationEZP);
 
@@ -376,9 +368,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "epProlongationEOK": //epProlongationEOK;prolongationEOKType - Извещение о продлении срока подачи заявок на участие в ЭOK;
-                                                    {
+                                                    case "epProlongationEOK": //epProlongationEOK;prolongationEOKType - Извещение о продлении срока подачи заявок на участие в ЭOK;
+                                                        {
                                                         prolongationEOKType prolongationEOK = exportd.Items[0] as prolongationEOKType;
                                                         //string unf_json = JsonConvert.SerializeObject(prolongationEOK);
 
@@ -400,9 +391,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "epProlongationEOKOU": //epProlongationEOKOU; prolongationEOKOUType - Извещение о продлении срока подачи заявок на участие в ЭOK - ОУ;
-                                                    {
+                                                    case "epProlongationEOKOU": //epProlongationEOKOU; prolongationEOKOUType - Извещение о продлении срока подачи заявок на участие в ЭOK - ОУ;
+                                                        {
                                                         prolongationEOKOUType prolongationEOKOU = exportd.Items[0] as prolongationEOKOUType;
                                                         //string unf_json = JsonConvert.SerializeObject(prolongationEOKOU);
 
@@ -424,9 +414,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "epProlongationEZK": //epProlongationEZK; prolongationEZKType - Извещение о продлении срока подачи заявок на участие в ЭЗК;
-                                                    {
+                                                    case "epProlongationEZK": //epProlongationEZK; prolongationEZKType - Извещение о продлении срока подачи заявок на участие в ЭЗК;
+                                                        {
                                                         prolongationEZKType prolongationEZKT = exportd.Items[0] as prolongationEZKType;
                                                         //string unf_json = JsonConvert.SerializeObject(prolongationEZKT);
 
@@ -448,9 +437,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "fcs_notificationEFDateChange": //fcs_notificationEFDateChange; zfcs_notificationEFDateChangeType - Уведомление об изменении даты и времени проведения электронного аукциона
-                                                    {
+                                                    case "fcs_notificationEFDateChange": //fcs_notificationEFDateChange; zfcs_notificationEFDateChangeType - Уведомление об изменении даты и времени проведения электронного аукциона
+                                                        {
                                                         zfcs_notificationEFDateChangeType zfcsnEFDC = exportd.Items[0] as zfcs_notificationEFDateChangeType;
                                                         //string unf_json = JsonConvert.SerializeObject(zfcsnEFDC);
 
@@ -472,9 +460,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "fcsClarification": //fcsClarification; zfcs_clarificationType - Разъяснение положений документации;
-                                                    {
+                                                    case "fcsClarification": //fcsClarification; zfcs_clarificationType - Разъяснение положений документации;
+                                                        {
                                                         zfcs_clarificationType zfcs_clarification = exportd.Items[0] as zfcs_clarificationType;
                                                         //string unf_json = JsonConvert.SerializeObject(zfcs_clarification);
 
@@ -496,10 +483,9 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "fcsNotification111": //fcsNotification111; zfcs_notificationI111Type - Извещение о проведении закупки способом определения поставщика(подрядчика, исполнителя),
+                                                    case "fcsNotification111": //fcsNotification111; zfcs_notificationI111Type - Извещение о проведении закупки способом определения поставщика(подрядчика, исполнителя),
                                                                            //установленным Правительством Российской Федерации в соответствии со ст. 111 Федерального закона № 44 - ФЗ;
-                                                    {
+                                                        {
                                                         zfcs_notificationI111Type zfcs_notificationI111 = exportd.Items[0] as zfcs_notificationI111Type;
                                                         //string unf_json = JsonConvert.SerializeObject(zfcs_notificationI111);
 
@@ -521,9 +507,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "fcsNotificationCancel": //fcsNotificationCancel; zfcs_notificationCancelType - Извещение об отмене определения поставщика(подрядчика, исполнителя);
-                                                    {
+                                                    case "fcsNotificationCancel": //fcsNotificationCancel; zfcs_notificationCancelType - Извещение об отмене определения поставщика(подрядчика, исполнителя);
+                                                        {
                                                         zfcs_notificationCancelType zfcs_notificationCancel = exportd.Items[0] as zfcs_notificationCancelType;
                                                         //string unf_json = JsonConvert.SerializeObject(zfcs_notificationCancel);
 
@@ -545,8 +530,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-                                                case "fcsNotificationCancelFailure": //fcsNotificationCancelFailure; zfcs_notificationCancelFailureType - Отмена извещения об отмене определения поставщика(подрядчика, исполнителя)(в части лота);
-                                                    {
+                                                    case "fcsNotificationCancelFailure": //fcsNotificationCancelFailure; zfcs_notificationCancelFailureType - Отмена извещения об отмене определения поставщика(подрядчика, исполнителя)(в части лота);
+                                                        {
                                                         zfcs_notificationCancelFailureType zfcs_notificationCancelFailure = exportd.Items[0] as zfcs_notificationCancelFailureType;
                                                         //string unf_json = JsonConvert.SerializeObject(zfcs_notificationCancelFailure);
 
@@ -568,8 +553,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-                                                case "fcsNotificationEF": //fcsNotificationEF; zfcs_notificationEFType - Извещение о проведении ЭА(электронный аукцион); внесение изменений;
-                                                    {
+                                                    case "fcsNotificationEF": //fcsNotificationEF; zfcs_notificationEFType - Извещение о проведении ЭА(электронный аукцион); внесение изменений;
+                                                        {
                                                         zfcs_notificationEFType zfcs_notificationEF = exportd.Items[0] as zfcs_notificationEFType;
                                                         //string unf_json = JsonConvert.SerializeObject(zfcs_notificationEF);
 
@@ -614,7 +599,6 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             notifications.Add(fscn);
                                                             break;
                                                         }
-
                                                     case "fcsNotificationPO": //fcsNotificationPO;zfcs_notificationPOType - Извещение о проведении ПО (предварительный отбор);;
                                                         {
                                                             zfcs_notificationPOType zfcs_notificationPO = exportd.Items[0] as zfcs_notificationPOType;
@@ -639,7 +623,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             break;
                                                         }
                                                     case "fcsNotificationZakA": //fcsNotificationZakA; zfcs_notificationZakAType - Извещение о проведении ЗакА(закрытый аукцион); внесение изменений;
-                                                    {
+                                                        {
                                                         zfcs_notificationZakAType zfcs_notificationZakA = exportd.Items[0] as zfcs_notificationZakAType;
                                                         //string unf_json = JsonConvert.SerializeObject(zfcs_notificationZakA);
 
@@ -662,9 +646,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         //_dataServices.SaveNotification(notifications);
                                                         break;
                                                     }
-
-                                                case "fcsPlacementResult": //fcsPlacementResult; zfcs_placementResultType - Результат проведения процедуры определения поставщика;
-                                                    {
+                                                    case "fcsPlacementResult": //fcsPlacementResult; zfcs_placementResultType - Результат проведения процедуры определения поставщика;
+                                                        {
                                                         zfcs_placementResultType zfcs_placementResult = exportd.Items[0] as zfcs_placementResultType;
                                                         //string unf_json = JsonConvert.SerializeObject(zfcs_placementResult);
 
@@ -687,7 +670,6 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
                                                     case "pprf615Clarification": //pprf615Clarification;clarificationType - ;
                                                         {
                                                             clarificationType pprf615Clarification = exportd.Items[0] as clarificationType;
@@ -713,7 +695,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             break;
                                                         }
                                                     case "pprf615NotificationCancel": //pprf615NotificationCancel; notificationCancelType - Извещение об отмене закупки по ПП РФ № 615;
-                                                    {
+                                                        {
                                                         notificationCancelType pprf615NotificationCancel = exportd.Items[0] as notificationCancelType;
                                                         //string unf_json = JsonConvert.SerializeObject(pprf615NotificationCancel);
 
@@ -736,8 +718,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-                                                case "pprf615NotificationEF": //pprf615NotificationEF; notificationEFType - Извещение о проведении ЭА(электронный аукцион) по ПП РФ № 615; внесение изменений;
-                                                    {
+                                                    case "pprf615NotificationEF": //pprf615NotificationEF; notificationEFType - Извещение о проведении ЭА(электронный аукцион) по ПП РФ № 615; внесение изменений;
+                                                        {
                                                         notificationEFType notificationEF = exportd.Items[0] as notificationEFType;
                                                         //string unf_json = JsonConvert.SerializeObject(notificationEF);
 
@@ -760,9 +742,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "pprf615NotificationPO": //pprf615NotificationPO; notificationPOType - Извещение о проведении ПО(предварительный отбор) по ПП РФ № 615; внесение изменений;
-                                                    {
+                                                    case "pprf615NotificationPO": //pprf615NotificationPO; notificationPOType - Извещение о проведении ПО(предварительный отбор) по ПП РФ № 615; внесение изменений;
+                                                        {
                                                         notificationPOType notificationPO = exportd.Items[0] as notificationPOType;
                                                         //string unf_json = JsonConvert.SerializeObject(notificationPO);
 
@@ -785,9 +766,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "epProlongationCancelEOK": //epProlongationCancelEOK; prolongationCancelEOKType - Отмена извещения о продлении срока подачи заявок на участие в ЭОK
-                                                    {
+                                                    case "epProlongationCancelEOK": //epProlongationCancelEOK; prolongationCancelEOKType - Отмена извещения о продлении срока подачи заявок на участие в ЭОK
+                                                        {
                                                         prolongationCancelEOKType prolongationCancelEOK = exportd.Items[0] as prolongationCancelEOKType;
                                                         //string unf_json = JsonConvert.SerializeObject(prolongationCancelEOK);
 
@@ -810,9 +790,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "epProlongationCancelEZK": //epProlongationCancelEZK; prolongationCancelEZKType - Отмена извещения о продлении срока подачи заявок на участие в ЭЗK
-                                                    {
+                                                    case "epProlongationCancelEZK": //epProlongationCancelEZK; prolongationCancelEZKType - Отмена извещения о продлении срока подачи заявок на участие в ЭЗK
+                                                        {
                                                         prolongationCancelEZKType prolongationCancelEZK = exportd.Items[0] as prolongationCancelEZKType;
                                                         //string unf_json = JsonConvert.SerializeObject(prolongationCancelEZK);
 
@@ -835,9 +814,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "fcsNotificationOK": //fcsNotificationOK; zfcs_notificationOKType - Извещение о проведении OK(открытый конкурс); внесение изменений;
-                                                    {
+                                                    case "fcsNotificationOK": //fcsNotificationOK; zfcs_notificationOKType - Извещение о проведении OK(открытый конкурс); внесение изменений;
+                                                        {
                                                         zfcs_notificationOKType zfcs_notificationOK = exportd.Items[0] as zfcs_notificationOKType;
                                                         //string unf_json = JsonConvert.SerializeObject(zfcs_notificationOK);
 
@@ -860,9 +838,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "fcsNotificationOrgChange": //fcsNotificationOrgChange; zfcs_notificationOrgChangeType - Уведомление об изменении организации, осуществляющей закупку;
-                                                    {
+                                                    case "fcsNotificationOrgChange": //fcsNotificationOrgChange; zfcs_notificationOrgChangeType - Уведомление об изменении организации, осуществляющей закупку;
+                                                        {
                                                         zfcs_notificationOrgChangeType fcsNotificationOrgChange = exportd.Items[0] as zfcs_notificationOrgChangeType;
                                                         //string unf_json = JsonConvert.SerializeObject(fcsNotificationOrgChange);
 
@@ -885,9 +862,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "fcsNotificationZakK": //fcsNotificationZakK; zfcs_notificationZakKType - Извещение о проведении ЗакK(закрытый конкурс); внесение изменений;
-                                                    {
+                                                    case "fcsNotificationZakK": //fcsNotificationZakK; zfcs_notificationZakKType - Извещение о проведении ЗакK(закрытый конкурс); внесение изменений;
+                                                        {
                                                         zfcs_notificationZakKType fcsNotificationZakK = exportd.Items[0] as zfcs_notificationZakKType;
                                                         //string unf_json = JsonConvert.SerializeObject(fcsNotificationZakK);
 
@@ -910,9 +886,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "fcsNotificationZakKOU": //fcsNotificationZakKOU; zfcs_notificationZakKOUType - Извещение о проведении ЗакK - ОУ(закрытый конкурс с ограниченным участием); внесение изменений;
-                                                    {
+                                                    case "fcsNotificationZakKOU": //fcsNotificationZakKOU; zfcs_notificationZakKOUType - Извещение о проведении ЗакK - ОУ(закрытый конкурс с ограниченным участием); внесение изменений;
+                                                        {
                                                         zfcs_notificationZakKOUType fcsNotificationZakKOU = exportd.Items[0] as zfcs_notificationZakKOUType;
                                                         //string unf_json = JsonConvert.SerializeObject(fcsNotificationZakKOU);
 
@@ -935,9 +910,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         notifications.Add(fscn);
                                                         break;
                                                     }
-
-                                                case "fcsNotificationZK": //fcsNotificationZK; zfcs_notificationZKType - Извещение о проведении ЗK(запрос котировок); внесение изменений;
-                                                    {
+                                                    case "fcsNotificationZK": //fcsNotificationZK; zfcs_notificationZKType - Извещение о проведении ЗK(запрос котировок); внесение изменений;
+                                                        {
                                                         zfcs_notificationZKType fcsNotificationZK = exportd.Items[0] as zfcs_notificationZKType;
                                                         //string unf_json = JsonConvert.SerializeObject(fcsNotificationZK);
 
@@ -1008,6 +982,55 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             notifications.Add(fscn);
                                                             break;
                                                         }
+                                                    case "epNotificationEF2020":
+                                                        {
+                                                            notificationEF2020Type epNotificationEF2020 = exportd.Items[0] as notificationEF2020Type;
+                                                            //string unf_json = JsonConvert.SerializeObject(fcsNotificationZK);
+
+                                                            var fscn = new Notifications();
+
+                                                            //fscn.Wname = "";
+                                                            fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Hash = hashstr;
+                                                            //fscn.ContractConclusion = "";
+                                                            fscn.Inn = "";
+                                                            fscn.AppRating = 0;
+                                                            fscn.Zip_file = nFile.Full_path;
+                                                            fscn.File_name = entry.FullName;
+                                                            fscn.Fz_type = 44;
+                                                            //fscn.JournalNumber = ;
+                                                            fscn.Purchase_num = epNotificationEF2020.commonInfo.purchaseNumber;
+                                                            //fscn.ProtocolNum = notificationPO.commonInfo.
+                                                            fscn.PublishDate = epNotificationEF2020.commonInfo.publishDTInEIS;
+                                                            fscn.Type_notif = exportd.Items[0].GetType().Name;
+                                                            notifications.Add(fscn);
+                                                            break;
+                                                        }
+                                                    case "epNotificationEOK2020":
+                                                        {
+                                                            notificationEOK2020Type epNotificationEOK2020 = exportd.Items[0] as notificationEOK2020Type;
+                                                            //string unf_json = JsonConvert.SerializeObject(fcsNotificationZK);
+
+                                                            var fscn = new Notifications();
+
+                                                            //fscn.Wname = "";
+                                                            fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Hash = hashstr;
+                                                            //fscn.ContractConclusion = "";
+                                                            fscn.Inn = "";
+                                                            fscn.AppRating = 0;
+                                                            fscn.Zip_file = nFile.Full_path;
+                                                            fscn.File_name = entry.FullName;
+                                                            fscn.Fz_type = 44;
+                                                            //fscn.JournalNumber = ;
+                                                            fscn.Purchase_num = epNotificationEOK2020.commonInfo.purchaseNumber;
+                                                            //fscn.ProtocolNum = notificationPO.commonInfo.
+                                                            fscn.PublishDate = epNotificationEOK2020.commonInfo.publishDTInEIS;
+                                                            fscn.Type_notif = exportd.Items[0].GetType().Name;
+                                                            notifications.Add(fscn);
+                                                            break;
+                                                        }
+
                                                     default:
                                                         {
                                                             if (exportd.Items.Length > 1)
@@ -1081,14 +1104,13 @@ namespace SplashUp.Core.Jobs.Fl44
                         }
                 }
 
-                
-                    Console.WriteLine($"Всего добавляется записей в БД: {notifications.Count}");
+                    _logger.LogInformation($"ParseNnotifications Всего добавляется записей в БД: {notifications.Count}");
                     _dataServices.SaveNotification(notifications);
                     nFile.Status = Status.Processed;
                     nFile.Modifid_date = DateTime.Now;
                     _dataServices.UpdateCasheFiles(nFile);                    
                     Directory.Delete(extractPath, true);
-                    File.Delete(zipPath);
+                    if (File.Exists(zipPath)) File.Delete(zipPath);
             });
 
         }

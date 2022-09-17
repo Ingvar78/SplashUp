@@ -49,21 +49,21 @@ namespace SplashUp.Core.Jobs
             _logger.LogInformation($"Начало загрузки архивов: {StartDateTime.ToString()}: {_path}");
             var FreeDS = GetTotalFreeSpace(_commonSettings.BasePartition);
 
-            _logger.LogWarning($"44/223 - Доступно для загрузки: {FreeDS:F2}%  на диске: {_commonSettings.BasePartition}");
+            _logger.LogInformation($"44/223 - Доступно для загрузки: {FreeDS:F2}%  на диске: {_commonSettings.BasePartition}");
 
             //Создание списка и загрузка 1000 файлов, при первом вызове.
-            Parallel.Invoke(
-
-                // 1. получение списка файлов + сохранение списка для последующей загрузки
-                () => { GetListFTP44(); },
-                //2. загрузка 1000 файлов через получение списка файлов.
-                () => { DownloadFtpFiles44(_dataServices.GetDwList(1000, Status.Exist, FLType.Fl44)); },
-                ////ToDo
-                // 1. получение списка файлов + сохранение списка для последующей загрузки
-                () => { GetListFTP223(); },
-                //2. загрузка 1000 файлов через получение списка файлов.
-                () => { DownloadFtpFiles223(_dataServices.GetDwList(1000, Status.Exist, FLType.Fl223)); }
-                );
+            if (FreeDS > _commonSettings.FreeDS)
+                Parallel.Invoke(
+                    // 1. получение списка файлов + сохранение списка для последующей загрузки
+                    () => { GetListFTP44(); },
+                    //2. загрузка 1000 файлов через получение списка файлов.
+                    () => { DownloadFtpFiles44(_dataServices.GetDwList(1000, Status.Exist, FLType.Fl44)); },
+                    ////ToDo
+                    // 1. получение списка файлов + сохранение списка для последующей загрузки
+                    () => { GetListFTP223(); },
+                    //2. загрузка 1000 файлов через получение списка файлов.
+                    () => { DownloadFtpFiles223(_dataServices.GetDwList(1000, Status.Exist, FLType.Fl223)); }
+                    );
 
             //DownloadFtpFiles44(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44));
 
@@ -73,7 +73,7 @@ namespace SplashUp.Core.Jobs
 
             //Грузить пока не устанет или пока не закончится место!
 
-            while ((cnt44 > 0 || cnt223 > 0)&(FreeDS > _commonSettings.FreeDS))
+            while ((cnt44 > 0 || cnt223 > 0) & (FreeDS > _commonSettings.FreeDS))
             {
                 Parallel.Invoke(
                     () => { DownloadFtpFiles44(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44)); },
@@ -83,7 +83,7 @@ namespace SplashUp.Core.Jobs
                 cnt44 = _dataServices.GetDwList(1000, Status.Exist, FLType.Fl44).Count;
                 cnt223 = _dataServices.GetDwList(1000, Status.Exist, FLType.Fl223).Count;
                 FreeDS = GetTotalFreeSpace(_commonSettings.BasePartition);
-                _logger.LogWarning($"44/223 - Доступно для загрузки: {FreeDS:F2}%  на диске: {_commonSettings.BasePartition}");
+                _logger.LogInformation($"44/223 - Доступно для загрузки: {FreeDS:F2}%  на диске: {_commonSettings.BasePartition}");
             }
 
             //while (cnt44 > 0 || cnt223 > 0)
@@ -108,7 +108,7 @@ namespace SplashUp.Core.Jobs
             {
                 if (drive.IsReady && drive.Name == driveName)
                 {
-                    var FreeDS = (drive.TotalFreeSpace / drive.TotalSize) * 100;
+                    //var FreeDS = (drive.TotalFreeSpace / drive.TotalSize) * 100;
                     double percentFree = 100 * (double)drive.TotalFreeSpace / drive.TotalSize;
                     return percentFree;
 
@@ -152,6 +152,8 @@ namespace SplashUp.Core.Jobs
                 region44List = _fzSettings44.RegionsList;
 #endif
 
+                if (_commonSettings.partUsed.TestMode) region44List = _fzSettings44.RegionsList;
+
 
                 foreach (string region in region44List)
                 {
@@ -164,7 +166,7 @@ namespace SplashUp.Core.Jobs
                             //_logger.LogInformation("connect to ftp 44, region for download: " + region);
                             var ftpPath = $"/{basedir44}/{region}/{DirsDoc}/";
 
-                            string[] paths = { basedir44, region, DirsDoc};
+                            string[] paths = { basedir44, region, DirsDoc };
                             string fullPath = Path.Combine(paths);
                             Console.WriteLine(fullPath);
 
@@ -181,13 +183,13 @@ namespace SplashUp.Core.Jobs
                             SaveFTPPath(ftpList, DirsDoc, basedir44, Status.Exist, FLType.Fl44);
                             //Загрузка файла по региону переделать на загрузку с проверкой
                             //DownloadFtpFiles44(ftpList);
-                            _logger.LogInformation($"Создан список файлов для загрузки: { region} /{ DirsDoc} 44ФЗ");
+                            _logger.LogInformation($"Создан список файлов для загрузки: {region} /{DirsDoc} 44ФЗ");
                             client.Disconnect();
                         }
                         catch (Exception ex)
                         {
                             _logger.LogError(ex, ex.Message);
-                            _logger.LogInformation($"Ошибка создания списка файлов для загрузки: { region} /{ DirsDoc} 44ФЗ");
+                            _logger.LogInformation($"Ошибка создания списка файлов для загрузки: {region} /{DirsDoc} 44ФЗ");
                         }
                     }
                 }
@@ -233,6 +235,7 @@ namespace SplashUp.Core.Jobs
 #if true && DEBUG
                 region223List = _fzSettings223.RegionsList;
 #endif
+                if (_commonSettings.partUsed.TestMode) region223List = _fzSettings223.RegionsList;
 
                 foreach (string region in region223List)
                 {
@@ -258,7 +261,7 @@ namespace SplashUp.Core.Jobs
                         }
                         catch (Exception ex)
                         {
-                            _logger.LogInformation($"Ошибка создания списка файлов для загрузки: { region} /{ DirsDoc} 223ФЗ");
+                            _logger.LogInformation($"Ошибка создания списка файлов для загрузки: {region} /{DirsDoc} 223ФЗ");
                             _logger.LogError(ex, ex.Message);
                         }
                     }

@@ -246,12 +246,17 @@ namespace SplashUp.Core.Services
                 {
                     try
                     {
+                        //var find = db.Notifications
+                        //.AsNoTracking()
+                        //.Where(x => x.Purchase_num == notif.Purchase_num
+                        //&& x.Fz_type == notif.Fz_type
+                        //&& x.PublishDate == notif.PublishDate
+                        //&& x.Hash == notif.Hash)
+                        //.SingleOrDefault();
+
                         var find = db.Notifications
                         .AsNoTracking()
-                        .Where(x => x.Purchase_num == notif.Purchase_num
-                        && x.Fz_type == notif.Fz_type
-                        && x.PublishDate == notif.PublishDate
-                        && x.Hash == notif.Hash)
+                        .Where(x => x.Hash == notif.Hash)
                         .SingleOrDefault();
 
                         if (find == null)
@@ -291,12 +296,17 @@ namespace SplashUp.Core.Services
                 {
                     try
                     {
+                        //var find = db.Contracts
+                        //.AsNoTracking()
+                        //.Where(x => x.Contract_num == c.Contract_num
+                        //&& x.Fz_type == c.Fz_type
+                        //&& x.PublishDate == c.PublishDate
+                        //&& x.Hash == c.Hash)
+                        //.SingleOrDefault();
+
                         var find = db.Contracts
                         .AsNoTracking()
-                        .Where(x => x.Contract_num == c.Contract_num
-                        && x.Fz_type == c.Fz_type
-                        && x.PublishDate == c.PublishDate
-                        && x.Hash == c.Hash)
+                        .Where(x => x.Hash == c.Hash)
                         .SingleOrDefault();
 
                         if (find == null)
@@ -324,12 +334,17 @@ namespace SplashUp.Core.Services
                 {
                     try
                     {
+                        //var find = db.Protocols
+                        //.AsNoTracking()
+                        //.Where(x => x.Protocol_num == p.Protocol_num
+                        //&& x.Fz_type == p.Fz_type
+                        //&& x.PublishDate == p.PublishDate
+                        //&& x.Hash == p.Hash)
+                        //.SingleOrDefault();
+
                         var find = db.Protocols
                         .AsNoTracking()
-                        .Where(x => x.Protocol_num == p.Protocol_num
-                        && x.Fz_type == p.Fz_type
-                        && x.PublishDate == p.PublishDate
-                        && x.Hash == p.Hash)
+                        .Where(x => x.Hash == p.Hash)
                         .SingleOrDefault();
 
                         if (find == null)

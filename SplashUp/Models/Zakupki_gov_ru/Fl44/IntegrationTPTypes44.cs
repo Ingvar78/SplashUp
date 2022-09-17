@@ -295,6 +295,8 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         [System.Xml.Serialization.XmlElementAttribute("nsiKBKBudgetList", typeof(exportNsiKBKBudgetList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiKOKSList", typeof(exportNsiKOKSList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiKOSGUList", typeof(exportNsiKOSGUList))]
+        [System.Xml.Serialization.XmlElementAttribute("nsiKRKSList", typeof(exportNsiKRKSList))]
+        [System.Xml.Serialization.XmlElementAttribute("nsiKRLSList", typeof(exportNsiKRLSList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiKTRUNotUsingReasons", typeof(exportNsiKTRUNotUsingReasons))]
         [System.Xml.Serialization.XmlElementAttribute("nsiKTRUs", typeof(zfcs_nsiKTRUType))]
         [System.Xml.Serialization.XmlElementAttribute("nsiKVRList", typeof(exportNsiKVRList))]
@@ -311,10 +313,12 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         [System.Xml.Serialization.XmlElementAttribute("nsiOKVED2List", typeof(exportNsiOKVED2List))]
         [System.Xml.Serialization.XmlElementAttribute("nsiOKVEDList", typeof(exportNsiOKVEDList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiOffBudgetList", typeof(exportNsiOffBudgetList))]
+        [System.Xml.Serialization.XmlElementAttribute("nsiOrderEvalIndicatorsList", typeof(exportNsiOrderEvalIndicatorsList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiOrganizationList", typeof(exportNsiOrganizationList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiOrganizationRightsList", typeof(exportNsiOrganizationRightsList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiOrganizationTypesList", typeof(exportNsiOrganizationTypesList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiPPRF1428Subjects", typeof(exportNsiPPRF1428Subjects))]
+        [System.Xml.Serialization.XmlElementAttribute("nsiParticipantExperiencesList", typeof(exportNsiParticipantExperiencesList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiPlacingWayList", typeof(exportNsiPlacingWayList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiPlanPositionChangeReasonList", typeof(exportNsiPlanPositionChangeReasonList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiPrefRateList", typeof(exportNsiPrefRateList))]
@@ -322,11 +326,14 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         [System.Xml.Serialization.XmlElementAttribute("nsiPublicDiscussionDecisions", typeof(exportNsiPublicDiscussionDecisions))]
         [System.Xml.Serialization.XmlElementAttribute("nsiPublicDiscussionQuestionnaries", typeof(exportNsiPublicDiscussionQuestionnaries))]
         [System.Xml.Serialization.XmlElementAttribute("nsiPurchaseDocumentTypesList", typeof(exportNsiPurchaseDocumentTypesList))]
+        [System.Xml.Serialization.XmlElementAttribute("nsiPurchaseObjectCharsList", typeof(exportNsiPurchaseObjectCharsList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiPurchasePlanPositionChangeReasons", typeof(exportNsiPurchasePlanPositionChangeReasons))]
         [System.Xml.Serialization.XmlElementAttribute("nsiPurchasePreferenceList", typeof(exportNsiPurchasePreferenceList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiPurchaseRejectReasonList", typeof(exportNsiPurchaseRejectReasonList))]
+        [System.Xml.Serialization.XmlElementAttribute("nsiQualPurchaseParticipantsList", typeof(exportNsiQualPurchaseParticipantsList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiRNPOthersList", typeof(exportNsiRNPOthersList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiRightSideKTRUs", typeof(zfcs_nsiRightSideKTRUType))]
+        [System.Xml.Serialization.XmlElementAttribute("nsiSVRList", typeof(exportNsiSVRList))]
         [System.Xml.Serialization.XmlElementAttribute("nsiSingleCustomerReasonsOZ", typeof(exportNsiSingleCustomerReasonsOZ))]
         [System.Xml.Serialization.XmlElementAttribute("nsiSpecialPurchases", typeof(exportNsiSpecialPurchases))]
         [System.Xml.Serialization.XmlElementAttribute("nsiSpecialPurchases2020", typeof(exportNsiSpecialPurchases2020))]
@@ -408,7 +415,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType24[] ItemsElementName;
+        public ItemsChoiceType26[] ItemsElementName;
     }
     
     /// <remarks/>
@@ -1189,6 +1196,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("12.2")]
         Item122,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("12.3")]
+        Item123,
     }
     
     /// <remarks/>
@@ -1481,6 +1492,9 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public string recipientName;
+        
+        /// <remarks/>
+        public string noticeNum;
     }
     
     /// <remarks/>
@@ -1682,6 +1696,9 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public string recipientName;
+        
+        /// <remarks/>
+        public string noticeNum;
     }
     
     /// <remarks/>
@@ -4963,7 +4980,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public attachmentType[] unableProvideContractGuaranteeDocs;
         
         /// <remarks/>
-        public customerRequirementEZakK2020TypeWarrantyInfo warrantyInfo;
+        public warrantyInfoType warrantyInfo;
         
         /// <remarks/>
         public paymentGuaranteeInfoType provisionWarranty;
@@ -5308,10 +5325,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     public partial class customerRequirementEZakK2020TypeContractConditionsInfoContractExecutionPaymentPlan {
         
         /// <remarks/>
-        public relativeAndNotRelativeTermsType contractExecutionTermsInfo;
+        public relativeAndNotRelativeTerms2022Type contractExecutionTermsInfo;
         
         /// <remarks/>
-        public customerRequirementEZakK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfo financingSourcesInfo;
+        public financingSourcesInfoType financingSourcesInfo;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("stageInfo", IsNullable=false)]
@@ -5339,11 +5356,11 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/common/1")]
-    public partial class relativeAndNotRelativeTermsType {
+    public partial class relativeAndNotRelativeTerms2022Type {
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("notRelativeTermsInfo", typeof(relativeAndNotRelativeTermsTypeNotRelativeTermsInfo))]
-        [System.Xml.Serialization.XmlElementAttribute("relativeTermsInfo", typeof(relativeAndNotRelativeTermsTypeRelativeTermsInfo))]
+        [System.Xml.Serialization.XmlElementAttribute("notRelativeTermsInfo", typeof(relativeAndNotRelativeTerms2022TypeNotRelativeTermsInfo))]
+        [System.Xml.Serialization.XmlElementAttribute("relativeTermsInfo", typeof(relativeAndNotRelativeTerms2022TypeRelativeTermsInfo))]
         public object Item;
     }
     
@@ -5353,11 +5370,19 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/common/1")]
-    public partial class relativeAndNotRelativeTermsTypeNotRelativeTermsInfo {
+    public partial class relativeAndNotRelativeTerms2022TypeNotRelativeTermsInfo {
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
-        public System.DateTime startDate;
+        [System.Xml.Serialization.XmlElementAttribute("isFromConclusionDate", typeof(bool))]
+        [System.Xml.Serialization.XmlElementAttribute("isNotEarlierConclusionDate", typeof(bool))]
+        [System.Xml.Serialization.XmlElementAttribute("startDate", typeof(System.DateTime), DataType="date")]
+        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
+        public object[] Items;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public ItemsChoiceType25[] ItemsElementName;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
@@ -5367,16 +5392,17 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/common/1")]
-    public partial class relativeAndNotRelativeTermsTypeRelativeTermsInfo {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/common/1", IncludeInSchema=false)]
+    public enum ItemsChoiceType25 {
         
         /// <remarks/>
-        public decimal start;
+        isFromConclusionDate,
         
         /// <remarks/>
-        public decimal term;
+        isNotEarlierConclusionDate,
+        
+        /// <remarks/>
+        startDate,
     }
     
     /// <remarks/>
@@ -5384,17 +5410,59 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZakK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfo {
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class relativeAndNotRelativeTerms2022TypeRelativeTermsInfo {
+        
+        /// <remarks/>
+        public decimal start;
+        
+        /// <remarks/>
+        public dayType startDayType;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool startDayTypeSpecified;
+        
+        /// <remarks/>
+        public decimal term;
+        
+        /// <remarks/>
+        public dayType termDayType;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool termDayTypeSpecified;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/base/1")]
+    public enum dayType {
+        
+        /// <remarks/>
+        working,
+        
+        /// <remarks/>
+        calendar,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
+    public partial class financingSourcesInfoType {
         
         /// <remarks/>
         public string financingSource;
         
         /// <remarks/>
-        public customerRequirementEZakK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoBudgetFinancingsInfo budgetFinancingsInfo;
+        public financingSourcesInfoTypeBudgetFinancingsInfo budgetFinancingsInfo;
         
         /// <remarks/>
-        public customerRequirementEZakK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo nonbudgetFinancingsInfo;
+        public financingSourcesInfoTypeNonbudgetFinancingsInfo nonbudgetFinancingsInfo;
         
         /// <remarks/>
         public int currentYear;
@@ -5409,7 +5477,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZakK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoBudgetFinancingsInfo {
+    public partial class financingSourcesInfoTypeBudgetFinancingsInfo {
         
         /// <remarks/>
         public budgetFundsContractRef budgetInfo;
@@ -5492,12 +5560,12 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZakK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo {
+    public partial class financingSourcesInfoTypeNonbudgetFinancingsInfo {
         
         /// <remarks/>
         public bool selfFunds;
         
-        public customerRequirementEZakK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo() {
+        public financingSourcesInfoTypeNonbudgetFinancingsInfo() {
             this.selfFunds = true;
         }
     }
@@ -5545,7 +5613,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public string externalSid;
         
         /// <remarks/>
-        public relativeAndNotRelativeTermsType termsInfo;
+        public relativeAndNotRelativeTerms2022Type termsInfo;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("budgetFinancingInfo", IsNullable=false)]
@@ -5951,8 +6019,8 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZakK2020TypeWarrantyInfo {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
+    public partial class warrantyInfoType {
         
         /// <remarks/>
         public string warrantyServiceRequirement;
@@ -6075,7 +6143,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public attachmentType[] unableProvideContractGuaranteeDocs;
         
         /// <remarks/>
-        public customerRequirementEZakA2020TypeWarrantyInfo warrantyInfo;
+        public warrantyInfoType warrantyInfo;
         
         /// <remarks/>
         public paymentGuaranteeInfoType provisionWarranty;
@@ -6197,10 +6265,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     public partial class customerRequirementEZakA2020TypeContractConditionsInfoContractExecutionPaymentPlan {
         
         /// <remarks/>
-        public relativeAndNotRelativeTermsType contractExecutionTermsInfo;
+        public relativeAndNotRelativeTerms2022Type contractExecutionTermsInfo;
         
         /// <remarks/>
-        public customerRequirementEZakA2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfo financingSourcesInfo;
+        public financingSourcesInfoType financingSourcesInfo;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("stageInfo", IsNullable=false)]
@@ -6228,64 +6296,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZakA2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfo {
-        
-        /// <remarks/>
-        public string financingSource;
-        
-        /// <remarks/>
-        public customerRequirementEZakA2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoBudgetFinancingsInfo budgetFinancingsInfo;
-        
-        /// <remarks/>
-        public customerRequirementEZakA2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo nonbudgetFinancingsInfo;
-        
-        /// <remarks/>
-        public int currentYear;
-        
-        /// <remarks/>
-        public financeResourcesType1 financeInfo;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZakA2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoBudgetFinancingsInfo {
-        
-        /// <remarks/>
-        public budgetFundsContractRef budgetInfo;
-        
-        /// <remarks/>
-        public budgetLevelElectronicContractType budgetLevel;
-        
-        /// <remarks/>
-        public OKTMORef OKTMOInfo;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZakA2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo {
-        
-        /// <remarks/>
-        public bool selfFunds;
-        
-        public customerRequirementEZakA2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo() {
-            this.selfFunds = true;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
     public partial class customerRequirementEZakA2020TypeContractConditionsInfoContractExecutionPaymentPlanNonbudgetFinancings {
         
         /// <remarks/>
@@ -6293,24 +6303,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public financeResourcesType1 nonbudgetFinancing;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZakA2020TypeWarrantyInfo {
-        
-        /// <remarks/>
-        public string warrantyServiceRequirement;
-        
-        /// <remarks/>
-        public string manufacturersWarrantyRequirement;
-        
-        /// <remarks/>
-        public string warrantyTerm;
     }
     
     /// <remarks/>
@@ -7053,7 +7045,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType16[] ItemsElementName;
+        public ItemsChoiceType17[] ItemsElementName;
     }
     
     /// <remarks/>
@@ -7789,7 +7781,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/common/1", IncludeInSchema=false)]
-    public enum ItemsChoiceType16 {
+    public enum ItemsChoiceType17 {
         
         /// <remarks/>
         drugQuantityCustomersInfo,
@@ -8406,6 +8398,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public costCriterionCodeEnum code;
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("indicatorInfo", IsNullable=false)]
+        public indicatorInfoType[] indicatorsInfo;
+        
+        /// <remarks/>
         public criterionValueType valueInfo;
         
         /// <remarks/>
@@ -8437,6 +8433,34 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
+    public partial class indicatorInfoType {
+        
+        /// <remarks/>
+        public long sId;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool sIdSpecified;
+        
+        /// <remarks/>
+        public string externalSId;
+        
+        /// <remarks/>
+        public string name;
+        
+        /// <remarks/>
+        public decimal value;
+        
+        /// <remarks/>
+        public string addInfo;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
     public partial class criterionValueType {
         
         /// <remarks/>
@@ -8449,14 +8473,14 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType17[] ItemsElementName;
+        public ItemsChoiceType18[] ItemsElementName;
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1", IncludeInSchema=false)]
-    public enum ItemsChoiceType17 {
+    public enum ItemsChoiceType18 {
         
         /// <remarks/>
         value,
@@ -8574,6 +8598,12 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public string name;
         
         /// <remarks/>
+        public purchaseObjectCharsRef purchaseObjectCharsInfo;
+        
+        /// <remarks/>
+        public qualPurchaseParticipantsRef qualPurchaseParticipantsInfo;
+        
+        /// <remarks/>
         public decimal value;
         
         /// <remarks/>
@@ -8588,6 +8618,153 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public measurementOrderEnum measurementOrder;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool measurementOrderSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("detailIndicatorInfo", IsNullable=false)]
+        public indicatorDocOKTypeDetailIndicatorInfo[] detailIndicatorsInfo;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/base/1")]
+    public partial class purchaseObjectCharsRef {
+        
+        /// <remarks/>
+        public string code;
+        
+        /// <remarks/>
+        public string name;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/base/1")]
+    public partial class qualPurchaseParticipantsRef {
+        
+        /// <remarks/>
+        public string code;
+        
+        /// <remarks/>
+        public string name;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
+    public partial class indicatorDocOKTypeDetailIndicatorInfo {
+        
+        /// <remarks/>
+        public long sId;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool sIdSpecified;
+        
+        /// <remarks/>
+        public string externalSId;
+        
+        /// <remarks/>
+        public indicatorDocOKTypeDetailIndicatorInfoIndicatorInfo indicatorInfo;
+        
+        /// <remarks/>
+        public decimal value;
+        
+        /// <remarks/>
+        public orderEvalIndicatorsRef orderEvalIndicatorsInfo;
+        
+        /// <remarks/>
+        public availAbsEvalEnum availAbsEvaluation;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool availAbsEvaluationSpecified;
+        
+        /// <remarks/>
+        public decimal limitMin;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool limitMinSpecified;
+        
+        /// <remarks/>
+        public decimal limitMax;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool limitMaxSpecified;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
+    public partial class indicatorDocOKTypeDetailIndicatorInfoIndicatorInfo {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("indicatorDictInfo", typeof(participantExperiencesRef))]
+        [System.Xml.Serialization.XmlElementAttribute("manualEnteredName", typeof(string))]
+        public object Item;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/base/1")]
+    public partial class participantExperiencesRef {
+        
+        /// <remarks/>
+        public string code;
+        
+        /// <remarks/>
+        public string name;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/base/1")]
+    public partial class orderEvalIndicatorsRef {
+        
+        /// <remarks/>
+        public string code;
+        
+        /// <remarks/>
+        public string name;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/base/1")]
+    public enum availAbsEvalEnum {
+        
+        /// <remarks/>
+        AVAIL_CHARS,
+        
+        /// <remarks/>
+        NO_CHARS,
+        
+        /// <remarks/>
+        NOT_PROV_CHARS,
     }
     
     /// <remarks/>
@@ -9050,7 +9227,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public attachmentType[] unableProvideContractGuaranteeDocs;
         
         /// <remarks/>
-        public customerRequirementEZT2020TypeWarrantyInfo warrantyInfo;
+        public warrantyInfoType warrantyInfo;
         
         /// <remarks/>
         public paymentGuaranteeInfoType provisionWarranty;
@@ -9161,10 +9338,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     public partial class customerRequirementEZT2020TypeContractConditionsInfoContractExecutionPaymentPlan {
         
         /// <remarks/>
-        public relativeAndNotRelativeTermsType contractExecutionTermsInfo;
+        public relativeAndNotRelativeTerms2022Type contractExecutionTermsInfo;
         
         /// <remarks/>
-        public customerRequirementEZT2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfo financingSourcesInfo;
+        public financingSourcesInfoType financingSourcesInfo;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("stageInfo", IsNullable=false)]
@@ -9189,64 +9366,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZT2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfo {
-        
-        /// <remarks/>
-        public string financingSource;
-        
-        /// <remarks/>
-        public customerRequirementEZT2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoBudgetFinancingsInfo budgetFinancingsInfo;
-        
-        /// <remarks/>
-        public customerRequirementEZT2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo nonbudgetFinancingsInfo;
-        
-        /// <remarks/>
-        public int currentYear;
-        
-        /// <remarks/>
-        public financeResourcesType1 financeInfo;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZT2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoBudgetFinancingsInfo {
-        
-        /// <remarks/>
-        public budgetFundsContractRef budgetInfo;
-        
-        /// <remarks/>
-        public budgetLevelElectronicContractType budgetLevel;
-        
-        /// <remarks/>
-        public OKTMORef OKTMOInfo;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZT2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo {
-        
-        /// <remarks/>
-        public bool selfFunds;
-        
-        public customerRequirementEZT2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo() {
-            this.selfFunds = true;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
     public partial class customerRequirementEZT2020TypeContractConditionsInfoContractExecutionPaymentPlanNonbudgetFinancings {
         
         /// <remarks/>
@@ -9254,24 +9373,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public financeResourcesType1 nonbudgetFinancing;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZT2020TypeWarrantyInfo {
-        
-        /// <remarks/>
-        public string warrantyServiceRequirement;
-        
-        /// <remarks/>
-        public string manufacturersWarrantyRequirement;
-        
-        /// <remarks/>
-        public string warrantyTerm;
     }
     
     /// <remarks/>
@@ -9764,6 +9865,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public costCriterionProtocolEOK2020FirstSectionsCodeEnum code;
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("indicatorInfo", IsNullable=false)]
+        public indicatorScoreType[] indicatorsInfo;
+        
+        /// <remarks/>
         public criterionValueProtocolFinalType valueInfo;
         
         /// <remarks/>
@@ -9773,7 +9878,15 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public decimal score;
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool scoreSpecified;
+        
+        /// <remarks/>
         public decimal normedScore;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool normedScoreSpecified;
         
         /// <remarks/>
         public string offer;
@@ -9790,6 +9903,106 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         MC,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
+    public partial class indicatorScoreType {
+        
+        /// <remarks/>
+        public long sId;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool sIdSpecified;
+        
+        /// <remarks/>
+        public string externalSId;
+        
+        /// <remarks/>
+        public string name;
+        
+        /// <remarks/>
+        public decimal value;
+        
+        /// <remarks/>
+        public string addInfo;
+        
+        /// <remarks/>
+        public decimal score;
+        
+        /// <remarks/>
+        public decimal normedScore;
+        
+        /// <remarks/>
+        public string offerText;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("indicatorScoringInfo", IsNullable=false)]
+        public scoringType[] indicatorsScoringInfo;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
+    public partial class scoringType {
+        
+        /// <remarks/>
+        public commissionMemberType1 commissionMemberInfo;
+        
+        /// <remarks/>
+        public decimal score;
+        
+        /// <remarks/>
+        public decimal normedScore;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="commissionMemberType", Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class commissionMemberType1 {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="positiveInteger")]
+        public string memberNumber;
+        
+        /// <remarks/>
+        public personType nameInfo;
+        
+        /// <remarks/>
+        public commissionRoleType1 role;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="commissionRoleType", Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class commissionRoleType1 {
+        
+        /// <remarks/>
+        public string code;
+        
+        /// <remarks/>
+        public string name;
+        
+        /// <remarks/>
+        public bool rightVote;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool rightVoteSpecified;
     }
     
     /// <remarks/>
@@ -10312,47 +10525,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="commissionMemberType", Namespace="http://zakupki.gov.ru/oos/common/1")]
-    public partial class commissionMemberType1 {
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="positiveInteger")]
-        public string memberNumber;
-        
-        /// <remarks/>
-        public personType nameInfo;
-        
-        /// <remarks/>
-        public commissionRoleType1 role;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="commissionRoleType", Namespace="http://zakupki.gov.ru/oos/common/1")]
-    public partial class commissionRoleType1 {
-        
-        /// <remarks/>
-        public string code;
-        
-        /// <remarks/>
-        public string name;
-        
-        /// <remarks/>
-        public bool rightVote;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool rightVoteSpecified;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
     public partial class protocolEZakK2020FinalTypeProtocolInfoApplicationInfo {
         
@@ -10512,6 +10684,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public costCriterionCodeEnum code;
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("indicatorInfo", IsNullable=false)]
+        public indicatorScoreType[] indicatorsInfo;
+        
+        /// <remarks/>
         public criterionValueProtocolFinalType valueInfo;
         
         /// <remarks/>
@@ -10521,7 +10697,15 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public decimal score;
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool scoreSpecified;
+        
+        /// <remarks/>
         public decimal normedScore;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool normedScoreSpecified;
         
         /// <remarks/>
         public string offer;
@@ -10579,6 +10763,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public measurementOrderEnum measurementOrder;
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool measurementOrderSpecified;
+        
+        /// <remarks/>
         public decimal score;
         
         /// <remarks/>
@@ -10593,24 +10781,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("commissionMemberScoringInfo", IsNullable=false)]
         public scoringType[] commissionMembersScoringInfo;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class scoringType {
-        
-        /// <remarks/>
-        public commissionMemberType1 commissionMemberInfo;
-        
-        /// <remarks/>
-        public decimal score;
-        
-        /// <remarks/>
-        public decimal normedScore;
     }
     
     /// <remarks/>
@@ -10644,6 +10814,12 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public string name;
         
         /// <remarks/>
+        public purchaseObjectCharsRef purchaseObjectCharsInfo;
+        
+        /// <remarks/>
+        public qualPurchaseParticipantsRef qualPurchaseParticipantsInfo;
+        
+        /// <remarks/>
         public decimal value;
         
         /// <remarks/>
@@ -10660,13 +10836,29 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public measurementOrderEnum measurementOrder;
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool measurementOrderSpecified;
+        
+        /// <remarks/>
         public decimal score;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool scoreSpecified;
         
         /// <remarks/>
         public decimal normedScore;
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool normedScoreSpecified;
+        
+        /// <remarks/>
         public decimal offer;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool offerSpecified;
         
         /// <remarks/>
         public string offerText;
@@ -10674,6 +10866,91 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("indicatorScoringInfo", IsNullable=false)]
         public scoringType[] indicatorsScoringInfo;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("detailIndicatorScoringInfo", IsNullable=false)]
+        public detailIndicatorScoreType[] detailIndicatorsScoringInfo;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
+    public partial class detailIndicatorScoreType {
+        
+        /// <remarks/>
+        public long sId;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool sIdSpecified;
+        
+        /// <remarks/>
+        public string externalSId;
+        
+        /// <remarks/>
+        public detailIndicatorScoreTypeIndicatorInfo indicatorInfo;
+        
+        /// <remarks/>
+        public decimal value;
+        
+        /// <remarks/>
+        public decimal score;
+        
+        /// <remarks/>
+        public decimal normedScore;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("offer", typeof(decimal))]
+        [System.Xml.Serialization.XmlElementAttribute("offerAvailability", typeof(bool))]
+        public object Item;
+        
+        /// <remarks/>
+        public string offerText;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("indicatorScoringInfo", IsNullable=false)]
+        public scoringType[] indicatorsScoringInfo;
+        
+        /// <remarks/>
+        public orderEvalIndicatorsRef orderEvalIndicatorsInfo;
+        
+        /// <remarks/>
+        public availAbsEvalEnum availAbsEvaluation;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool availAbsEvaluationSpecified;
+        
+        /// <remarks/>
+        public decimal limitMin;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool limitMinSpecified;
+        
+        /// <remarks/>
+        public decimal limitMax;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool limitMaxSpecified;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
+    public partial class detailIndicatorScoreTypeIndicatorInfo {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("indicatorDictInfo", typeof(participantExperiencesRef))]
+        [System.Xml.Serialization.XmlElementAttribute("manualEnteredName", typeof(string))]
+        public object Item;
     }
     
     /// <remarks/>
@@ -12571,7 +12848,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public attachmentType[] unableProvideContractGuaranteeDocs;
         
         /// <remarks/>
-        public customerRequirementEZK2020TypeWarrantyInfo warrantyInfo;
+        public warrantyInfoType warrantyInfo;
         
         /// <remarks/>
         public paymentGuaranteeInfoType provisionWarranty;
@@ -12703,10 +12980,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     public partial class customerRequirementEZK2020TypeContractConditionsInfoContractExecutionPaymentPlan {
         
         /// <remarks/>
-        public relativeAndNotRelativeTermsType contractExecutionTermsInfo;
+        public relativeAndNotRelativeTerms2022Type contractExecutionTermsInfo;
         
         /// <remarks/>
-        public customerRequirementEZK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfo financingSourcesInfo;
+        public financingSourcesInfoType financingSourcesInfo;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("stageInfo", IsNullable=false)]
@@ -12734,64 +13011,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfo {
-        
-        /// <remarks/>
-        public string financingSource;
-        
-        /// <remarks/>
-        public customerRequirementEZK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoBudgetFinancingsInfo budgetFinancingsInfo;
-        
-        /// <remarks/>
-        public customerRequirementEZK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo nonbudgetFinancingsInfo;
-        
-        /// <remarks/>
-        public int currentYear;
-        
-        /// <remarks/>
-        public financeResourcesType1 financeInfo;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoBudgetFinancingsInfo {
-        
-        /// <remarks/>
-        public budgetFundsContractRef budgetInfo;
-        
-        /// <remarks/>
-        public budgetLevelElectronicContractType budgetLevel;
-        
-        /// <remarks/>
-        public OKTMORef OKTMOInfo;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo {
-        
-        /// <remarks/>
-        public bool selfFunds;
-        
-        public customerRequirementEZK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo() {
-            this.selfFunds = true;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
     public partial class customerRequirementEZK2020TypeContractConditionsInfoContractExecutionPaymentPlanNonbudgetFinancings {
         
         /// <remarks/>
@@ -12799,24 +13018,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public financeResourcesType1 nonbudgetFinancing;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEZK2020TypeWarrantyInfo {
-        
-        /// <remarks/>
-        public string warrantyServiceRequirement;
-        
-        /// <remarks/>
-        public string manufacturersWarrantyRequirement;
-        
-        /// <remarks/>
-        public string warrantyTerm;
     }
     
     /// <remarks/>
@@ -12892,7 +13093,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public attachmentType[] unableProvideContractGuaranteeDocs;
         
         /// <remarks/>
-        public customerRequirementEOK2020TypeWarrantyInfo warrantyInfo;
+        public warrantyInfoType warrantyInfo;
         
         /// <remarks/>
         public paymentGuaranteeInfoType provisionWarranty;
@@ -13063,10 +13264,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     public partial class customerRequirementEOK2020TypeContractConditionsInfoContractExecutionPaymentPlan {
         
         /// <remarks/>
-        public relativeAndNotRelativeTermsType contractExecutionTermsInfo;
+        public relativeAndNotRelativeTerms2022Type contractExecutionTermsInfo;
         
         /// <remarks/>
-        public customerRequirementEOK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfo financingSourcesInfo;
+        public financingSourcesInfoType financingSourcesInfo;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("stageInfo", IsNullable=false)]
@@ -13094,64 +13295,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEOK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfo {
-        
-        /// <remarks/>
-        public string financingSource;
-        
-        /// <remarks/>
-        public customerRequirementEOK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoBudgetFinancingsInfo budgetFinancingsInfo;
-        
-        /// <remarks/>
-        public customerRequirementEOK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo nonbudgetFinancingsInfo;
-        
-        /// <remarks/>
-        public int currentYear;
-        
-        /// <remarks/>
-        public financeResourcesType1 financeInfo;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEOK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoBudgetFinancingsInfo {
-        
-        /// <remarks/>
-        public budgetFundsContractRef budgetInfo;
-        
-        /// <remarks/>
-        public budgetLevelElectronicContractType budgetLevel;
-        
-        /// <remarks/>
-        public OKTMORef OKTMOInfo;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEOK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo {
-        
-        /// <remarks/>
-        public bool selfFunds;
-        
-        public customerRequirementEOK2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo() {
-            this.selfFunds = true;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
     public partial class customerRequirementEOK2020TypeContractConditionsInfoContractExecutionPaymentPlanNonbudgetFinancings {
         
         /// <remarks/>
@@ -13159,24 +13302,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public financeResourcesType1 nonbudgetFinancing;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEOK2020TypeWarrantyInfo {
-        
-        /// <remarks/>
-        public string warrantyServiceRequirement;
-        
-        /// <remarks/>
-        public string manufacturersWarrantyRequirement;
-        
-        /// <remarks/>
-        public string warrantyTerm;
     }
     
     /// <remarks/>
@@ -13249,7 +13374,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public attachmentType[] unableProvideContractGuaranteeDocs;
         
         /// <remarks/>
-        public customerRequirementEF2020TypeWarrantyInfo warrantyInfo;
+        public warrantyInfoType warrantyInfo;
         
         /// <remarks/>
         public paymentGuaranteeInfoType provisionWarranty;
@@ -13387,10 +13512,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     public partial class customerRequirementEF2020TypeContractConditionsInfoContractExecutionPaymentPlan {
         
         /// <remarks/>
-        public relativeAndNotRelativeTermsType contractExecutionTermsInfo;
+        public relativeAndNotRelativeTerms2022Type contractExecutionTermsInfo;
         
         /// <remarks/>
-        public customerRequirementEF2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfo financingSourcesInfo;
+        public financingSourcesInfoType financingSourcesInfo;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("stageInfo", IsNullable=false)]
@@ -13418,64 +13543,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEF2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfo {
-        
-        /// <remarks/>
-        public string financingSource;
-        
-        /// <remarks/>
-        public customerRequirementEF2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoBudgetFinancingsInfo budgetFinancingsInfo;
-        
-        /// <remarks/>
-        public customerRequirementEF2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo nonbudgetFinancingsInfo;
-        
-        /// <remarks/>
-        public int currentYear;
-        
-        /// <remarks/>
-        public financeResourcesType1 financeInfo;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEF2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoBudgetFinancingsInfo {
-        
-        /// <remarks/>
-        public budgetFundsContractRef budgetInfo;
-        
-        /// <remarks/>
-        public budgetLevelElectronicContractType budgetLevel;
-        
-        /// <remarks/>
-        public OKTMORef OKTMOInfo;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEF2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo {
-        
-        /// <remarks/>
-        public bool selfFunds;
-        
-        public customerRequirementEF2020TypeContractConditionsInfoContractExecutionPaymentPlanFinancingSourcesInfoNonbudgetFinancingsInfo() {
-            this.selfFunds = true;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
     public partial class customerRequirementEF2020TypeContractConditionsInfoContractExecutionPaymentPlanNonbudgetFinancings {
         
         /// <remarks/>
@@ -13483,24 +13550,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public financeResourcesType1 nonbudgetFinancing;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/EPtypes/1")]
-    public partial class customerRequirementEF2020TypeWarrantyInfo {
-        
-        /// <remarks/>
-        public string warrantyServiceRequirement;
-        
-        /// <remarks/>
-        public string manufacturersWarrantyRequirement;
-        
-        /// <remarks/>
-        public string warrantyTerm;
     }
     
     /// <remarks/>
@@ -16034,14 +16083,14 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType23[] ItemsElementName;
+        public ItemsChoiceType24[] ItemsElementName;
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1", IncludeInSchema=false)]
-    public enum ItemsChoiceType23 {
+    public enum ItemsChoiceType24 {
         
         /// <remarks/>
         addInfo,
@@ -19549,14 +19598,14 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType22[] ItemsElementName;
+        public ItemsChoiceType23[] ItemsElementName;
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1", IncludeInSchema=false)]
-    public enum ItemsChoiceType22 {
+    public enum ItemsChoiceType23 {
         
         /// <remarks/>
         medicalCommissionDecision,
@@ -19661,14 +19710,14 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType21[] ItemsElementName;
+        public ItemsChoiceType22[] ItemsElementName;
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1", IncludeInSchema=false)]
-    public enum ItemsChoiceType21 {
+    public enum ItemsChoiceType22 {
         
         /// <remarks/>
         medicalCommissionDecision,
@@ -19773,14 +19822,14 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType20[] ItemsElementName;
+        public ItemsChoiceType21[] ItemsElementName;
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1", IncludeInSchema=false)]
-    public enum ItemsChoiceType20 {
+    public enum ItemsChoiceType21 {
         
         /// <remarks/>
         medicalCommissionDecision,
@@ -19885,14 +19934,14 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType19[] ItemsElementName;
+        public ItemsChoiceType20[] ItemsElementName;
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1", IncludeInSchema=false)]
-    public enum ItemsChoiceType19 {
+    public enum ItemsChoiceType20 {
         
         /// <remarks/>
         medicalCommissionDecision,
@@ -19998,14 +20047,14 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType18[] ItemsElementName;
+        public ItemsChoiceType19[] ItemsElementName;
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/EPtypes/1", IncludeInSchema=false)]
-    public enum ItemsChoiceType18 {
+    public enum ItemsChoiceType19 {
         
         /// <remarks/>
         medicalCommissionDecision,
@@ -26570,6 +26619,623 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public contactInfoType specializedInfo;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiSVRType {
+        
+        /// <remarks/>
+        public string consRegistryNum;
+        
+        /// <remarks/>
+        public string recordNum;
+        
+        /// <remarks/>
+        public System.DateTime startActiveDT;
+        
+        /// <remarks/>
+        public System.DateTime endActiveDT;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool endActiveDTSpecified;
+        
+        /// <remarks/>
+        public System.DateTime lastUpdateDT;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool lastUpdateDTSpecified;
+        
+        /// <remarks/>
+        public bool isArchive;
+        
+        /// <remarks/>
+        public string INN;
+        
+        /// <remarks/>
+        public string KPP;
+        
+        /// <remarks/>
+        public string OGRN;
+        
+        /// <remarks/>
+        public string OKPO;
+        
+        /// <remarks/>
+        public zfcs_nsiSVRTypeOrgName orgName;
+        
+        /// <remarks/>
+        public string orgStatus;
+        
+        /// <remarks/>
+        public bool isObosob;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool isObosobSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("FKAccounts")]
+        public zfcs_nsiSVRTypeFKAccounts[] FKAccounts;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("FOAccounts")]
+        public zfcs_nsiSVRTypeFOAccounts[] FOAccounts;
+        
+        /// <remarks/>
+        public bool isActual;
+        
+        public zfcs_nsiSVRType() {
+            this.isObosob = true;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiSVRTypeOrgName {
+        
+        /// <remarks/>
+        public string orgFullName;
+        
+        /// <remarks/>
+        public string orgShortName;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiSVRTypeFKAccounts {
+        
+        /// <remarks/>
+        public string personalAccountKS;
+        
+        /// <remarks/>
+        public string accountTypeCode;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime openDate;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime closeDate;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool closeDateSpecified;
+        
+        /// <remarks/>
+        public zfcs_TOFKRef openingTOFK;
+        
+        /// <remarks/>
+        public zfcs_TOFKRef serviceTOFK;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_TOFKRef {
+        
+        /// <remarks/>
+        public string code;
+        
+        /// <remarks/>
+        public string name;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiSVRTypeFOAccounts {
+        
+        /// <remarks/>
+        public string accountNum;
+        
+        /// <remarks/>
+        public string accountTypeName;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiKRLSType {
+        
+        /// <remarks/>
+        public System.DateTime startActiveDT;
+        
+        /// <remarks/>
+        public System.DateTime endActiveDT;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool endActiveDTSpecified;
+        
+        /// <remarks/>
+        public string status;
+        
+        /// <remarks/>
+        public zfcs_nsiKRLSTypeState state;
+        
+        /// <remarks/>
+        public string personalAccountType;
+        
+        /// <remarks/>
+        public string personalAccountKS;
+        
+        /// <remarks/>
+        public zfcs_nsiKRLSTypeAccScheme accScheme;
+        
+        /// <remarks/>
+        public zfcs_nsiKRLSTypeClientInfo clientInfo;
+        
+        /// <remarks/>
+        public budgetFundsContractRef budgetFunds;
+        
+        /// <remarks/>
+        public string GRBSCode;
+        
+        /// <remarks/>
+        public string contourType;
+        
+        /// <remarks/>
+        public string operationContour;
+        
+        /// <remarks/>
+        public zfcs_TOFKRef openingTOFK;
+        
+        /// <remarks/>
+        public zfcs_TOFKRef serviceTOFK;
+        
+        /// <remarks/>
+        public zfcs_TOFKRef createTOFK;
+        
+        /// <remarks/>
+        public zfcs_TOFKRef reserveTOFK;
+        
+        /// <remarks/>
+        public System.DateTime reserveDT;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool reserveDTSpecified;
+        
+        /// <remarks/>
+        public System.DateTime openDT;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool openDTSpecified;
+        
+        /// <remarks/>
+        public System.DateTime closeDT;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool closeDTSpecified;
+        
+        /// <remarks/>
+        public System.DateTime lastChangeDT;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool lastChangeDTSpecified;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public enum zfcs_nsiKRLSTypeState {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("0")]
+        Item0,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("1")]
+        Item1,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("2")]
+        Item2,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("3")]
+        Item3,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiKRLSTypeAccScheme {
+        
+        /// <remarks/>
+        public string accSchemeCode;
+        
+        /// <remarks/>
+        public string accSchemeName;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiKRLSTypeClientInfo {
+        
+        /// <remarks/>
+        public string clientType;
+        
+        /// <remarks/>
+        public string clientCode;
+        
+        /// <remarks/>
+        public string consRegistryNum;
+        
+        /// <remarks/>
+        public string clientAuthCode;
+        
+        /// <remarks/>
+        public string INN;
+        
+        /// <remarks/>
+        public string KPP;
+        
+        /// <remarks/>
+        public string OKPO;
+        
+        /// <remarks/>
+        public string ownerFullName;
+        
+        /// <remarks/>
+        public string ownerShortName;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiKRKSType {
+        
+        /// <remarks/>
+        public string ksNumber;
+        
+        /// <remarks/>
+        public System.DateTime createDT;
+        
+        /// <remarks/>
+        public System.DateTime updateDT;
+        
+        /// <remarks/>
+        public string consRegistryNum;
+        
+        /// <remarks/>
+        public string orgFullName;
+        
+        /// <remarks/>
+        public string orgINN;
+        
+        /// <remarks/>
+        public string orgKPP;
+        
+        /// <remarks/>
+        public string OKPO;
+        
+        /// <remarks/>
+        public OKTMOPPORef ppoOKTMO;
+        
+        /// <remarks/>
+        public bool isDelegatedKS;
+        
+        /// <remarks/>
+        public zfcs_nsiKRKSTypeKsKind ksKind;
+        
+        /// <remarks/>
+        public zfcs_nsiKRKSTypeKsType ksType;
+        
+        /// <remarks/>
+        public currencyRef valCode;
+        
+        /// <remarks/>
+        public string bankAccount;
+        
+        /// <remarks/>
+        public string bik;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime openDate;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime changeDate;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool changeDateSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime closeDate;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool closeDateSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime inDate;
+        
+        /// <remarks/>
+        public string ksStatus;
+        
+        /// <remarks/>
+        public bool isActing;
+        
+        /// <remarks/>
+        public budgetFundsContractRef budgetFunds;
+        
+        /// <remarks/>
+        public zfcs_TOFKRef openingTOFK;
+        
+        /// <remarks/>
+        public zfcs_TOFKRef serviceTOFK;
+        
+        /// <remarks/>
+        public zfcs_TOFKRef clientLocationTOFK;
+        
+        /// <remarks/>
+        public zfcs_TOFKRef csTOFK;
+        
+        /// <remarks/>
+        public zfcs_nsiKRKSTypeOwnerOrg ownerOrg;
+        
+        /// <remarks/>
+        public string systemCode;
+        
+        /// <remarks/>
+        public string changeReason;
+        
+        /// <remarks/>
+        public zfcs_nsiKRKSTypeSuccessorInfo successorInfo;
+        
+        /// <remarks/>
+        public string paySourceZKR;
+        
+        /// <remarks/>
+        public string resourceCode;
+        
+        /// <remarks/>
+        public bool isSeparateAcc;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool isSeparateAccSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime documentationDate;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool documentationDateSpecified;
+        
+        /// <remarks/>
+        public string signLS;
+        
+        /// <remarks/>
+        public bool isActual;
+        
+        public zfcs_nsiKRKSType() {
+            this.isSeparateAcc = true;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/base/1")]
+    public partial class OKTMOPPORef {
+        
+        /// <remarks/>
+        public string code;
+        
+        /// <remarks/>
+        public string name;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiKRKSTypeKsKind {
+        
+        /// <remarks/>
+        public string ksKindCode;
+        
+        /// <remarks/>
+        public string ksKindName;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiKRKSTypeKsType {
+        
+        /// <remarks/>
+        public string ksTypeCode;
+        
+        /// <remarks/>
+        public string ksTypeName;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiKRKSTypeOwnerOrg {
+        
+        /// <remarks/>
+        public string ownerConsRegistryNum;
+        
+        /// <remarks/>
+        public string ownerOrgFullName;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiKRKSTypeSuccessorInfo {
+        
+        /// <remarks/>
+        public string succNumber;
+        
+        /// <remarks/>
+        public string succBik;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiParticipantExperiences {
+        
+        /// <remarks/>
+        public string code;
+        
+        /// <remarks/>
+        public string name;
+        
+        /// <remarks/>
+        public bool isActual;
+        
+        /// <remarks/>
+        public System.DateTime lastUpdateDate;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiQualPurchaseParticipants {
+        
+        /// <remarks/>
+        public string code;
+        
+        /// <remarks/>
+        public string name;
+        
+        /// <remarks/>
+        public bool isActual;
+        
+        /// <remarks/>
+        public System.DateTime lastUpdateDate;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiOrderEvalIndicators {
+        
+        /// <remarks/>
+        public string code;
+        
+        /// <remarks/>
+        public string name;
+        
+        /// <remarks/>
+        public bool isActual;
+        
+        /// <remarks/>
+        public System.DateTime lastUpdateDate;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_nsiPurchaseObjectChars {
+        
+        /// <remarks/>
+        public string code;
+        
+        /// <remarks/>
+        public string name;
+        
+        /// <remarks/>
+        public bool isActual;
+        
+        /// <remarks/>
+        public System.DateTime lastUpdateDate;
     }
     
     /// <remarks/>
@@ -33452,6 +34118,13 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public zfcs_nsiContractSingleCustomerReasonTypePlacingWay[] placingWays;
         
         /// <remarks/>
+        public bool hidingContract;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool hidingContractSpecified;
+        
+        /// <remarks/>
         public bool actual;
         
         /// <remarks/>
@@ -33663,6 +34336,9 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public string name;
+        
+        /// <remarks/>
+        public zfcs_OKTMORef OKTMO;
         
         /// <remarks/>
         public bool actual;
@@ -34470,6 +35146,18 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         notificationAcceptableBO,
+        
+        /// <remarks/>
+        acceptedBO,
+        
+        /// <remarks/>
+        contractAcceptedBO,
+        
+        /// <remarks/>
+        contractProcedureAcceptedBO,
+        
+        /// <remarks/>
+        monetaryObligation,
     }
     
     /// <remarks/>
@@ -34718,6 +35406,14 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public string addCommentText;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("controlObjectRisks")]
+        public zfcs_control99ProtocolMismatchTypeUniversalExtractControlResultsControlObjectRisks[] controlObjectRisks;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("param", IsNullable=false)]
+        public zfcs_control99ParamType[] @params;
     }
     
     /// <remarks/>
@@ -34768,6 +35464,73 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public string mismatchInfoText;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_control99ProtocolMismatchTypeUniversalExtractControlResultsControlObjectRisks {
+        
+        /// <remarks/>
+        public zfcs_сontrolObjectRef controlObjectType;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("riskInfo", IsNullable=false)]
+        public zfcs_control99RiskInfoType[] risksInfo;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_сontrolObjectRef {
+        
+        /// <remarks/>
+        public string code;
+        
+        /// <remarks/>
+        public string name;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_control99RiskInfoType {
+        
+        /// <remarks/>
+        public int riskLevel;
+        
+        /// <remarks/>
+        public string riskCriterionCode;
+        
+        /// <remarks/>
+        public string riskCriterionName;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_control99ParamType {
+        
+        /// <remarks/>
+        public string code;
+        
+        /// <remarks/>
+        public string value;
+        
+        /// <remarks/>
+        public string message;
     }
     
     /// <remarks/>
@@ -35136,6 +35899,14 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public string addCommentText;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("controlObjectRisks")]
+        public zfcs_control99NoticeComplianceTypeUniversalExtractControlResultsControlObjectRisks[] controlObjectRisks;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("param", IsNullable=false)]
+        public zfcs_control99ParamType[] @params;
     }
     
     /// <remarks/>
@@ -35186,6 +35957,22 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public string mismatchInfoText;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_control99NoticeComplianceTypeUniversalExtractControlResultsControlObjectRisks {
+        
+        /// <remarks/>
+        public zfcs_сontrolObjectRef controlObjectType;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("riskInfo", IsNullable=false)]
+        public zfcs_control99RiskInfoType[] risksInfo;
     }
     
     /// <remarks/>
@@ -35403,21 +36190,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
-    public partial class zfcs_сontrolObjectRef {
-        
-        /// <remarks/>
-        public string code;
-        
-        /// <remarks/>
-        public string name;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
     public partial class zfcs_control99UniversalExtractType {
         
         /// <remarks/>
@@ -35454,7 +36226,18 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("param", IsNullable=false)]
-        public zfcs_control99UniversalExtractTypeControlObjectsParam[] @params;
+        public zfcs_control99ParamType[] @params;
+        
+        /// <remarks/>
+        public bool isHidden;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool isHiddenSpecified;
+        
+        public zfcs_control99UniversalExtractTypeControlObjects() {
+            this.isHidden = true;
+        }
     }
     
     /// <remarks/>
@@ -35509,6 +36292,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public zfcs_control99ExtPrintFormType extPrintForm;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("riskInfo", IsNullable=false)]
+        public zfcs_control99RiskInfoType[] risksInfo;
     }
     
     /// <remarks/>
@@ -35520,41 +36307,29 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     public partial class zfcs_control99UniversalExtractTypeControlObjectsControlObjectDocumentUrl {
         
         /// <remarks/>
-        public zfcs_control99UniversalExtractTypeControlObjectsControlObjectDocumentUrlUrlType urlType;
+        public zfcs_control99UrlType urlType;
         
         /// <remarks/>
         public string urlText;
+        
+        /// <remarks/>
+        public string fileDescription;
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
-    public enum zfcs_control99UniversalExtractTypeControlObjectsControlObjectDocumentUrlUrlType {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public enum zfcs_control99UrlType {
         
         /// <remarks/>
         printFormLink,
         
         /// <remarks/>
         viewFormLink,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
-    public partial class zfcs_control99UniversalExtractTypeControlObjectsParam {
         
         /// <remarks/>
-        public string code;
-        
-        /// <remarks/>
-        public string value;
-        
-        /// <remarks/>
-        public string message;
+        attachLink,
     }
     
     /// <remarks/>
@@ -36031,21 +36806,6 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public OKTMOPPORef OKTMOPPO;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/base/1")]
-    public partial class OKTMOPPORef {
-        
-        /// <remarks/>
-        public string code;
-        
-        /// <remarks/>
-        public string name;
     }
     
     /// <remarks/>
@@ -36939,7 +37699,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType15[] ItemsElementName;
+        public ItemsChoiceType16[] ItemsElementName;
     }
     
     /// <remarks/>
@@ -36986,7 +37746,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1", IncludeInSchema=false)]
-    public enum ItemsChoiceType15 {
+    public enum ItemsChoiceType16 {
         
         /// <remarks/>
         currency,
@@ -39230,14 +39990,14 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType14[] ItemsElementName;
+        public ItemsChoiceType15[] ItemsElementName;
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1", IncludeInSchema=false)]
-    public enum ItemsChoiceType14 {
+    public enum ItemsChoiceType15 {
         
         /// <remarks/>
         parentCheckNumber,
@@ -42030,6 +42790,62 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("prolongationInfo")]
         public zfcs_controlRegistersProlongationInfoType[] prolongationInfo;
+        
+        /// <remarks/>
+        public zfcs_checkPlanCheckInfoTypeCancelInfo cancelInfo;
+        
+        /// <remarks/>
+        public zfcs_checkPlanCheckInfoTypeState state;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool stateSpecified;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_checkPlanCheckInfoTypeCancelInfo {
+        
+        /// <remarks/>
+        public string number;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime decisionDate;
+        
+        /// <remarks/>
+        public string info;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("attachment", IsNullable=false)]
+        public zfcs_controlRegistersAttachmentType[] attachments;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public enum zfcs_checkPlanCheckInfoTypeState {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("0")]
+        Item0,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("1")]
+        Item1,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("2")]
+        Item2,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("3")]
+        Item3,
     }
     
     /// <remarks/>
@@ -45336,6 +46152,84 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class attachmentNotPublishedOnEISType {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("content", typeof(byte[]), DataType="base64Binary")]
+        [System.Xml.Serialization.XmlElementAttribute("contentId", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("cryptoSigns", typeof(attachmentNotPublishedOnEISTypeCryptoSigns))]
+        [System.Xml.Serialization.XmlElementAttribute("docDate", typeof(System.DateTime))]
+        [System.Xml.Serialization.XmlElementAttribute("docDescription", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("fileName", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("fileSize", typeof(string), DataType="nonNegativeInteger")]
+        [System.Xml.Serialization.XmlElementAttribute("notPublishedOnEIS", typeof(bool))]
+        [System.Xml.Serialization.XmlElementAttribute("publishedContentId", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("url", typeof(string))]
+        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
+        public object[] Items;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public ItemsChoiceType14[] ItemsElementName;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class attachmentNotPublishedOnEISTypeCryptoSigns {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("signature")]
+        public signatureType1[] signature;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/common/1", IncludeInSchema=false)]
+    public enum ItemsChoiceType14 {
+        
+        /// <remarks/>
+        content,
+        
+        /// <remarks/>
+        contentId,
+        
+        /// <remarks/>
+        cryptoSigns,
+        
+        /// <remarks/>
+        docDate,
+        
+        /// <remarks/>
+        docDescription,
+        
+        /// <remarks/>
+        fileName,
+        
+        /// <remarks/>
+        fileSize,
+        
+        /// <remarks/>
+        notPublishedOnEIS,
+        
+        /// <remarks/>
+        publishedContentId,
+        
+        /// <remarks/>
+        url,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/TPtypes/1")]
     public partial class tenderPlan2020KBKsTotalsInfoType {
         
@@ -46202,7 +47096,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("attachmentInfo", Namespace="http://zakupki.gov.ru/oos/common/1", IsNullable=false)]
-        public attachmentType[] attachments;
+        public attachmentNotPublishedOnEISType[] attachments;
         
         /// <remarks/>
         public printFormType printForm;
@@ -69407,6 +70301,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public bool finalStageExecution;
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool finalStageExecutionSpecified;
+        
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("execution")]
         public zfcs_contractProcedure2015TypeExecutionsExecution[] execution;
         
@@ -71475,7 +72373,8 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         [System.Xml.Serialization.XmlElementAttribute("legalEntityForeignState", typeof(zfcs_contract2015SupplierInfoTypeLegalEntityForeignState))]
         [System.Xml.Serialization.XmlElementAttribute("legalEntityRF", typeof(zfcs_contract2015SupplierInfoTypeLegalEntityRF))]
         [System.Xml.Serialization.XmlElementAttribute("notPublishedOnEIS", typeof(bool))]
-        public object Item;
+        [System.Xml.Serialization.XmlElementAttribute("supplierAccountsDetails", typeof(zfcs_contract2015SupplierInfoTypeSupplierAccountsDetails))]
+        public object[] Items;
     }
     
     /// <remarks/>
@@ -72521,6 +73420,141 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_contract2015SupplierInfoTypeSupplierAccountsDetails {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("supplierAccountDetails")]
+        public accountDetailsType[] supplierAccountDetails;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class accountDetailsType {
+        
+        /// <remarks/>
+        public long sid;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool sidSpecified;
+        
+        /// <remarks/>
+        public string externalSid;
+        
+        /// <remarks/>
+        public string guid;
+        
+        /// <remarks/>
+        public accountTypeType accountType;
+        
+        /// <remarks/>
+        public string personalAccountNumber;
+        
+        /// <remarks/>
+        public string creditOrgName;
+        
+        /// <remarks/>
+        public string bankAccountNumber;
+        
+        /// <remarks/>
+        public string bik;
+        
+        /// <remarks/>
+        public string corrAccountNumber;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/base/1")]
+    public enum accountTypeType {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("01")]
+        Item01,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("02")]
+        Item02,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("03")]
+        Item03,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("04")]
+        Item04,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("05")]
+        Item05,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("06")]
+        Item06,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class counterpartyForPayingPenaltiesAndTaxesType {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("payingPenaltiesInfo", typeof(counterpartyForPayingPenaltiesAndTaxesTypePayingPenaltiesInfo))]
+        [System.Xml.Serialization.XmlElementAttribute("payingTaxesInfo", typeof(counterpartyForPayingPenaltiesAndTaxesTypePayingTaxesInfo))]
+        public object Item;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("counterpartyAccountDetails", IsNullable=false)]
+        public accountDetailsType[] counterpartyAccountsDetails;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class counterpartyForPayingPenaltiesAndTaxesTypePayingPenaltiesInfo : organizationRef {
+        
+        /// <remarks/>
+        public string inn;
+        
+        /// <remarks/>
+        public string kpp;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class counterpartyForPayingPenaltiesAndTaxesTypePayingTaxesInfo {
+        
+        /// <remarks/>
+        public string inn;
+        
+        /// <remarks/>
+        public string kpp;
+        
+        /// <remarks/>
+        public string fullName;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
     public partial class zfcs_contract2015SupplierType {
         
@@ -72532,7 +73566,8 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         [System.Xml.Serialization.XmlElementAttribute("legalEntityForeignState", typeof(zfcs_contract2015SupplierTypeLegalEntityForeignState))]
         [System.Xml.Serialization.XmlElementAttribute("legalEntityRF", typeof(zfcs_contract2015SupplierTypeLegalEntityRF))]
         [System.Xml.Serialization.XmlElementAttribute("notPublishedOnEIS", typeof(bool))]
-        public object Item;
+        [System.Xml.Serialization.XmlElementAttribute("supplierAccountsDetails", typeof(zfcs_contract2015SupplierTypeSupplierAccountsDetails))]
+        public object[] Items;
     }
     
     /// <remarks/>
@@ -73288,6 +74323,19 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public string postBoxNumber;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/types/1")]
+    public partial class zfcs_contract2015SupplierTypeSupplierAccountsDetails {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("supplierAccountDetails")]
+        public accountDetailsType[] supplierAccountDetails;
     }
     
     /// <remarks/>
@@ -74644,6 +75692,85 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class deliveryPlaceInfoType {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("byKLADRInfo", typeof(deliveryPlaceInfoTypeByKLADRInfo))]
+        [System.Xml.Serialization.XmlElementAttribute("byOKTMOInfo", typeof(deliveryPlaceInfoTypeByOKTMOInfo))]
+        public object[] Items;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class deliveryPlaceInfoTypeByKLADRInfo {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("KLADRInfo", typeof(deliveryPlaceInfoTypeByKLADRInfoKLADRInfo))]
+        [System.Xml.Serialization.XmlElementAttribute("countryInfo", typeof(OKSMRef))]
+        public object Item;
+        
+        /// <remarks/>
+        public string deliveryPlace;
+        
+        /// <remarks/>
+        public deliveryPlaceInfoTypeByKLADRInfoNoKladrForRegionSettlementInfo noKladrForRegionSettlementInfo;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class deliveryPlaceInfoTypeByKLADRInfoKLADRInfo {
+        
+        /// <remarks/>
+        public string kladrCode;
+        
+        /// <remarks/>
+        public string fullName;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class deliveryPlaceInfoTypeByKLADRInfoNoKladrForRegionSettlementInfo {
+        
+        /// <remarks/>
+        public string region;
+        
+        /// <remarks/>
+        public string settlement;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/common/1")]
+    public partial class deliveryPlaceInfoTypeByOKTMOInfo {
+        
+        /// <remarks/>
+        public OKTMORef OKTMOInfo;
+        
+        /// <remarks/>
+        public string deliveryPlace;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/types/1")]
     public partial class zfcs_contract2015EnforcementType {
         
@@ -75292,6 +76419,9 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public bankSupportContractRequiredInfoType bankSupportContractRequiredInfo;
         
         /// <remarks/>
+        public string treasurySupportContractSum;
+        
+        /// <remarks/>
         public string defenseContractNumber;
         
         /// <remarks/>
@@ -75379,11 +76509,18 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public string energyServiceContractInfo;
         
         /// <remarks/>
+        public deliveryPlaceInfoType deliveryPlaceInfo;
+        
+        /// <remarks/>
         public zfcs_contract2015TypeProducts products;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("supplier", IsNullable=false)]
         public zfcs_contract2015SupplierType[] suppliers;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("counterpartyInfo", IsNullable=false)]
+        public counterpartyForPayingPenaltiesAndTaxesType[] counterpartiesInfo;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("supplierInfo", IsNullable=false)]
@@ -75986,6 +77123,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         public System.DateTime registrationDate;
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool registrationDateSpecified;
+        
+        /// <remarks/>
         public string inn;
         
         /// <remarks/>
@@ -75999,6 +77140,10 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         public string customerCode;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("customerAccountDetails", IsNullable=false)]
+        public accountDetailsType[] customerAccountsDetails;
     }
     
     /// <remarks/>
@@ -76075,6 +77220,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("KBKsChange", typeof(bool))]
+        [System.Xml.Serialization.XmlElementAttribute("KOKSsChange", typeof(bool))]
         [System.Xml.Serialization.XmlElementAttribute("KVRsChange", typeof(bool))]
         [System.Xml.Serialization.XmlElementAttribute("targetArticlesChange", typeof(bool))]
         [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
@@ -76184,6 +77330,9 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         KBKsChange,
+        
+        /// <remarks/>
+        KOKSsChange,
         
         /// <remarks/>
         KVRsChange,
@@ -80219,6 +81368,32 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/export/1")]
+    public partial class exportNsiKRKSList {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("nsiKRKS")]
+        public zfcs_nsiKRKSType[] nsiKRKS;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/export/1")]
+    public partial class exportNsiKRLSList {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("nsiKRLS")]
+        public zfcs_nsiKRLSType[] nsiKRLS;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/export/1")]
     public partial class exportNsiKTRUNotUsingReasons {
         
         /// <remarks/>
@@ -80414,6 +81589,19 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/export/1")]
+    public partial class exportNsiOrderEvalIndicatorsList {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("nsiOrderEvalIndicator")]
+        public zfcs_nsiOrderEvalIndicators[] nsiOrderEvalIndicator;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/export/1")]
     public partial class exportNsiOrganizationList {
         
         /// <remarks/>
@@ -80458,6 +81646,19 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("nsiPPRF1428Subject")]
         public zfcs_nsiControl99SubjectType[] nsiPPRF1428Subject;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/export/1")]
+    public partial class exportNsiParticipantExperiencesList {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("nsiParticipantExperience")]
+        public zfcs_nsiParticipantExperiences[] nsiParticipantExperience;
     }
     
     /// <remarks/>
@@ -80557,6 +81758,19 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/export/1")]
+    public partial class exportNsiPurchaseObjectCharsList {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("nsiPurchaseObjectChar")]
+        public zfcs_nsiPurchaseObjectChars[] nsiPurchaseObjectChar;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/export/1")]
     public partial class exportNsiPurchasePlanPositionChangeReasons {
         
         /// <remarks/>
@@ -80596,11 +81810,37 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/export/1")]
+    public partial class exportNsiQualPurchaseParticipantsList {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("nsiQualPurchaseParticipant")]
+        public zfcs_nsiQualPurchaseParticipants[] nsiQualPurchaseParticipant;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/export/1")]
     public partial class exportNsiRNPOthersList {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("nsiRNPOthers")]
         public zfcs_nsiRNPOthersType[] nsiRNPOthers;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://zakupki.gov.ru/oos/export/1")]
+    public partial class exportNsiSVRList {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("nsiSVR")]
+        public zfcs_nsiSVRType[] nsiSVR;
     }
     
     /// <remarks/>
@@ -80841,7 +82081,7 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://zakupki.gov.ru/oos/export/1", IncludeInSchema=false)]
-    public enum ItemsChoiceType24 {
+    public enum ItemsChoiceType26 {
         
         /// <remarks/>
         approval,
@@ -81654,6 +82894,12 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         nsiKOSGUList,
         
         /// <remarks/>
+        nsiKRKSList,
+        
+        /// <remarks/>
+        nsiKRLSList,
+        
+        /// <remarks/>
         nsiKTRUNotUsingReasons,
         
         /// <remarks/>
@@ -81702,6 +82948,9 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         nsiOffBudgetList,
         
         /// <remarks/>
+        nsiOrderEvalIndicatorsList,
+        
+        /// <remarks/>
         nsiOrganizationList,
         
         /// <remarks/>
@@ -81712,6 +82961,9 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         
         /// <remarks/>
         nsiPPRF1428Subjects,
+        
+        /// <remarks/>
+        nsiParticipantExperiencesList,
         
         /// <remarks/>
         nsiPlacingWayList,
@@ -81735,6 +82987,9 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         nsiPurchaseDocumentTypesList,
         
         /// <remarks/>
+        nsiPurchaseObjectCharsList,
+        
+        /// <remarks/>
         nsiPurchasePlanPositionChangeReasons,
         
         /// <remarks/>
@@ -81744,10 +82999,16 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl44 {
         nsiPurchaseRejectReasonList,
         
         /// <remarks/>
+        nsiQualPurchaseParticipantsList,
+        
+        /// <remarks/>
         nsiRNPOthersList,
         
         /// <remarks/>
         nsiRightSideKTRUs,
+        
+        /// <remarks/>
+        nsiSVRList,
         
         /// <remarks/>
         nsiSingleCustomerReasonsOZ,

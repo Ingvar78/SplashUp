@@ -46,9 +46,10 @@ namespace SplashUp.Core.Jobs
             try
             {
                 var FreeDS = GetTotalFreeSpace(_commonSettings.BasePartition);
-                _logger.LogWarning($"NSI - Доступно для загрузки: {FreeDS:F2}%  на диске: {_commonSettings.BasePartition}");
+                _logger.LogInformation($"NSI - Доступно для загрузки: {FreeDS:F2}%  на диске: {_commonSettings.BasePartition}");
 
-                Parallel.Invoke(
+                if (FreeDS > _commonSettings.FreeDS)
+                    Parallel.Invoke(
                     () => { GetNSIListFTP44(); },
                     () => { DownloadFtpFiles44(GetDBList(1000, Status.Exist, FLType.Fl44)); },                    
                     () => { GetNSIListFTP223(); },
@@ -58,8 +59,8 @@ namespace SplashUp.Core.Jobs
                 var cnt44 = GetDBList(1000, Status.Exist, FLType.Fl44).Count;
                 var cnt223 = GetDBList(1000, Status.Exist, FLType.Fl223).Count;
 
-                    //Грузить пока не устанет
-                    while ((cnt44 > 0 || cnt223 > 0)& (FreeDS > _commonSettings.FreeDS))
+                //Грузить пока не устанет
+                while ((cnt44 > 0 || cnt223 > 0)& (FreeDS > _commonSettings.FreeDS))
                 {
                     //2. Загрузка справочников 
                     //44ФЗ/223ФЗ

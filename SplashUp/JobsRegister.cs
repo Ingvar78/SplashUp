@@ -67,7 +67,7 @@ namespace SplashUp
                     dataServices))
                     .NonReentrant()
                     .ToRunNow()
-                    .AndEvery(4).Hours();
+                    .AndEvery(1).Hours();
 
                 //Данные справочников
                 Schedule(() => new UploadNsiFilesJob(commonSettings.Value,
@@ -87,7 +87,8 @@ namespace SplashUp
                         govDb, logger, 
                         dataServices))
                         .NonReentrant()
-                        .ToRunNow();
+                        .ToRunNow()
+                        .AndEvery(5).Minutes();
             }
             //Обработка справочников ФЗ-223
             if (partUsed.UseNsiSettings223)
@@ -97,7 +98,8 @@ namespace SplashUp
                         govDb, logger,
                         dataServices))
                         .NonReentrant()
-                        .ToRunNow();
+                        .ToRunNow()
+                        .AndEvery(5).Minutes();
             }
 
             if (partUsed.UseFz44Settings)
@@ -107,7 +109,7 @@ namespace SplashUp
                             govDb, logger,
                             dataServices))
                             .NonReentrant()
-                            .ToRunNow();
+                            .ToRunNow().AndEvery(4).Hours(); 
             }
             _logger.LogInformation("End Init Job");
         }

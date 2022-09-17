@@ -746,6 +746,9 @@ namespace SplashUp.Models.Zakupki_gov_ru.Fl223 {
         
         /// <remarks/>
         public string parentCode;
+        
+        /// <remarks/>
+        public int section;
     }
     
     /// <remarks/>
