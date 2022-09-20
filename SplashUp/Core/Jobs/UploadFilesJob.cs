@@ -56,17 +56,14 @@ namespace SplashUp.Core.Jobs
                 Parallel.Invoke(
                     // 1. получение списка файлов + сохранение списка для последующей загрузки
                     () => { GetListFTP44(); },
-                    //2. загрузка 1000 файлов через получение списка файлов.
-                    () => { DownloadFtpFiles44(_dataServices.GetDwList(1000, Status.Exist, FLType.Fl44)); },
+                    //2. загрузка 100 файлов через получение списка файлов.
+                    () => { DownloadFtpFiles(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44),FLType.Fl44, _fzSettings44.Parallels); },
                     ////ToDo
                     // 1. получение списка файлов + сохранение списка для последующей загрузки
                     () => { GetListFTP223(); },
-                    //2. загрузка 1000 файлов через получение списка файлов.
-                    () => { DownloadFtpFiles223(_dataServices.GetDwList(1000, Status.Exist, FLType.Fl223)); }
+                    //2. загрузка 100 файлов через получение списка файлов.
+                    () => { DownloadFtpFiles(_dataServices.GetDwList(100, Status.Exist, FLType.Fl223), FLType.Fl223, _fzSettings223.Parallels); }
                     );
-
-            //DownloadFtpFiles44(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44));
-
 
             var cnt44 = _dataServices.GetDwList(100, Status.Exist, FLType.Fl44).Count;
             var cnt223 = _dataServices.GetDwList(100, Status.Exist, FLType.Fl223).Count;
@@ -76,8 +73,10 @@ namespace SplashUp.Core.Jobs
             while ((cnt44 > 0 || cnt223 > 0) & (FreeDS > _commonSettings.FreeDS))
             {
                 Parallel.Invoke(
-                    () => { DownloadFtpFiles44(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44)); },
-                    () => { DownloadFtpFiles223(_dataServices.GetDwList(500, Status.Exist, FLType.Fl223)); }
+                    //() => { DownloadFtpFiles44(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44)); },
+                    () => { DownloadFtpFiles(_dataServices.GetDwList(1000, Status.Exist, FLType.Fl44), FLType.Fl44, _fzSettings44.Parallels); },
+                    () => { DownloadFtpFiles(_dataServices.GetDwList(1000, Status.Exist, FLType.Fl223), FLType.Fl223, _fzSettings223.Parallels); }
+                    //() => { DownloadFtpFiles223(_dataServices.GetDwList(500, Status.Exist, FLType.Fl223)); }
                     );
 
                 cnt44 = _dataServices.GetDwList(1000, Status.Exist, FLType.Fl44).Count;
@@ -86,19 +85,7 @@ namespace SplashUp.Core.Jobs
                 _logger.LogInformation($"44/223 - Доступно для загрузки: {FreeDS:F2}%  на диске: {_commonSettings.BasePartition}");
             }
 
-            //while (cnt44 > 0 || cnt223 > 0)
-            //{
-            //    //2. Загрузка файлов
-            //    //44ФЗ/223ФЗ
-            //    Parallel.Invoke(
-            //        () => { DownloadFtpFiles44(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44)); },
-            //        () => { DownloadFtpFiles223(_dataServices.GetDwList(500, Status.Exist, FLType.Fl223)); }
-            //        );
-
-            //    cnt44 = _dataServices.GetDwList(1000, Status.Exist, FLType.Fl44).Count;
-            //    cnt223 = _dataServices.GetDwList(1000, Status.Exist, FLType.Fl223).Count;
-            //}
-
+            _logger.LogInformation($"Задание окончено. Код завершения 0. 44/223 - Доступно для загрузки: {FreeDS:F2}%  на диске: {_commonSettings.BasePartition}");
 
         }
 
@@ -136,7 +123,8 @@ namespace SplashUp.Core.Jobs
                 client.Connect();
 
                 var ftpBasePath = $"/{basedir44}/";
-                var region44List = client.GetListing(ftpBasePath).Where(item => item.Type == FtpFileSystemObjectType.Directory).Select(x => x.Name).ToList();
+                //var region44List = client.GetListing(ftpBasePath).Where(item => item.Type == FtpFileSystemObjectType.Directory).Select(x => x.Name).ToList();
+                var region44List = client.GetListing(ftpBasePath).Where(item => item.Type == FtpObjectType.Directory).Select(x => x.Name).ToList();
                 client.Disconnect();
                 // Сохранение списка регионов
                 var dayyear = DateTime.Now.ToShortDateString().Replace("/", "_");
@@ -172,7 +160,7 @@ namespace SplashUp.Core.Jobs
 
 
                             var fileList = client.GetListing(ftpPath, FtpListOption.Recursive);
-                            var ftpList = fileList.Where(item => item.Size > _fzSettings44.EmptyZipSize && item.Type == FtpFileSystemObjectType.File && item.Modified > ModDate).ToList();
+                            var ftpList = fileList.Where(item => item.Size > _fzSettings44.EmptyZipSize && item.Type == FtpObjectType.File && item.Modified > ModDate).ToList();
                             //ToDo Реализовать обработку списка файлов, через кэширование записей. 
                             //1. Получить список файлов. 
                             //2. проверить загружался ли, если нет загружаем. 
@@ -219,7 +207,7 @@ namespace SplashUp.Core.Jobs
 
                 client.Connect();
                 var ftpBasePath = $"{basedir223}";
-                var region223List = client.GetListing(ftpBasePath).Where(item => item.Type == FtpFileSystemObjectType.Directory).Select(x => x.Name).ToList();
+                var region223List = client.GetListing(ftpBasePath).Where(item => item.Type == FtpObjectType.Directory).Select(x => x.Name).ToList();
                 client.Disconnect();
                 var dayyear = DateTime.Now.ToShortDateString().Replace("/", "_");
                 var saveregions = Path.Combine(_fzSettings223.WorkPath, $"RegionsList_{dayyear}.txt");
@@ -247,7 +235,7 @@ namespace SplashUp.Core.Jobs
                             //_logger.LogInformation("connect to ftp 223, region for download: " + region);
                             var ftpPath = $"{basedir223}/{region}/{DirsDoc}/";
                             var fileList = client.GetListing(ftpPath, FtpListOption.Recursive);
-                            var ftpList = fileList.Where(item => item.Size > _fzSettings223.EmptyZipSize && item.Type == FtpFileSystemObjectType.File && item.Modified > ModDate).ToList();
+                            var ftpList = fileList.Where(item => item.Size > _fzSettings223.EmptyZipSize && item.Type == FtpObjectType.File && item.Modified > ModDate).ToList();
                             //ToDo Реализовать обработку списка файлов, через кэширование записей. 
                             //1. Загрузить список файлов. 
                             //2. проверить загружался ли, если нет загружаем. 
@@ -275,32 +263,53 @@ namespace SplashUp.Core.Jobs
             _logger.LogInformation($"connect to ftp 223, Список файлов создан в {EndDate}, время на создание списка {(EndDate - StartDate).TotalSeconds} секунд/ {(EndDate - StartDate).TotalMinutes} минут");
         }
 
-        private void DownloadFtpFiles44(List<FileCashes> fileCashes)
+        private void DownloadFtpFiles(List<FileCashes> fileCashes, FLType fztype, int parallels)
         {
             DateTime StartDate = DateTime.Now;
-            _logger.LogInformation($"Начало загрузки {fileCashes.Count} архивов FZ44 {StartDate}...");
-            _logger.LogDebug($"Начало загрузки {fileCashes.Count} архивов FZ44 {StartDate}...");
+            _logger.LogInformation($"Начало загрузки {fileCashes.Count} архивов ФЗ {fztype} {StartDate}...");
+            _logger.LogDebug($"Начало загрузки {fileCashes.Count} архивов ФЗ {fztype}  {StartDate}...");
+
+            string login ;
+            string password;
+            string url;
+
+            switch (fztype)
+            {
+                case FLType.Fl223:
+                    {
+                        login = _commonSettings.FtpCredential.FZ223.Login;
+                        password = _commonSettings.FtpCredential.FZ223.Password;
+                        url = _commonSettings.FtpCredential.FZ223.Url;
+                    }
+                    break;
+                default: 
+                    {
+                        login = _commonSettings.FtpCredential.FZ44.Login;
+                        password = _commonSettings.FtpCredential.FZ44.Password;
+                        url = _commonSettings.FtpCredential.FZ44.Url;
+                    }
+                    break;
+            }
+                
 
             var parallelOptions = new ParallelOptions()
             {
-                //MaxDegreeOfParallelism = 1,
-                MaxDegreeOfParallelism = _fzSettings44.Parallels,
+                MaxDegreeOfParallelism = parallels
             };
 
             Parallel.ForEach(fileCashes, parallelOptions, item =>
             {
-                FtpClient client = new FtpClient(_commonSettings.FtpCredential.FZ44.Url)
+                FtpClient client = new FtpClient(url)
                 {
-                    Credentials = new NetworkCredential(_commonSettings.FtpCredential.FZ44.Login, _commonSettings.FtpCredential.FZ44.Password),
-                    RetryAttempts = 5
+                    Credentials = new NetworkCredential(login, password)
                 };
 
                 try
                 {
 
                     client.Connect();
-
-                    _logger.LogInformation($"Загрузка архива FZ44 {item.Full_path}...");
+                    client.Config.RetryAttempts = 5;
+                    _logger.LogInformation($"Загрузка архива ФЗ {fztype} {item.Full_path}...");
                     client.DownloadFile(_fzSettings44.WorkPath + item.Full_path, item.Full_path);
                     item.Modifid_date = DateTime.Now;
                     item.Status = Status.Uploaded;
@@ -309,7 +318,7 @@ namespace SplashUp.Core.Jobs
                 catch (Exception ex)
                 {
                     _dataServices.DeleteCasheFiles(item);
-                    _logger.LogError(ex, $"Ошибка скачивания архива FZ44 файл перемещён или недоступен: {item.Full_path}");
+                    _logger.LogError(ex, $"Ошибка скачивания архива ФЗ {fztype} файл перемещён или недоступен: {item.Full_path}");
                     _logger.LogError(ex, ex.Message);
                 }
                 finally
@@ -319,57 +328,104 @@ namespace SplashUp.Core.Jobs
             });
 
             DateTime EndDate = DateTime.Now;
-            _logger.LogInformation($"Загружено {fileCashes.Count} архивов FZ44 {EndDate}... Время загрузки {(EndDate - StartDate).TotalMinutes} минут");
-            _logger.LogDebug($"Загружено  {fileCashes.Count} архивов FZ44 {EndDate}... Время загрузки {(EndDate - StartDate).TotalMinutes} минут");
+            _logger.LogInformation($"Загружено {fileCashes.Count} архивов ФЗ {fztype} {EndDate}... Время загрузки {(EndDate - StartDate).TotalMinutes} минут");
+            _logger.LogDebug($"Загружено  {fileCashes.Count} архивов ФЗ {fztype} {EndDate}... Время загрузки {(EndDate - StartDate).TotalMinutes} минут");
         }
+        //private void DownloadFtpFiles44(List<FileCashes> fileCashes)
+        //{
+        //    DateTime StartDate = DateTime.Now;
+        //    _logger.LogInformation($"Начало загрузки {fileCashes.Count} архивов FZ44 {StartDate}...");
+        //    _logger.LogDebug($"Начало загрузки {fileCashes.Count} архивов FZ44 {StartDate}...");
 
-        private void DownloadFtpFiles223(List<FileCashes> fileCashes)
-        {
-            DateTime StartDate = DateTime.Now;
-            _logger.LogInformation($"Начало загрузки {fileCashes.Count} архивов FZ223 {StartDate}...");
-            _logger.LogDebug($"Начало загрузки {fileCashes.Count} архивов FZ223 {StartDate}...");
+        //    var parallelOptions = new ParallelOptions()
+        //    {
+        //        //MaxDegreeOfParallelism = 1,
+        //        MaxDegreeOfParallelism = _fzSettings44.Parallels,
+        //    };
 
-            var parallelOptions = new ParallelOptions()
-            {
-                MaxDegreeOfParallelism = _fzSettings223.Parallels,
-            };
+        //    Parallel.ForEach(fileCashes, parallelOptions, item =>
+        //    {
+        //        FtpClient client = new FtpClient(_commonSettings.FtpCredential.FZ44.Url)
+        //        {
+        //            Credentials = new NetworkCredential(_commonSettings.FtpCredential.FZ44.Login, _commonSettings.FtpCredential.FZ44.Password),
+        //            RetryAttempts = 5
+        //        };
 
-            Parallel.ForEach(fileCashes, parallelOptions, item =>
-            {
-                FtpClient client = new FtpClient(_commonSettings.FtpCredential.FZ223.Url)
-                {
-                    Credentials = new NetworkCredential(_commonSettings.FtpCredential.FZ223.Login, _commonSettings.FtpCredential.FZ223.Password),
-                    RetryAttempts = 5
-                };
+        //        try
+        //        {
 
-                try
-                {
+        //            client.Connect();
 
-                    client.Connect();
+        //            _logger.LogInformation($"Загрузка архива FZ44 {item.Full_path}...");
+        //            client.DownloadFile(_fzSettings44.WorkPath + item.Full_path, item.Full_path);
+        //            item.Modifid_date = DateTime.Now;
+        //            item.Status = Status.Uploaded;
+        //            _dataServices.UpdateCasheFiles(item);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            _dataServices.DeleteCasheFiles(item);
+        //            _logger.LogError(ex, $"Ошибка скачивания архива FZ44 файл перемещён или недоступен: {item.Full_path}");
+        //            _logger.LogError(ex, ex.Message);
+        //        }
+        //        finally
+        //        {
+        //            client.Disconnect();
+        //        }
+        //    });
 
-                    _logger.LogInformation($"Загрузка архива FZ223 {item.Full_path}...");
-                    client.DownloadFile(_fzSettings223.WorkPath + item.Full_path, item.Full_path);
-                    item.Modifid_date = DateTime.Now;
-                    item.Status = Status.Uploaded;
-                    _dataServices.UpdateCasheFiles(item);
-                }
-                catch (Exception ex)
-                {
-                    _dataServices.DeleteCasheFiles(item);
-                    _logger.LogError(ex, $"Ошибка скачивания архива FZ223 файл перемещён или недоступен: {item.Full_path}");
-                    _logger.LogError(ex, ex.Message);
-                }
-                finally
-                {
-                    client.Disconnect();
-                }
-            });
+        //    DateTime EndDate = DateTime.Now;
+        //    _logger.LogInformation($"Загружено {fileCashes.Count} архивов FZ44 {EndDate}... Время загрузки {(EndDate - StartDate).TotalMinutes} минут");
+        //    _logger.LogDebug($"Загружено  {fileCashes.Count} архивов FZ44 {EndDate}... Время загрузки {(EndDate - StartDate).TotalMinutes} минут");
+        //}
 
-            DateTime EndDate = DateTime.Now;
-            _logger.LogInformation($"Загружено {fileCashes.Count} архивов FZ223 {EndDate}... Время загрузки {(EndDate - StartDate).TotalMinutes} минут");
-            _logger.LogDebug($"Загружено {fileCashes.Count} архивов FZ223 {EndDate}... Время загрузки {(EndDate - StartDate).TotalMinutes} минут");
+        //private void DownloadFtpFiles223(List<FileCashes> fileCashes)
+        //{
+        //    DateTime StartDate = DateTime.Now;
+        //    _logger.LogInformation($"Начало загрузки {fileCashes.Count} архивов FZ223 {StartDate}...");
+        //    _logger.LogDebug($"Начало загрузки {fileCashes.Count} архивов FZ223 {StartDate}...");
 
-        }
+        //    var parallelOptions = new ParallelOptions()
+        //    {
+        //        MaxDegreeOfParallelism = _fzSettings223.Parallels,
+        //    };
+
+        //    Parallel.ForEach(fileCashes, parallelOptions, item =>
+        //    {
+        //        FtpClient client = new FtpClient(_commonSettings.FtpCredential.FZ223.Url)
+        //        {
+        //            Credentials = new NetworkCredential(_commonSettings.FtpCredential.FZ223.Login, _commonSettings.FtpCredential.FZ223.Password),
+        //            RetryAttempts = 5
+        //        };
+
+        //        try
+        //        {
+
+        //            client.Connect();
+
+        //            _logger.LogInformation($"Загрузка архива FZ223 {item.Full_path}...");
+        //            client.DownloadFile(_fzSettings223.WorkPath + item.Full_path, item.Full_path);
+        //            item.Modifid_date = DateTime.Now;
+        //            item.Status = Status.Uploaded;
+        //            _dataServices.UpdateCasheFiles(item);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            _dataServices.DeleteCasheFiles(item);
+        //            _logger.LogError(ex, $"Ошибка скачивания архива FZ223 файл перемещён или недоступен: {item.Full_path}");
+        //            _logger.LogError(ex, ex.Message);
+        //        }
+        //        finally
+        //        {
+        //            client.Disconnect();
+        //        }
+        //    });
+
+        //    DateTime EndDate = DateTime.Now;
+        //    _logger.LogInformation($"Загружено {fileCashes.Count} архивов FZ223 {EndDate}... Время загрузки {(EndDate - StartDate).TotalMinutes} минут");
+        //    _logger.LogDebug($"Загружено {fileCashes.Count} архивов FZ223 {EndDate}... Время загрузки {(EndDate - StartDate).TotalMinutes} минут");
+
+        //}
 
         private void SaveFTPPath(List<FtpListItem> ListFile, string ftpDir, string baseDir, Status status, FLType fz)
         {

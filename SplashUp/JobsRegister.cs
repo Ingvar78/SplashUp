@@ -109,7 +109,7 @@ namespace SplashUp
                             govDb, logger,
                             dataServices))
                             .NonReentrant()
-                            .ToRunNow().AndEvery(4).Hours(); 
+                            .ToRunNow().AndEvery(2).Hours(); 
             }
             _logger.LogInformation("End Init Job");
         }

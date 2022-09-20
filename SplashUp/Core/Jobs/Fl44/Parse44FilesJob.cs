@@ -75,6 +75,7 @@ namespace SplashUp.Core.Jobs.Fl44
                             {
                                 var cicle = 1;
                                 var check = _dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir);
+                                //ParseContracts(_dataServices.GetFileCashesList(1, Status.Exist, FLType.Fl44, basepath, dir));
                                 _logger.LogInformation($"Начата обработка Contracts ФЗ-44, цикл { cicle}");
                                 while (check.Count > 0 && cicle <= 10)
                                 {
@@ -101,10 +102,10 @@ namespace SplashUp.Core.Jobs.Fl44
                             break;
                         case "contractprojects":
                             {
-                                var cicle = 1;
+                                //var cicle = 1;
                                 var tt4 = _dataServices.GetFileCashesList(1000, Status.Uploaded, FLType.Fl44, basepath, dir);
                                 _logger.LogInformation("Начата обработка contractprojects ФЗ-44");
-                                //ParseContractProjects(_dataServices.GetFileCashesList(100, Status.Uploaded, FLType.Fl44, basepath, dir));
+                                ParseContractProjects(_dataServices.GetFileCashesList(100, Status.Uploaded, FLType.Fl44, basepath, dir));
                                 _logger.LogInformation("Обработана 1000 contractprojects ФЗ-44");
                             }
                             break;

@@ -124,7 +124,7 @@ namespace SplashUp.Core.Jobs
                         //_logger.LogInformation("connect to ftp 44, region for download: " + region);
                         var ftpPath = $"/{basedir44}/{DirsDoc}/";
                         var fileList = client.GetListing(ftpPath, FtpListOption.Recursive);
-                        var ftpList = fileList.Where(item => item.Size > _nsiSettings44.EmptyZipSize && item.Type == FtpFileSystemObjectType.File && item.Modified > ModDate).ToList();
+                        var ftpList = fileList.Where(item => item.Size > _nsiSettings44.EmptyZipSize && item.Type == FtpObjectType.File && item.Modified > ModDate).ToList();
                         //ToDo Реализовать обработку списка файлов, через кэширование записей. 
                         //1. Загрузить список файлов. 
                         //2. проверить загружался ли, если нет загружаем. 
@@ -181,7 +181,7 @@ namespace SplashUp.Core.Jobs
                         client.Connect();
                         var ftpPath = $"{basedir223}/{DirsDoc}/";
                         var fileList = client.GetListing(ftpPath, FtpListOption.Recursive);
-                        var ftpList = fileList.Where(item => item.Size > _nsiSettings223.EmptyZipSize && item.Type == FtpFileSystemObjectType.File && item.Modified > ModDate).ToList();
+                        var ftpList = fileList.Where(item => item.Size > _nsiSettings223.EmptyZipSize && item.Type == FtpObjectType.File && item.Modified > ModDate).ToList();
                         //ToDo Save ListFTP
                         SaveFTPPath(ftpList, DirsDoc, basedir223, Status.Exist, FLType.Fl223);
                         _logger.LogInformation($"Создан список файлов справочников NSI для загрузки: {basedir223} /{DirsDoc} 223ФЗ");
@@ -202,7 +202,7 @@ namespace SplashUp.Core.Jobs
                     client.Connect();
                     var ftpPath = $"{basedir223}";
                     var fileList = client.GetListing(ftpPath, FtpListOption.Recursive);
-                    var ftpList = fileList.Where(item => item.Size > _nsiSettings223.EmptyZipSize && item.Type == FtpFileSystemObjectType.File && item.Modified > ModDate).ToList();
+                    var ftpList = fileList.Where(item => item.Size > _nsiSettings223.EmptyZipSize && item.Type == FtpObjectType.File && item.Modified > ModDate).ToList();
                     //ToDo Save ListFTP
                     SaveFTPPath(ftpList, "nsiVSRZ_CSV", basedir223, Status.Exist, FLType.Fl223);
                     _logger.LogInformation($"Создан список файлов справочников площадок для загрузки: {basedir223} / nsiVSRZ_CSV 223ФЗ");
@@ -310,14 +310,14 @@ namespace SplashUp.Core.Jobs
                 FtpClient client = new FtpClient(_commonSettings.FtpCredential.FZ44.Url)
                 {
                     Credentials = new NetworkCredential(_commonSettings.FtpCredential.FZ44.Login, _commonSettings.FtpCredential.FZ44.Password),
-                    RetryAttempts = 5
+                    //RetryAttempts = 5
                 };
 
                 try
                 {
 
                     client.Connect();
-
+                    client.Config.RetryAttempts = 5;
                     _logger.LogInformation($"Загрузка архива NSI FZ44 {item.Full_path}...");
                     client.DownloadFile(_nsiSettings44.WorkPath + item.Full_path, item.Full_path);
                     item.Modifid_date = DateTime.Now;
@@ -356,14 +356,14 @@ namespace SplashUp.Core.Jobs
                 FtpClient client = new FtpClient(_commonSettings.FtpCredential.FZ223.Url)
                 {
                     Credentials = new NetworkCredential(_commonSettings.FtpCredential.FZ223.Login, _commonSettings.FtpCredential.FZ223.Password),
-                    RetryAttempts = 5
+                    //RetryAttempts = 5
                 };
 
                 try
                 {
 
                     client.Connect();
-
+                    client.Config.RetryAttempts = 5;
                     _logger.LogInformation($"Загрузка архива NSI FZ223 {item.Full_path}...");
                     client.DownloadFile(_nsiSettings223.WorkPath + item.Full_path, item.Full_path);
                     item.Modifid_date = DateTime.Now;

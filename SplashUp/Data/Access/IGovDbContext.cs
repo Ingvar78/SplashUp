@@ -53,6 +53,12 @@ namespace SplashUp.Data.Access
         /// Данные протоколов по 44ФЗ
         /// </summary>
         DbSet<Protocols> Protocols { get; set; }
+
+        /// <summary>
+        /// Данные проектов контрактов
+        /// </summary>
+        /// <returns></returns>
+        DbSet<ContractProject> ContractProjects { get; set; }
         int SaveChanges();
     }
 }

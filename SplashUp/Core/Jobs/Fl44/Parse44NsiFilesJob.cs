@@ -109,7 +109,7 @@ namespace SplashUp.Core.Jobs.Fl44
                         {
                             if (entry.FullName.EndsWith(".xml", StringComparison.OrdinalIgnoreCase))
                             {
-                                entry.ExtractToFile(Path.Combine(extractPath, entry.FullName));
+                                entry.ExtractToFile(Path.Combine(extractPath, entry.FullName), true);
                                 string xml_f_name = entry.FullName;
                                 string xmlin = (extractPath + "/" + entry.FullName);
                                 _logger.LogInformation("xmlin parse: " + xmlin);
@@ -229,7 +229,7 @@ namespace SplashUp.Core.Jobs.Fl44
                         {
                             if (entry.FullName.EndsWith(".xml", StringComparison.OrdinalIgnoreCase))
                             {
-                                    entry.ExtractToFile(Path.Combine(extractPath, entry.FullName));
+                                    entry.ExtractToFile(Path.Combine(extractPath, entry.FullName), true);
                                     string xml_f_name = entry.FullName;
                                     string xmlin = (extractPath + "/" + entry.FullName);
                                     _logger.LogInformation("xmlin parse: " + xmlin);
@@ -337,7 +337,7 @@ namespace SplashUp.Core.Jobs.Fl44
                         {
                             if (entry.FullName.EndsWith(".xml", StringComparison.OrdinalIgnoreCase))
                             {
-                                entry.ExtractToFile(Path.Combine(extractPath, entry.FullName));
+                                entry.ExtractToFile(Path.Combine(extractPath, entry.FullName), true);
                                 string xml_f_name = entry.FullName;
                                 string xmlin = (extractPath + "/" + entry.FullName);
                                 _logger.LogInformation("xmlin parse: " + xmlin);
@@ -471,7 +471,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                 {
                                     if (entry.FullName.EndsWith(".xml", StringComparison.OrdinalIgnoreCase))
                                     {
-                                        entry.ExtractToFile(Path.Combine(extractPath, entry.FullName));
+                                        entry.ExtractToFile(Path.Combine(extractPath, entry.FullName), true);
                                         string xml_f_name = entry.FullName;
                                         string xmlin = (extractPath + "/" + entry.FullName);
                                         _logger.LogInformation("xmlin parse: " + xmlin);

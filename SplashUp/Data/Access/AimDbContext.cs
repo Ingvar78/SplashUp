@@ -35,8 +35,8 @@ namespace SplashUp.Data.Access
 #if true && DEBUG
             optionsBuilder.UseLoggerFactory(_loggerFactory);
 #endif
-            //optionsBuilder.UseNpgsql("Host=192.168.1.15;Port=5432;Database=AimDbEF6;Username=zak;Password=Zaq1Xsw2;Pooling=True").UseSnakeCaseNamingConvention();
-            optionsBuilder.UseNpgsql(_connectionString).UseSnakeCaseNamingConvention(); 
+            optionsBuilder.UseNpgsql("Host=192.168.7.15;Port=5432;Database=AimDbtest;Username=zak;Password=Zaq1Xsw2;Pooling=True;ApplicationName=test").UseSnakeCaseNamingConvention();
+            //optionsBuilder.UseNpgsql(_connectionString).UseSnakeCaseNamingConvention(); 
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -55,6 +55,8 @@ namespace SplashUp.Data.Access
         public DbSet<Notifications> Notifications { get; set; }
         public DbSet<Contracts> Contracts { get; set; }
         public DbSet<Protocols> Protocols { get; set; }
+
+        public DbSet<ContractProject> ContractProjects { get; set; }
         int IGovDbContext.SaveChanges()
         {
             return this.SaveChangesInternal();
