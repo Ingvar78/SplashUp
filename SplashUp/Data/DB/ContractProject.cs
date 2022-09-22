@@ -42,7 +42,7 @@ namespace SplashUp.Data.DB
         /// Тип извещения проекта контрактов
         /// </summary>
         [Column(TypeName = "varchar(64)")]
-        public string Type_contract { get; set; }
+        public string Type_cproject { get; set; }
         /// <summary>
         /// Архив источник
         /// </summary>

@@ -108,7 +108,43 @@ namespace SplashUp.Core.Jobs.Fl44
                                                         //cproject.Add(frpotocols);
                                                         break;
                                                     }
+                                                case "cpContractProject":
+                                                    {
+                                                        
+                                                        contractProjectType cpContractProject = exportd.Items[0] as contractProjectType;
+                                                        //string unf_json = JsonConvert.SerializeObject(epProtocolCancel);
 
+                                                        var cp = new ContractProject();
+                                                        cp.Purchase_num = cpContractProject.foundationInfo.purchaseNumber;
+                                                        cp.Contract_num = cpContractProject.commonInfo.docNumber;
+                                                        cp.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                        cp.Hash = hashstr;
+                                                        cp.Zip_file = nFile.Full_path;
+                                                        cp.File_name = entry.FullName;
+                                                        cp.Fz_type = 44;
+                                                        cp.Type_cproject = exportd.Items[0].GetType().Name;
+                                                        cp.PublishDate = cpContractProject.commonInfo.publishDTInEIS;
+                                                        cproject.Add(cp);
+                                                        break;
+                                                    }
+                                                case "cpContractProjectChange":
+                                                    {
+                                                        //cpContractProjectChange;contractProjectChangeType
+                                                        contractProjectChangeType cpContractProjectChange = exportd.Items[0] as contractProjectChangeType;
+
+                                                        var cp = new ContractProject();
+                                                        cp.Purchase_num = cpContractProjectChange.foundationInfo.purchaseNumber;
+                                                        cp.Contract_num = cpContractProjectChange.commonInfo.docNumber;
+                                                        cp.R_body = djson; 
+                                                        cp.Hash = hashstr;
+                                                        cp.Zip_file = nFile.Full_path;
+                                                        cp.File_name = entry.FullName;
+                                                        cp.Fz_type = 44;
+                                                        cp.Type_cproject = exportd.Items[0].GetType().Name;
+                                                        cp.PublishDate = cpContractProjectChange.commonInfo.publishDTInEIS;
+                                                        cproject.Add(cp);
+                                                        break;
+                                                    }
                                                 default:
                                                     {
 
