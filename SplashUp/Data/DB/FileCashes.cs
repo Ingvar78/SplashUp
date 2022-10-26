@@ -71,4 +71,5 @@ namespace SplashUp.Data.DB
         /// </summary>
         public DateTime Modifid_date { get; set; }
     }
+
 }

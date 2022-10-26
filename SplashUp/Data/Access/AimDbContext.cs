@@ -5,11 +5,20 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace SplashUp.Data.Access
 {
     internal class AimDbContext : DbContext, IGovDbContext
     {
+        protected readonly IConfiguration Configuration;
+
+        protected AimDbContext(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         private readonly string _connectionString;
         private readonly ILoggerFactory _loggerFactory;
         public AimDbContext(string connectionString, ILoggerFactory loggerFactory)
@@ -35,8 +44,14 @@ namespace SplashUp.Data.Access
 #if true && DEBUG
             optionsBuilder.UseLoggerFactory(_loggerFactory);
 #endif
-            optionsBuilder.UseNpgsql("Host=192.168.7.15;Port=5432;Database=AimDbtest;Username=zak;Password=Zaq1Xsw2;Pooling=True;ApplicationName=test").UseSnakeCaseNamingConvention();
-            //optionsBuilder.UseNpgsql(_connectionString).UseSnakeCaseNamingConvention(); 
+            //optionsBuilder.UseNpgsql("Host=192.168.7.15;Port=5432;Database=AimDbtest;Username=zak;Password=Zaq1Xsw2;Pooling=True;ApplicationName=test").UseSnakeCaseNamingConvention();
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=AimDbtest;Username=postgres;Password=Zaq1Xsw2;Pooling=True;ApplicationName=test").UseSnakeCaseNamingConvention();
+            
+
+            //optionsBuilder.UseNpgsql(_connectionString).UseSnakeCaseNamingConvention(); //
+            //optionsBuilder.UseNpgsql(Configuration.GetConnectionString("ConnectionGDB")).UseSnakeCaseNamingConvention();
+
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -46,6 +61,7 @@ namespace SplashUp.Data.Access
         }
 
         public DbSet<FileCashes> FileCashes { get; set; }
+        
         public DbSet<NsiFileCashes> NsiFileCashes { get; set; }
         public DbSet<NsiAbandonedReason> NsiAReasons { get; set; }
         public DbSet<NsiEtps> NsiEtps { get; set; }
@@ -54,8 +70,9 @@ namespace SplashUp.Data.Access
         public DbSet<NsiOrganizations> NsiOrganizations { get; set; }
         public DbSet<Notifications> Notifications { get; set; }
         public DbSet<Contracts> Contracts { get; set; }
+        public DbSet<ContractsProcedures> ContractsProcedures { get; set; }
+        
         public DbSet<Protocols> Protocols { get; set; }
-
         public DbSet<ContractProject> ContractProjects { get; set; }
         int IGovDbContext.SaveChanges()
         {

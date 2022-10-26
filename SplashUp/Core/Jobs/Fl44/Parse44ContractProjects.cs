@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Xml.Serialization;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace SplashUp.Core.Jobs.Fl44
 {
@@ -20,8 +21,8 @@ namespace SplashUp.Core.Jobs.Fl44
         {
 
             //Parallel.ForEach(FileCashes,
-            //    new ParallelOptions { MaxDegreeOfParallelism = _fzSettings44.Parallels },
-            //    (nFile) =>
+              //  new ParallelOptions { MaxDegreeOfParallelism = _fzSettings44.Parallels },
+                //(nFile) =>
             foreach (var nFile in FileCashes)
             {
                 string zipPath = (_fzSettings44.WorkPath + nFile.Full_path);
@@ -44,7 +45,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                 entry.ExtractToFile(Path.Combine(extractPath, entry.FullName), true);
                                 string xml_f_name = entry.FullName;
                                 string xmlin = (extractPath + "/" + entry.FullName);
-                                _logger.LogInformation("xmlin parse Protocols: " + xmlin);
+                                _logger.LogInformation("xmlin parse ParseContractProjects: " + xmlin);
 
                                 FileInfo infoCheck = new FileInfo(xmlin);
                                 if (infoCheck.Length != 0)
@@ -68,7 +69,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                         var hashstr = strBuilder.ToString();
 
-                                        var djson = _dataServices.XmlToJson(xmlin);
+                                        //var djson = _dataServices.XmlToJson(xmlin);
 
                                         string jsonpath = (_commonSettings.DebugPath + "/Json");
 
@@ -112,12 +113,31 @@ namespace SplashUp.Core.Jobs.Fl44
                                                     {
                                                         
                                                         contractProjectType cpContractProject = exportd.Items[0] as contractProjectType;
-                                                        //string unf_json = JsonConvert.SerializeObject(epProtocolCancel);
+                                                        string unf_json = JsonConvert.SerializeObject(cpContractProject);
+                                                        string dexport = JsonConvert.SerializeObject(exportd);
+                                                        string xml_tojson_serialize= _dataServices.XmlToJson(xmlin);
+
+                                                        var nonstandart_unf_json = JsonConvert.DeserializeObject<contractProjectType>(unf_json);
+
+                                                        XmlSerializer xsSubmit = new XmlSerializer(typeof(contractProjectType));
+
+                                                        //var subReq = new contractProjectType();
+                                                        var subReq = cpContractProject;
+                                                        var xml = "";
+                                                        using (var sww = new StringWriter())
+                                                        {
+                                                            using (XmlWriter writer = XmlWriter.Create(sww))
+                                                            {
+                                                                xsSubmit.Serialize(writer, subReq);
+                                                                xml = sww.ToString(); // Your XML
+                                                            }
+                                                        }
 
                                                         var cp = new ContractProject();
                                                         cp.Purchase_num = cpContractProject.foundationInfo.purchaseNumber;
                                                         cp.Contract_num = cpContractProject.commonInfo.docNumber;
-                                                        cp.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                        //cp.R_body = djson; 
+                                                        cp.R_body = unf_json;
                                                         cp.Hash = hashstr;
                                                         cp.Zip_file = nFile.Full_path;
                                                         cp.File_name = entry.FullName;
@@ -131,11 +151,12 @@ namespace SplashUp.Core.Jobs.Fl44
                                                     {
                                                         //cpContractProjectChange;contractProjectChangeType
                                                         contractProjectChangeType cpContractProjectChange = exportd.Items[0] as contractProjectChangeType;
-
+                                                        string unf_json = JsonConvert.SerializeObject(cpContractProjectChange);
                                                         var cp = new ContractProject();
                                                         cp.Purchase_num = cpContractProjectChange.foundationInfo.purchaseNumber;
                                                         cp.Contract_num = cpContractProjectChange.commonInfo.docNumber;
-                                                        cp.R_body = djson; 
+                                                        //cp.R_body = djson; 
+                                                        cp.R_body = unf_json;
                                                         cp.Hash = hashstr;
                                                         cp.Zip_file = nFile.Full_path;
                                                         cp.File_name = entry.FullName;
@@ -177,7 +198,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                     }
                                     catch (Exception ex)
                                     {
-                                        _logger.LogError(ex, "Error parse ParseProtocols");
+                                        _logger.LogError(ex, "Error parse ParseContractProjects");
                                         _logger.LogError(ex, ex.Message);
                                         string errfile = (_commonSettings.DebugPath + nFile.Full_path);
                                         if (!Directory.Exists(errfile)) Directory.CreateDirectory(errfile);
@@ -189,7 +210,7 @@ namespace SplashUp.Core.Jobs.Fl44
                             }
                         }
 
-                    _logger.LogInformation($"Всего добавляется Protocols записей в БД: {cproject.Count}");
+                    _logger.LogInformation($"Всего добавляется ParseContractProjects записей в БД: {cproject.Count}");
                     //_dataServices.SaveProtocols(protocols);
                     //nFile.Status = Status.Processed;
                     //nFile.Modifid_date = DateTime.Now;
@@ -197,7 +218,7 @@ namespace SplashUp.Core.Jobs.Fl44
                     //Чистим после себя
                     try
                     {
-                        if (File.Exists(zipPath) && nFile.Date < DateTime.Now.AddDays(-_commonSettings.KeepDay)) File.Delete(zipPath);
+                        if (File.Exists(zipPath) && nFile.Date <= DateTime.Now.AddDays(-_commonSettings.KeepDay)) File.Delete(zipPath);
                         Directory.Delete(extractPath, true);
                     }
                     catch (Exception ex)
@@ -213,6 +234,7 @@ namespace SplashUp.Core.Jobs.Fl44
                     nFile.Status = Status.Exist;
                     _dataServices.UpdateCasheFiles(nFile);
                 }
+
 
             }
         }

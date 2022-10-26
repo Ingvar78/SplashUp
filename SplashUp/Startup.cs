@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using SplashUp.Data.Access;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 namespace SplashUp
 {
@@ -43,7 +44,12 @@ namespace SplashUp
 
             var connStr = Configuration.GetConnectionString("ConnectionGDB");
             var connStrD = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<AimDbContext>();
+            //services.AddDbContext<AimDbContext>();
+
+            services.AddDbContext<AimDbContext>(options =>
+            options.UseNpgsql(
+                Configuration.GetConnectionString("ConnectionGDB"))
+            );
 
             InjectorBootStrapper.RegisterServices(services);
 

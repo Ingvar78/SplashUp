@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using SplashUp.Data.Extention;
 using Newtonsoft.Json;
+using SplashUp.Models.Zakupki_gov_ru.Fl44;
 
 namespace SplashUp.Core.Services
 {
@@ -309,22 +310,78 @@ namespace SplashUp.Core.Services
                         .Where(x => x.Hash == c.Hash)
                         .SingleOrDefault();
 
+                        //var find = db.Contracts
+                        //.AsNoTracking()
+                        //.Where(x => x.Contract_num == c.Contract_num 
+                        //&& x.Type_contract==c.Type_contract)
+                        //.SingleOrDefault();
+
                         if (find == null)
                         {
+
                             db.Contracts.Add(c);
                             db.SaveChanges();
                         }
+                        //else
+                        //{
+                        //    if (find.PublishDate < c.PublishDate)
+                        //    {
+                        //        c.Id = find.Id;
+                        //        db.Contracts.Update(c);
+                        //        db.SaveChanges();
+                        //    }
+                        //}
                         
 
                     }
                     catch (Exception ex)
                     {
+                        _logger.LogError($"{c.Id} / {c.Contract_num} /{c.Hash}");
                         _logger.LogError(ex, ex.Message);
                     }
                 }
             }
         }
 
+
+        public void SaveContractsProc(List<ContractsProcedures> pcontracts)
+        {
+            foreach (var c in pcontracts)
+            {
+                using (var db = _govDb.GetContext())
+                {
+                    try
+                    {
+                        //var find = db.Contracts
+                        //.AsNoTracking()
+                        //.Where(x => x.Contract_num == c.Contract_num
+                        //&& x.Fz_type == c.Fz_type
+                        //&& x.PublishDate == c.PublishDate
+                        //&& x.Hash == c.Hash)
+                        //.SingleOrDefault();
+
+                        var find = db.ContractsProcedures
+                        .AsNoTracking()
+                        .Where(x => x.Hash == c.Hash)
+                        .SingleOrDefault();
+
+
+                        if (find == null)
+                        {
+
+                            db.ContractsProcedures.Add(c);
+                            db.SaveChanges();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError($"{c.Id} / {c.Contract_num} /{c.Hash}");
+                        _logger.LogError(ex, ex.Message);
+                    }
+                }
+            }
+        }
         public void SaveProtocols(List<Protocols> protocols)
         {
 

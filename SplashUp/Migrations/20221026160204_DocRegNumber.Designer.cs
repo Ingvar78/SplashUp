@@ -12,8 +12,8 @@ using SplashUp.Data.Access;
 namespace SplashUp.Migrations
 {
     [DbContext(typeof(AimDbContext))]
-    [Migration("20220922204106_FIX")]
-    partial class FIX
+    [Migration("20221026160204_DocRegNumber")]
+    partial class DocRegNumber
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -128,6 +128,61 @@ namespace SplashUp.Migrations
                         .HasName("pk_contracts");
 
                     b.ToTable("contracts", (string)null);
+                });
+
+            modelBuilder.Entity("SplashUp.Data.DB.ContractsProcedures", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Contract_num")
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("contract_num");
+
+                    b.Property<string>("DocRegNumber")
+                        .HasColumnType("text")
+                        .HasColumnName("doc_reg_number");
+
+                    b.Property<string>("File_name")
+                        .HasColumnType("varchar(128)")
+                        .HasColumnName("file_name");
+
+                    b.Property<short>("Fz_type")
+                        .HasColumnType("smallint")
+                        .HasColumnName("fz_type");
+
+                    b.Property<string>("Hash")
+                        .HasColumnType("varchar(64)")
+                        .HasColumnName("hash");
+
+                    b.Property<DateTime>("PublishDate")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("publish_date");
+
+                    b.Property<string>("R_body")
+                        .HasColumnType("jsonb")
+                        .HasColumnName("r_body");
+
+                    b.Property<string>("Type_contract")
+                        .HasColumnType("varchar(64)")
+                        .HasColumnName("type_contract");
+
+                    b.Property<string>("Xml_body")
+                        .HasColumnType("xml")
+                        .HasColumnName("xml_body");
+
+                    b.Property<string>("Zip_file")
+                        .HasColumnType("varchar(256)")
+                        .HasColumnName("zip_file");
+
+                    b.HasKey("Id")
+                        .HasName("pk_contracts_procedures");
+
+                    b.ToTable("contracts_procedures", (string)null);
                 });
 
             modelBuilder.Entity("SplashUp.Data.DB.FileCashes", b =>

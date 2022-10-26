@@ -45,9 +45,14 @@ namespace SplashUp.Data.Access
         DbSet<Notifications> Notifications { get; set; }
 
         /// <summary>
-        /// Данные процедур контрактов по 44 ФЗ 
+        /// Данные контрактов по 44 ФЗ 
         /// </summary>
         DbSet<Contracts> Contracts { get; set; }
+
+        /// <summary>
+        /// Данные процедур контрактов по 44 ФЗ 
+        /// </summary>
+        DbSet<ContractsProcedures> ContractsProcedures { get; set; }
 
         /// <summary>
         /// Данные протоколов по 44ФЗ
