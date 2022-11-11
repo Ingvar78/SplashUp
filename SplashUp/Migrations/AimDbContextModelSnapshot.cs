@@ -307,6 +307,10 @@ namespace SplashUp.Migrations
                         .HasColumnType("varchar(1024)")
                         .HasColumnName("wname");
 
+                    b.Property<string>("Xml_body")
+                        .HasColumnType("xml")
+                        .HasColumnName("xml_body");
+
                     b.Property<string>("Zip_file")
                         .HasColumnType("varchar(256)")
                         .HasColumnName("zip_file");
@@ -637,6 +641,10 @@ namespace SplashUp.Migrations
                         .HasColumnType("varchar(64)")
                         .HasColumnName("type_protocol");
 
+                    b.Property<string>("Xml_body")
+                        .HasColumnType("xml")
+                        .HasColumnName("xml_body");
+
                     b.Property<string>("Zip_file")
                         .HasColumnType("varchar(256)")
                         .HasColumnName("zip_file");
@@ -645,6 +653,65 @@ namespace SplashUp.Migrations
                         .HasName("pk_protocols");
 
                     b.ToTable("protocols", (string)null);
+                });
+
+            modelBuilder.Entity("SplashUp.Data.DB.Suppliers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ContactPhone")
+                        .HasColumnType("varchar(2048)")
+                        .HasColumnName("contact_phone");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("varchar(2048)")
+                        .HasColumnName("full_name");
+
+                    b.Property<string>("Inn")
+                        .HasColumnType("varchar(12)")
+                        .HasColumnName("inn");
+
+                    b.Property<bool>("IsIP")
+                        .HasColumnType("boolean")
+                        .HasColumnName("is_ip");
+
+                    b.Property<string>("Kpp")
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("kpp");
+
+                    b.Property<string>("Ogrn")
+                        .HasColumnType("text")
+                        .HasColumnName("ogrn");
+
+                    b.Property<string>("Okopf")
+                        .HasColumnType("varchar(5)")
+                        .HasColumnName("okopf");
+
+                    b.Property<string>("Okpo")
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("okpo");
+
+                    b.Property<string>("Oktmo")
+                        .HasColumnType("jsonb")
+                        .HasColumnName("oktmo");
+
+                    b.Property<string>("PostAddress")
+                        .HasColumnType("varchar(2048)")
+                        .HasColumnName("post_address");
+
+                    b.Property<DateTime>("RegistrationDate")
+                        .HasColumnType("date")
+                        .HasColumnName("registration_date");
+
+                    b.HasKey("Id")
+                        .HasName("pk_suppliers");
+
+                    b.ToTable("suppliers", (string)null);
                 });
 #pragma warning restore 612, 618
         }

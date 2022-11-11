@@ -14,6 +14,7 @@ using System.Xml.Serialization;
 using SplashUp.Data.Extention;
 using Newtonsoft.Json;
 using SplashUp.Models.Zakupki_gov_ru.Fl44;
+using System.Diagnostics.Contracts;
 
 namespace SplashUp.Core.Services
 {
@@ -93,7 +94,7 @@ namespace SplashUp.Core.Services
                         .AsNoTracking()
                         .Where(x => x.RegNumber == organization.RegNumber
                         && x.Fz_type == organization.Fz_type)
-                        .OrderByDescending(x=>x.changeESIADateTime)
+                        .OrderByDescending(x => x.changeESIADateTime)
                         .FirstOrDefault();
                         //.SingleOrDefault();
 
@@ -151,7 +152,7 @@ namespace SplashUp.Core.Services
                     .Take(lim)
                     .ToList();
             }
-            
+
             return data;
         }
 
@@ -331,7 +332,7 @@ namespace SplashUp.Core.Services
                         //        db.SaveChanges();
                         //    }
                         //}
-                        
+
 
                     }
                     catch (Exception ex)
@@ -377,6 +378,38 @@ namespace SplashUp.Core.Services
                     catch (Exception ex)
                     {
                         _logger.LogError($"{c.Id} / {c.Contract_num} /{c.Hash}");
+                        _logger.LogError(ex, ex.Message);
+                    }
+                }
+            }
+        }
+
+        public void SaveSuppliersPoc(List<Suppliers> supplers)
+        {
+            foreach (var s in supplers)
+            {
+                using (var db = _govDb.GetContext())
+                {
+                    try
+                    {
+
+                        var find = db.Suppliers
+                        .AsNoTracking()
+                        .Where(x => x.Inn == s.Inn & x.FullName==s.FullName)
+                        .SingleOrDefault();
+
+
+                        if (find == null)
+                        {
+
+                            db.Suppliers.Add(s);
+                            db.SaveChanges();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError($"{s.Id} / {s.Inn} /{s.FullName}");
                         _logger.LogError(ex, ex.Message);
                     }
                 }

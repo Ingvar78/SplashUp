@@ -111,6 +111,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             //fscn.Wname = "";
                                                             //fscn.R_body = djson;// fscn.R_body = djson;//
                                                              fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = fcsContractSign.suppliers[0].inn;
@@ -134,7 +135,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json;//fscn.R_body = djson;// fscn.R_body = djson;// fscn.R_body = unf_json;
-                                                            //fscn.Xml_body = read_xml_text;                                                       
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                         //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -170,6 +171,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json;//fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                         //fscn.ContractConclusion = "";
                                                         fscn.Inn = "";
@@ -203,6 +205,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json;//fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                         //fscn.ContractConclusion = "";
                                                         fscn.Inn = "";
@@ -236,6 +239,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json;//fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                         //fscn.ContractConclusion = "";
                                                         fscn.Inn = "";
@@ -259,6 +263,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json;//fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                         fscn.contractConclusionOnSt83Ch2 = notificationEOK.commonInfo.contractConclusionOnSt83Ch2;
                                                         fscn.Inn = "";
@@ -280,6 +285,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json;//fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             fscn.contractConclusionOnSt83Ch2 = notificationEOKOU.commonInfo.contractConclusionOnSt83Ch2;
                                                             fscn.Inn = "";
@@ -302,6 +308,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json;//fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             fscn.contractConclusionOnSt83Ch2 = epNotificationEOKD.commonInfo.contractConclusionOnSt83Ch2;
                                                             fscn.Inn = "";
@@ -323,6 +330,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json;//fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             fscn.contractConclusionOnSt83Ch2 = notificationEZK.commonInfo.contractConclusionOnSt83Ch2;
                                                             fscn.Inn = "";
@@ -344,6 +352,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             fscn.contractConclusionOnSt83Ch2 = epNotificationEZK2020.commonInfo.contractConclusionOnSt83Ch2;
                                                             fscn.Inn = "";
@@ -367,6 +376,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json;//fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             fscn.contractConclusionOnSt83Ch2 = epNotificationEZT2020.commonInfo.contractConclusionOnSt83Ch2;
                                                             fscn.Inn = "";
@@ -389,7 +399,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
-                                                            //fscn.Xml_body = read_xml_text;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             fscn.contractConclusionOnSt83Ch2 = notificationEZP.commonInfo.contractConclusionOnSt83Ch2;
                                                             fscn.Inn = "";
@@ -413,6 +423,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -436,6 +447,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -459,6 +471,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -482,6 +495,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -505,6 +519,7 @@ namespace SplashUp.Core.Jobs.Fl44
 
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -527,6 +542,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -548,6 +564,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -569,6 +586,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -590,6 +608,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             fscn.contractConclusionOnSt83Ch2 = zfcs_notificationEF.contractConclusionOnSt83Ch2;
                                                             fscn.Inn = "";
@@ -611,6 +630,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             fscn.contractConclusionOnSt83Ch2 = zfcs_notificationEP.contractConclusionOnSt83Ch2;
                                                             fscn.Inn = "";
@@ -632,6 +652,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             fscn.contractConclusionOnSt83Ch2 = zfcs_notificationPO.contractConclusionOnSt83Ch2;
                                                             fscn.Inn = "";
@@ -653,6 +674,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             fscn.contractConclusionOnSt83Ch2 = zfcs_notificationZakA.contractConclusionOnSt83Ch2;
                                                             fscn.Inn = "";
@@ -675,6 +697,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -697,6 +720,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -719,6 +743,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -741,6 +766,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -763,6 +789,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -785,6 +812,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -807,6 +835,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -829,6 +858,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             fscn.contractConclusionOnSt83Ch2 = zfcs_notificationOK.contractConclusionOnSt83Ch2;
                                                             fscn.Inn = "";
@@ -851,6 +881,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -873,6 +904,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             fscn.contractConclusionOnSt83Ch2 = fcsNotificationZakK.contractConclusionOnSt83Ch2;
                                                             fscn.Inn = "";
@@ -895,6 +927,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -917,6 +950,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -939,6 +973,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -961,6 +996,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
                                                             fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -982,7 +1018,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             string unf_json = JsonConvert.SerializeObject(epNotificationEF2020);
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
-                                                            fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";
@@ -1004,7 +1041,8 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             string unf_json = JsonConvert.SerializeObject(epNotificationEOK2020);
                                                             var fscn = new Notifications();
                                                             //fscn.Wname = "";
-                                                            fscn.R_body = unf_json; //fscn.R_body = djson;// fscn.R_body = unf_json;
+                                                            fscn.R_body = unf_json;
+                                                            fscn.Xml_body = read_xml_text;
                                                             fscn.Hash = hashstr;
                                                             //fscn.ContractConclusion = "";
                                                             fscn.Inn = "";

@@ -68,6 +68,8 @@ namespace SplashUp.Core.Interfaces
         /// <param name="contracts"></param>
         void SaveContractsProc(List<ContractsProcedures> pcontracts);
 
+        void SaveSuppliersPoc(List<Suppliers> supplers);
+
         /// <summary>
         /// Сохранение данных протоколов
         /// </summary>

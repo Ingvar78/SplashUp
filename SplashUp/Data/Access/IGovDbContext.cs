@@ -64,6 +64,11 @@ namespace SplashUp.Data.Access
         /// </summary>
         /// <returns></returns>
         DbSet<ContractProject> ContractProjects { get; set; }
+        /// <summary>
+        /// Данные участников - поставщиков
+        /// </summary>
+        /// <returns></returns>
+        DbSet<Suppliers> Suppliers { get; set; }
         int SaveChanges();
     }
 }

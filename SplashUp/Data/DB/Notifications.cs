@@ -28,9 +28,8 @@ namespace SplashUp.Data.DB
         ///// <summary>
         ///// Тело извещения XML
         ///// </summary>
-        //[Column(TypeName = "xml")]
-        //public string Xml_body { get; set; }
-
+        [Column(TypeName = "xml")]
+        public string Xml_body { get; set; }
         /// <summary>
         /// ИНН участника
         /// </summary>

@@ -100,6 +100,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = epProtocolCancel.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = epProtocolCancel.commonInfo.canceledProtocolNumber;
                                                             frpotocols.R_body = unf_json;//frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -116,6 +117,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEOK1.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -133,6 +135,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEOK2.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -149,6 +152,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEOK3.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -165,6 +169,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEOKD1.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -181,6 +186,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEOKOU1.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -197,6 +203,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEOKOU2.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -213,6 +220,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEOKOU3.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -229,6 +237,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEOKOUSingleApp.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -245,6 +254,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEOKOUSinglePart.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -261,6 +271,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEOKSingleApp.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -277,6 +288,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEOKSinglePart.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -293,6 +305,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEZK1.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -309,6 +322,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEZK2.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -325,6 +339,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEZP1.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -341,6 +356,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             var frpotocols = new Protocols();
                                                             frpotocols.Purchase_num = epProtocolEZP1Extract.commonInfo.purchaseNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -358,6 +374,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = epProtocolEZP2.commonInfo.purchaseNumber;
                                                             //frpotocols.Protocol_num = epProtocolEZP2.protocolNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -375,6 +392,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolCancel.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolCancel.protocolNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -392,6 +410,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolDeviation.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolDeviation.protocolNumber;
                                                             frpotocols.R_body = unf_json;// frpotocols.R_body = djson; //unf_json; // frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -409,6 +428,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolEF1.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolEF1.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -427,6 +447,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolEF2.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolEF2.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -445,6 +466,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolEF3.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolEF3.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -463,6 +485,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolEFInvalidation.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolEFInvalidation.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -481,6 +504,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolEFSingleApp.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolEFSingleApp.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -499,6 +523,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolEFSinglePart.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolEFSinglePart.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -517,6 +542,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolEvasion.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolEvasion.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -535,6 +561,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolOK1.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolOK1.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -553,6 +580,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolOK2.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolOK2.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -571,6 +599,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolOKSingleApp.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolOKSingleApp.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -589,6 +618,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolPO.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolPO.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -607,6 +637,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = fcsProtocolZK.purchaseNumber;
                                                             frpotocols.Protocol_num = fcsProtocolZK.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -625,6 +656,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = pprf615ProtocolEF1.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = pprf615ProtocolEF1.commonInfo.docNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -643,6 +675,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = pprf615ProtocolEF2.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = pprf615ProtocolEF2.commonInfo.docNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -662,6 +695,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Protocol_num = pprf615ProtocolPO.commonInfo.docNumber;
                                                             frpotocols.R_body = unf_json;
                                                             // frpotocols.R_body = djson;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -680,6 +714,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = epNoticeApplicationsAbsence.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = epNoticeApplicationsAbsence.commonInfo.docNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -699,6 +734,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Protocol_num = protocolDeviation.commonInfo.docNumber;
                                                             frpotocols.R_body = unf_json;
                                                             // frpotocols.R_body = djson;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -717,6 +753,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Protocol_num = protocolEZK2020Final.commonInfo.docNumber;
                                                             frpotocols.R_body = unf_json;
                                                             // frpotocols.R_body = djson;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -735,6 +772,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Protocol_num = protocolEZK2020FinalPart.commonInfo.docNumber;
                                                             frpotocols.R_body = unf_json;
                                                             // frpotocols.R_body = djson;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
                                                             frpotocols.File_name = entry.FullName;
@@ -752,6 +790,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = protocolEZT2020FinalPart.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = protocolEZT2020FinalPart.commonInfo.docNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -770,6 +809,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = zfcs_placementResult.purchaseNumber;
                                                             frpotocols.Protocol_num = zfcs_placementResult.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -788,6 +828,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = protocolEOKD2.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = protocolEOKD2.foundationDocInfo.foundationDocNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -806,6 +847,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = protocolEOKD3.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = protocolEOKD3.foundationDocInfo.foundationDocNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -824,6 +866,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = protocolEOKD4.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = protocolEOKD4.foundationDocInfo.foundationDocNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -842,6 +885,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = epProtocolEZT2020Final.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = epProtocolEZT2020Final.foundationDocInfo.foundationDocNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -860,6 +904,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = epNoticeApplicationCancel.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = epNoticeApplicationCancel.protocolInfo.protocolNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -878,6 +923,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = epProtocolEF2020Final.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = epProtocolEF2020Final.foundationDocInfo.foundationDocNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -896,6 +942,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = epProtocolEF2020SubmitOffers.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = epProtocolEF2020SubmitOffers.foundationDocInfo.foundationDocNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -914,6 +961,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = epProtocolEOK2020Final.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = epProtocolEOK2020Final.foundationDocInfo.foundationDocNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -933,6 +981,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = epProtocolEOK2020FirstSections.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = epProtocolEOK2020FirstSections.foundationDocInfo.foundationDocNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -952,6 +1001,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = epProtocolEOK2020SecondSections.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = epProtocolEOK2020SecondSections.foundationDocInfo.foundationDocNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -971,6 +1021,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = epProtocolEvasion.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = epProtocolEvasion.commonInfo.docNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;
@@ -990,6 +1041,7 @@ namespace SplashUp.Core.Jobs.Fl44
                                                             frpotocols.Purchase_num = epProtocolEvDevCancel.commonInfo.purchaseNumber;
                                                             frpotocols.Protocol_num = epProtocolEvDevCancel.commonInfo.docNumber;
                                                             frpotocols.R_body = unf_json;
+                                                            frpotocols.Xml_body = read_xml_text;
                                                             // frpotocols.R_body = djson;
                                                             frpotocols.Hash = hashstr;
                                                             frpotocols.Zip_file = nFile.Full_path;

@@ -60,6 +60,7 @@ namespace SplashUp.Migrations
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     contract_num = table.Column<string>(type: "varchar(20)", nullable: true),
+                    doc_reg_number = table.Column<string>(type: "text", nullable: true),
                     r_body = table.Column<string>(type: "jsonb", nullable: true),
                     xml_body = table.Column<string>(type: "xml", nullable: true),
                     hash = table.Column<string>(type: "varchar(64)", nullable: true),
@@ -67,6 +68,7 @@ namespace SplashUp.Migrations
                     zip_file = table.Column<string>(type: "varchar(256)", nullable: true),
                     file_name = table.Column<string>(type: "varchar(128)", nullable: true),
                     fz_type = table.Column<short>(type: "smallint", nullable: false),
+                    cancel_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     publish_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
@@ -104,6 +106,7 @@ namespace SplashUp.Migrations
                     purchase_num = table.Column<string>(type: "varchar(20)", nullable: true),
                     protocol_num = table.Column<string>(type: "varchar(100)", nullable: true),
                     r_body = table.Column<string>(type: "jsonb", nullable: true),
+                    xml_body = table.Column<string>(type: "xml", nullable: true),
                     inn = table.Column<string>(type: "varchar(12)", nullable: true),
                     wname = table.Column<string>(type: "varchar(1024)", nullable: true),
                     participant_info = table.Column<string>(type: "jsonb", nullable: true),
@@ -243,6 +246,7 @@ namespace SplashUp.Migrations
                     purchase_num = table.Column<string>(type: "varchar(20)", nullable: true),
                     protocol_num = table.Column<string>(type: "varchar(100)", nullable: true),
                     r_body = table.Column<string>(type: "jsonb", nullable: true),
+                    xml_body = table.Column<string>(type: "xml", nullable: true),
                     hash = table.Column<string>(type: "varchar(64)", nullable: true),
                     type_protocol = table.Column<string>(type: "varchar(64)", nullable: true),
                     zip_file = table.Column<string>(type: "varchar(256)", nullable: true),
@@ -253,6 +257,29 @@ namespace SplashUp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_protocols", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "suppliers",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    inn = table.Column<string>(type: "varchar(12)", nullable: true),
+                    kpp = table.Column<string>(type: "varchar(20)", nullable: true),
+                    ogrn = table.Column<string>(type: "text", nullable: true),
+                    oktmo = table.Column<string>(type: "jsonb", nullable: true),
+                    okpo = table.Column<string>(type: "varchar(20)", nullable: true),
+                    full_name = table.Column<string>(type: "varchar(2048)", nullable: true),
+                    okopf = table.Column<string>(type: "varchar(5)", nullable: true),
+                    is_ip = table.Column<bool>(type: "boolean", nullable: false),
+                    registration_date = table.Column<DateTime>(type: "date", nullable: false),
+                    post_address = table.Column<string>(type: "varchar(2048)", nullable: true),
+                    contact_phone = table.Column<string>(type: "varchar(2048)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_suppliers", x => x.id);
                 });
         }
 
@@ -290,6 +317,9 @@ namespace SplashUp.Migrations
 
             migrationBuilder.DropTable(
                 name: "protocols");
+
+            migrationBuilder.DropTable(
+                name: "suppliers");
         }
     }
 }

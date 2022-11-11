@@ -74,6 +74,8 @@ namespace SplashUp.Data.Access
         
         public DbSet<Protocols> Protocols { get; set; }
         public DbSet<ContractProject> ContractProjects { get; set; }
+        public DbSet<Suppliers> Suppliers { get; set; }
+
         int IGovDbContext.SaveChanges()
         {
             return this.SaveChangesInternal();

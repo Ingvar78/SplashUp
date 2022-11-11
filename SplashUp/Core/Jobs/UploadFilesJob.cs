@@ -74,13 +74,13 @@ namespace SplashUp.Core.Jobs
             {
                 Parallel.Invoke(
                     //() => { DownloadFtpFiles44(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44)); },
-                    () => { DownloadFtpFiles(_dataServices.GetDwList(1000, Status.Exist, FLType.Fl44), FLType.Fl44, _fzSettings44.Parallels); },
-                    () => { DownloadFtpFiles(_dataServices.GetDwList(1000, Status.Exist, FLType.Fl223), FLType.Fl223, _fzSettings223.Parallels); }
+                    () => { DownloadFtpFiles(_dataServices.GetDwList(100, Status.Exist, FLType.Fl44), FLType.Fl44, _fzSettings44.Parallels); },
+                    () => { DownloadFtpFiles(_dataServices.GetDwList(100, Status.Exist, FLType.Fl223), FLType.Fl223, _fzSettings223.Parallels); }
                     //() => { DownloadFtpFiles223(_dataServices.GetDwList(500, Status.Exist, FLType.Fl223)); }
                     );
 
-                cnt44 = _dataServices.GetDwList(1000, Status.Exist, FLType.Fl44).Count;
-                cnt223 = _dataServices.GetDwList(1000, Status.Exist, FLType.Fl223).Count;
+                cnt44 = _dataServices.GetDwList(100, Status.Exist, FLType.Fl44).Count;
+                cnt223 = _dataServices.GetDwList(100, Status.Exist, FLType.Fl223).Count;
                 FreeDS = GetTotalFreeSpace(_commonSettings.BasePartition);
                 _logger.LogInformation($"44/223 - Доступно для загрузки: {FreeDS:F2}%  на диске: {_commonSettings.BasePartition}");
             }
@@ -272,6 +272,7 @@ namespace SplashUp.Core.Jobs
             string login ;
             string password;
             string url;
+            string workpath;
 
             switch (fztype)
             {
@@ -280,6 +281,7 @@ namespace SplashUp.Core.Jobs
                         login = _commonSettings.FtpCredential.FZ223.Login;
                         password = _commonSettings.FtpCredential.FZ223.Password;
                         url = _commonSettings.FtpCredential.FZ223.Url;
+                        workpath = _fzSettings223.WorkPath;
                     }
                     break;
                 default: 
@@ -287,6 +289,7 @@ namespace SplashUp.Core.Jobs
                         login = _commonSettings.FtpCredential.FZ44.Login;
                         password = _commonSettings.FtpCredential.FZ44.Password;
                         url = _commonSettings.FtpCredential.FZ44.Url;
+                        workpath = _fzSettings44.WorkPath;
                     }
                     break;
             }
@@ -310,7 +313,7 @@ namespace SplashUp.Core.Jobs
                     client.Connect();
                     client.Config.RetryAttempts = 5;
                     _logger.LogInformation($"Загрузка архива ФЗ {fztype} {item.Full_path}...");
-                    client.DownloadFile(_fzSettings44.WorkPath + item.Full_path, item.Full_path);
+                    client.DownloadFile(workpath + item.Full_path, item.Full_path);
                     item.Modifid_date = DateTime.Now;
                     item.Status = Status.Uploaded;
                     _dataServices.UpdateCasheFiles(item);

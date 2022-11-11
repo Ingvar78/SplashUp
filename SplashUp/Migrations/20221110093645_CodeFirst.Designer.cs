@@ -12,7 +12,7 @@ using SplashUp.Data.Access;
 namespace SplashUp.Migrations
 {
     [DbContext(typeof(AimDbContext))]
-    [Migration("20221026144649_CodeFirst")]
+    [Migration("20221110093645_CodeFirst")]
     partial class CodeFirst
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -139,9 +139,17 @@ namespace SplashUp.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CancelDate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("cancel_date");
+
                     b.Property<string>("Contract_num")
                         .HasColumnType("varchar(20)")
                         .HasColumnName("contract_num");
+
+                    b.Property<string>("DocRegNumber")
+                        .HasColumnType("text")
+                        .HasColumnName("doc_reg_number");
 
                     b.Property<string>("File_name")
                         .HasColumnType("varchar(128)")
@@ -300,6 +308,10 @@ namespace SplashUp.Migrations
                     b.Property<string>("Wname")
                         .HasColumnType("varchar(1024)")
                         .HasColumnName("wname");
+
+                    b.Property<string>("Xml_body")
+                        .HasColumnType("xml")
+                        .HasColumnName("xml_body");
 
                     b.Property<string>("Zip_file")
                         .HasColumnType("varchar(256)")
@@ -631,6 +643,10 @@ namespace SplashUp.Migrations
                         .HasColumnType("varchar(64)")
                         .HasColumnName("type_protocol");
 
+                    b.Property<string>("Xml_body")
+                        .HasColumnType("xml")
+                        .HasColumnName("xml_body");
+
                     b.Property<string>("Zip_file")
                         .HasColumnType("varchar(256)")
                         .HasColumnName("zip_file");
@@ -639,6 +655,65 @@ namespace SplashUp.Migrations
                         .HasName("pk_protocols");
 
                     b.ToTable("protocols", (string)null);
+                });
+
+            modelBuilder.Entity("SplashUp.Data.DB.Suppliers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ContactPhone")
+                        .HasColumnType("varchar(2048)")
+                        .HasColumnName("contact_phone");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("varchar(2048)")
+                        .HasColumnName("full_name");
+
+                    b.Property<string>("Inn")
+                        .HasColumnType("varchar(12)")
+                        .HasColumnName("inn");
+
+                    b.Property<bool>("IsIP")
+                        .HasColumnType("boolean")
+                        .HasColumnName("is_ip");
+
+                    b.Property<string>("Kpp")
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("kpp");
+
+                    b.Property<string>("Ogrn")
+                        .HasColumnType("text")
+                        .HasColumnName("ogrn");
+
+                    b.Property<string>("Okopf")
+                        .HasColumnType("varchar(5)")
+                        .HasColumnName("okopf");
+
+                    b.Property<string>("Okpo")
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("okpo");
+
+                    b.Property<string>("Oktmo")
+                        .HasColumnType("jsonb")
+                        .HasColumnName("oktmo");
+
+                    b.Property<string>("PostAddress")
+                        .HasColumnType("varchar(2048)")
+                        .HasColumnName("post_address");
+
+                    b.Property<DateTime>("RegistrationDate")
+                        .HasColumnType("date")
+                        .HasColumnName("registration_date");
+
+                    b.HasKey("Id")
+                        .HasName("pk_suppliers");
+
+                    b.ToTable("suppliers", (string)null);
                 });
 #pragma warning restore 612, 618
         }

@@ -88,7 +88,7 @@ namespace SplashUp
                         dataServices))
                         .NonReentrant()
                         .ToRunNow()
-                        .AndEvery(5).Minutes();
+                        .AndEvery(10).Minutes();
             }
             //Обработка справочников ФЗ-223
             if (partUsed.UseNsiSettings223)
@@ -99,7 +99,7 @@ namespace SplashUp
                         dataServices))
                         .NonReentrant()
                         .ToRunNow()
-                        .AndEvery(5).Minutes();
+                        .AndEvery(10).Minutes();
             }
 
             if (partUsed.UseFz44Settings)
